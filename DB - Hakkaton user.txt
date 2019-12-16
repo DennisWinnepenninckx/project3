@@ -1,0 +1,9 @@
+Name: hakkaton_11
+Password: leS5nahweqsdfwaa
+
+
+__________________
+
+grant all privileges on schema "award-team11" to "hakkaton_11";
+grant all privileges on all tables in schema "award-team11" to "hakkaton_11";
+grant all privileges on all sequences in schema "award-team11" to "hakkaton_11";
