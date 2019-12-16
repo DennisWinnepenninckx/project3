@@ -114,6 +114,13 @@
     </aside>
     </div>
     </div>
+    
+    <article>
+        <form action="Controller?command=mail" method="post">
+            <input type="email" id="receiver" name="receiver">
+            <input type="submit">
+        </form>
+    </article>
 </main>
 <footer>
     <p>footer</p>

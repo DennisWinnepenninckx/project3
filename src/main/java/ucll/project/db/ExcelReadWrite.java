@@ -67,7 +67,7 @@ public class ExcelReadWrite {
 
             int counter = 1;
 
-            for (User user : users) {   
+            for (User user : users) {
                 newData.put(counter, user);
                 counter++;
             }
