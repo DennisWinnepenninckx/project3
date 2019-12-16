@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -20,9 +21,8 @@ public class UsersPageTest {
     private static WebDriver driver;
 
     @BeforeClass
-    public static void SetupDriver() throws MalformedURLException {
-        DesiredCapabilities capability = DesiredCapabilities.firefox();
-        driver = new RemoteWebDriver(new URL("http://projectweek.be:4444/wd/hub"), capability);
+    public static void setDriver() throws MalformedURLException {
+        driver = new FirefoxDriverHelper().getDriver();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
     }
@@ -33,13 +33,11 @@ public class UsersPageTest {
         driver.close();
     }
 
-    /**
-     * This is a sample test, remove this test and write your own!
-     */
     @Test
     public void VisitUsersPageTest() {
         driver.get(Config.BASE_URL);
         WebElement link = driver.findElement(By.xpath("//a[text() = 'Users']"));
+        driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
         link.click();
         assertEquals("All users", driver.getTitle());
 
