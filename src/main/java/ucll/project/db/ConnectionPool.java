@@ -8,9 +8,9 @@ import java.sql.SQLException;
 
 public class ConnectionPool {
     private static final String
-            USERNAME = "",
-            PASSWORD = "",
-            SCHEMA = "";
+            USERNAME = "hakkaton_11",
+            PASSWORD = "IeS5nahweqsdfwaa",
+            SCHEMA = "award-team11";
 
     private static DataSource dataSource = null;
 
