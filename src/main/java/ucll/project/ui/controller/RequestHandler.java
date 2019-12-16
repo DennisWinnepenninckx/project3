@@ -34,7 +34,7 @@ public abstract class RequestHandler {
 
     public UserService getUserService(){ return userService; }
 
-    public abstract String handleRequest(HttpServletRequest request, HttpServletResponse response);
+    public abstract String handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException;
 
     public String getCommand() {
         return command;
