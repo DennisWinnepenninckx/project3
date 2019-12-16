@@ -15,22 +15,22 @@ Feature: giving another user stars
     Then the user receives an error
 
 
-   Scenario: A user doesn't add a description to the star
-     Given The user wants to send a star without description
-     When The user tries to send the star
-     Then The user receives an error message
+  Scenario: A user doesn't add a description to the star
+    Given The user wants to send a star without description
+    When The user tries to send the star
+    Then The user receives an error message
 
-   Scenario: A user doesn't add a tag to the star
-     Given A user doesn't add a tag to the star
-     When the user tries to send the star
-     Then the user receives an error message
+  Scenario: A user doesn't add a tag to the star
+    Given A user doesn't add a tag to the star
+    When the user tries to send the star
+    Then the user receives an error message
 
-   Scenario: A user tries to add a fifth tag to a star
-     Given The user has given 4 tags to a star
-     When The user tries to add another tag to the star
-     Then the user gets an error message
+  Scenario: A user tries to add a fifth tag to a star
+    Given The user has given 4 tags to a star
+    When The user tries to add another tag to the star
+    Then the user gets an error message
 
-     Scenario: A user can't give himself a star
-       Given a user wants to send a star to himself
-       When the user tries to send the star
-       Then He gets an error message
+  Scenario: A user can't give himself a star
+    Given a user wants to send a star to himself
+    When the user tries to send the star
+    Then He gets an error message
