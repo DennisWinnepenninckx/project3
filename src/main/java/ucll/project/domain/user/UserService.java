@@ -12,4 +12,8 @@ public class UserService {
     public List<User> getUsers(){
         return userRepo.getAll();
     }
+
+    public UserRepository getUserRepo() {
+        return userRepo;
+    }
 }
