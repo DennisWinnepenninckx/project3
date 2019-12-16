@@ -19,7 +19,6 @@ public class HomePageTest {
     public  void setDriver() {
         // Setup the Chrome driver for the whole class
         driver = ChromeDriverHelper.getDriver();
-        driver = new ChromeDriver();
     }
 
     @AfterClass
@@ -33,7 +32,6 @@ public class HomePageTest {
      */
     @Test
     public void VisitHomePageTest() {
-
         driver.get(Config.BASE_URL);
         assertEquals("Hello world!", driver.getTitle());
     }
