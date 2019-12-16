@@ -4,8 +4,10 @@ package ucll.project.ui;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,10 +15,11 @@ public class HomePageTest {
 
     private static WebDriver driver;
 
-    @BeforeClass
-    public static void SetupDriver() {
+    @BeforeEach
+    public  void setDriver() {
         // Setup the Chrome driver for the whole class
         driver = ChromeDriverHelper.getDriver();
+        driver = new ChromeDriver();
     }
 
     @AfterClass
@@ -33,7 +36,6 @@ public class HomePageTest {
 
         driver.get(Config.BASE_URL);
         assertEquals("Hello world!", driver.getTitle());
-
     }
 
 }
