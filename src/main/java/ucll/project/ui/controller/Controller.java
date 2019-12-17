@@ -1,5 +1,6 @@
 package ucll.project.ui.controller;
 
+import ucll.project.db.DBController;
 import ucll.project.domain.user.UserService;
 
 import javax.servlet.ServletContext;
@@ -14,7 +15,7 @@ import java.util.Properties;
 
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
-    private UserService service;
+    private DBController service;
     private HandlerFactory handlerFactory;
 
 
@@ -22,7 +23,7 @@ public class Controller extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         handlerFactory = new HandlerFactory();
-        service = new UserService();
+        service = DBController.getInstance();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

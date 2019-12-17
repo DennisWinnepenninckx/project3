@@ -10,36 +10,33 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav>
     <c:if test="${user!=null}">
-        <section class="profile">
+        <section class="account-banner">
             <img class="profile-pic" src="../static/imgs/profile.png" alt="profile_pic">
-            <div>
-                <ul>
-                    <li>${user.firstName} ${user.lastname}</li>
-                    <li>${user.email}</li>
-                </ul>
-            </div>
+            <h3>${user.firstName} ${user.lastname}</h3>
         </section>
     </c:if>
     <ul>
-        <li>
-            <a class="nav-link" href="Controller?command=Index">Home <span
-                    class="sr-only">(current)</span></a>
+        <li class="link-nav">
+            <a href="Controller?command=Index"><span class="material-icons">home</span><span>Home</span></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="Controller?command=Users">Users</a>
+        <li class="link-nav">
+            <a href="Controller?command=Users"><span class="material-icons">supervisor_account</span><span>Users</span></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="Controller?command=ToCreateUser">Create user</a>
+        <li class="link-nav">
+            <a href="Controller?command=ToCreateUser"><span class="material-icons">create</span><span>Create User</span></a>
         </li>
         <c:if test="${user==null}">
-            <li class="nav-item">
-                <a class="nav-link" href="Controller?command=ToLogin">Login</a>
+            <li class="link-nav">
+                <a href="Controller?command=ToLogin"><span>Login</span></a>
             </li>
         </c:if>
         <c:if test="${user!=null}">
-            <li class="nav-item">
-                <a class="nav-link" href="Controller?command=Logout">Log out</a>
+            <li class="link-nav">
+                <a href="Controller?command=Logout"><span class="material-icons">exit_to_app</span><span>Logout</span></a>
             </li>
         </c:if>
     </ul>
 </nav>
+<div id="nav-placeholder">
+
+</div>

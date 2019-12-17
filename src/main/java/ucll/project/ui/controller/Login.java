@@ -1,6 +1,8 @@
 package ucll.project.ui.controller;
 
 //import org.omg.CORBA.DynAnyPackage.Invalid;
+
+import ucll.project.db.DBController;
 import ucll.project.domain.user.InvalidLogin;
 import ucll.project.domain.user.User;
 import ucll.project.domain.user.UserService;
@@ -13,33 +15,33 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Login extends RequestHandler{
+public class Login extends RequestHandler {
 
-    public Login(String command, UserService userService) {
+    public Login(String command, DBController userService) {
         super(command, userService);
     }
 
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         List<String> errors = new ArrayList<>();
-        User user=null;
+        User user = null;
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        request.setAttribute("email",email);
-        try{
-            user=getUserService().getUserRepo().loginUser(email,password);
-        }catch (InvalidLogin e){
+        request.setAttribute("email", email);
+        try {
+            user = getUserService().loginUser(email, password);
+        } catch (InvalidLogin e) {
             errors.add(e.getMessage());
         }
 
-        if(errors.size()==0 && user!=null){
+        if (errors.size() == 0 && user != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("user",user);
+            session.setAttribute("user", user);
             response.sendRedirect("Controller");
-        }else{
-            request.setAttribute("errors",errors);
-            request.getRequestDispatcher("login.jsp").forward(request,response);
+        } else {
+            request.setAttribute("errors", errors);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 }

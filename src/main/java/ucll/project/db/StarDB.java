@@ -1,6 +1,7 @@
-package ucll.project.domain.star;
+package ucll.project.db;
 
 import ucll.project.db.ConnectionPool;
+import ucll.project.domain.star.Star;
 import ucll.project.domain.user.User;
 
 import java.sql.*;

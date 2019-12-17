@@ -3,13 +3,10 @@ package StepDefs;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.*;
-import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
 import ucll.project.domain.user.User;
-import ucll.project.domain.user.UserRepository;
-import ucll.project.domain.user.UserRepositoryDb;
-import ucll.project.ui.DriverHelper;
+import ucll.project.db.UserRepository;
+import ucll.project.db.UserRepositoryDb;
 
 import java.util.List;
 import java.util.Map;

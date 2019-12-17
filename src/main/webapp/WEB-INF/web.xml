@@ -6,6 +6,9 @@
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/static/*</url-pattern>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>*.js</url-pattern>
+        <url-pattern>*.png</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>Controller</welcome-file>

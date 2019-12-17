@@ -1,5 +1,6 @@
 package ucll.project.ui.controller;
 
+import ucll.project.db.DBController;
 import ucll.project.domain.user.UserService;
 
 import javax.servlet.RequestDispatcher;
@@ -10,8 +11,7 @@ import java.io.IOException;
 
 public class ToCreateUser extends RequestHandler {
 
-
-    public ToCreateUser(String command, UserService userService) {
+    public ToCreateUser(String command, DBController userService) {
         super(command, userService);
     }
 

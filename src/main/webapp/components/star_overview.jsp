@@ -8,9 +8,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<section>
+<ul class="content-list">
     <c:forEach items="${stars}" var="star">
-        <section class="star-class">
+        <li class="star-class">
             <img src="../static/imgs/star.png" alt="">
             <div>
                 <table>
@@ -31,6 +31,6 @@
                 </td>
                 </tr>
             </div>
-        </section>
+        </li>
     </c:forEach>
-</section>
+</ul>
