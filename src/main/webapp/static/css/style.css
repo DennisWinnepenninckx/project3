@@ -136,3 +136,17 @@ nav ul {
 input{
     border-radius: 5px;
 }
+
+form input, form select {
+    display: block;
+    margin: 1rem;
+}
+
+button {
+    border: none;
+    background: #246ac1;
+    padding: 1rem;
+    border-radius: 10%;
+    color: white;
+    font-weight: bold;
+}

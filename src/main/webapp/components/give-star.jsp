@@ -11,7 +11,7 @@
 <section>
     <form action="Controller">
         <input type="hidden" name="command" value="GiveStar">
-        <input name="description" type="text">
+        <textarea name="description"></textarea>
         <select name="receiver">
             <c:forEach items="${receivers}" var="receiver">
                 <option value="${receiver.email}">${receiver.firstName} ${receiver.lastname}</option>
