@@ -23,7 +23,7 @@ public class mail extends RequestHandler {
                     ", \n You just received a star with the following tags: " +
                     star.getTagsInString() + "\n from " + star.getUserSender().getEmail() +
                     "\nDescription:\n" + "\nGood job!";
-            SimpleMail.send(star,message);
+            SimpleMail.send(receiver,message);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
