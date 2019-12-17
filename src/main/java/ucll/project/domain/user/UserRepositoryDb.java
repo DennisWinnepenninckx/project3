@@ -124,7 +124,7 @@ public class UserRepositoryDb implements UserRepository {
         user.setLastname(rs.getString("lastname"));
         user.setEmail(rs.getString("email"));
         user.setHashedPassword(rs.getString("password"));
-        user.setIs_superuser(rs.getString("is_superuser").equals("true"));
+        user.setIs_superuser(rs.getString("superuser").equals("true"));
         return user;
     }
 

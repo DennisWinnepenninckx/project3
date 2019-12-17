@@ -4,6 +4,7 @@ import ucll.project.domain.user.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -42,6 +43,17 @@ public abstract class RequestHandler {
     void forwardRequest(String destination, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher view = request.getRequestDispatcher(destination);
         view.forward(request, response);
+    }
+
+    public String readCookie(HttpServletRequest request, String name) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals(name))
+                    return cookie.getValue();
+            }
+        }
+        return null;
     }
 
 

@@ -9,6 +9,8 @@ Feature: Create a user
       | lastname | firstname | email    |
       | Vanostet | karrel    | ka@g.com |
     Then a user with the given details is created
+      | lastname | firstname | email    |
+      | Vanostet | karrel    | ka@g.com |
 
   Scenario: A superuser can't create an account with an email that already exists
     Given the superuser is on the create user page
