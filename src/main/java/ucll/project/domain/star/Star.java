@@ -41,6 +41,13 @@ public class Star {
     public List<String> getTags() {
         return tags;
     }
+    public String getTagsInString(){
+        String result = "";
+        for (String s : tags){
+            result += "-"+s + "\n";
+        }
+        return result;
+    }
 
     public void setTags(List<String> tags) {
         this.tags = tags;

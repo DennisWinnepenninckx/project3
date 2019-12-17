@@ -23,17 +23,18 @@ public class CreateUser {
     private static WebDriver driver;
     private UserRepository db = new UserRepositoryDb();
 
-    @Given("the superuser is on the create user page")
-    public void the_superuser_is_on_the_create_user_page() {
+    @Given("Arne is on the create user page")
+    public void arne_is_on_the_create_user_page() {
         // Write code here that turns the phrase above into concrete actions
         /*driver.get(Config.BASE_URL);
         WebElement link = driver.findElement(By.xpath("//a[text() = 'Users']"));
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         link.click();*/
+        System.out.println("Given step");
     }
 
-    @When("the superuser makes a user with the following details:")
-    public void the_superuser_makes_a_user_with_the_following_details(io.cucumber.datatable.DataTable dataTable) {
+    @When("Arne makes a user with the following details:")
+    public void arne_makes_a_user_with_the_following_details(io.cucumber.datatable.DataTable dataTable) {
         // Write code here that turns the phrase above into concrete actions
         // For automatic transformation, change DataTable to one of
         // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
@@ -41,7 +42,7 @@ public class CreateUser {
         // Double, Byte, Short, Long, BigInteger or BigDecimal.
         //
         // For other transformations you can register a DataTableType.
-        System.out.println(dataTable);
+        /*System.out.println(dataTable);
         String lastname = "";
         String firstname = "";
         String email = "";
@@ -56,11 +57,13 @@ public class CreateUser {
         user = new User(email,firstname,lastname,"password",false);
         db.createUser(user);
 
-        System.out.println(dtListMaps);
+        //System.out.println(dtListMaps);
+         */
+        System.out.println("When step");
     }
 
-    @Then("a user with the given details is created")
-    public void a_user_with_the_given_details_is_created(io.cucumber.datatable.DataTable dataTable) {
+    @Then("Karel with the given details is created")
+    public void karel_with_the_given_details_is_created(io.cucumber.datatable.DataTable dataTable) {
         // Write code here that turns the phrase above into concrete actions
         String lastname = "";
         String firstname = "";
@@ -78,10 +81,11 @@ public class CreateUser {
         assertTrue(checkUser.getFirstName().equals(firstname));
         assertTrue(checkUser.getLastname().equals(lastname));
         db.delete(user);
+        System.out.println("Then step");
     }
 
-    @Given("a user with an email exists")
-    public void a_user_with_an_email_exists(io.cucumber.datatable.DataTable dataTable) {
+    @Given("Karel with an email exists")
+    public void karel_with_an_email_exists(io.cucumber.datatable.DataTable dataTable) {
         // Write code here that turns the phrase above into concrete actions
         // For automatic transformation, change DataTable to one of
         // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
@@ -89,54 +93,54 @@ public class CreateUser {
         // Double, Byte, Short, Long, BigInteger or BigDecimal.
         //
         // For other transformations you can register a DataTableType.
-        throw new cucumber.api.PendingException();
+        System.out.println("Given step");
     }
 
-    @When("the superuser creates a user with this email")
-    public void the_superuser_creates_a_user_with_this_email() {
+    @When("Arne creates a user with this email")
+    public void arne_creates_a_user_with_this_email() {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        System.out.println("When step");
     }
 
-    @Then("the superuser sees an error")
-    public void the_superuser_sees_an_error() {
+    @Then("Arne sees an error")
+    public void arne_sees_an_error() {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        System.out.println("Then step");
     }
 
     @Then("no account is created")
     public void no_account_is_created() {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        System.out.println("Then step");
     }
 
-    @When("the superuser creates an account with {string}, {string}, {string} where at least one is empty")
-    public void the_superuser_creates_an_account_with_where_at_least_one_is_empty(String string, String string2, String string3) {
+    @When("Arne creates an account with {string}, {string}, {string} where at least one is empty")
+    public void arne_creates_an_account_with_where_at_least_one_is_empty(String string, String string2, String string3) {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        System.out.println("When step");
     }
 
-    @When("the superuser creates a user with as manager this user")
-    public void the_superuser_creates_a_user_with_as_manager_this_user() {
+    @When("Arne creates a user with as manager this user")
+    public void arne_creates_a_user_with_as_manager_this_user() {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        System.out.println("When step");
     }
 
-    @When("the superuser creates a user with as manager someone who doesn't exist")
-    public void the_superuser_creates_a_user_with_as_manager_someone_who_doesn_t_exist() {
+    @When("Arne creates a user with as manager someone who doesn't exist")
+    public void arne_creates_a_user_with_as_manager_someone_who_doesn_t_exist() {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        System.out.println("When step");
     }
 
-    @When("the superuser creates a user with a manager")
-    public void the_superuser_creates_a_user_with_a_manager() {
+    @When("Arne creates a user with a manager")
+    public void arne_creates_a_user_with_a_manager() {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        System.out.println("When step");
     }
 
     @Then("the account is created")
     public void the_account_is_created() {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        System.out.println("Then step");
     }
 }

@@ -1,5 +1,7 @@
 package extra;
 
+import ucll.project.domain.star.Star;
+
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.mail.Authenticator;
@@ -15,7 +17,7 @@ public class SimpleMail {
     private static final String SMTP_AUTH_PWD  = "BehaviourDrivenDesign";
 
 
-    public static void test(String receiver) throws Exception{
+    public static void send(Star star, String StringMessage) throws Exception{
         Properties props = new Properties();
         props.put("mail.smtp.host", SMTP_HOST_NAME);
         props.put("mail.smtp.port", "587");
@@ -30,10 +32,10 @@ public class SimpleMail {
         Transport transport = mailSession.getTransport();
 
         MimeMessage message = new MimeMessage(mailSession);
-        message.setContent("This is a test", "text/plain");
+        message.setContent(StringMessage,"text/plain");
         message.setFrom(new InternetAddress(SMTP_AUTH_USER));
         message.addRecipient(Message.RecipientType.TO,
-                new InternetAddress(receiver));
+                new InternetAddress(star.getUserReceiver().getEmail()));
 
         transport.connect();
         transport.sendMessage(message,
