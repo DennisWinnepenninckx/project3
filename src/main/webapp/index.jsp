@@ -35,10 +35,8 @@
 <<<<<<< HEAD
 <jsp:include page="star_overview.jsp"></jsp:include>
 
-=======
 
     <p>Welcome ${user.firstName}</p>
->>>>>>> 2b0381db5fda13d55ea262b6f6077768d3083d2e
 </main>
 </body>
 <!-- Footer -->

@@ -33,7 +33,7 @@ public class addUser extends RequestHandler {
         String inhoud = "beste" + LastName + "\n" + "welkom bij BEDRIJF. Klik op volgende link om uw account in te stellen.";
 
         try {
-            SimpleMail.test(Email);
+            //SimpleMail.send(Email);
         } catch (Exception e) {
             e.printStackTrace();
         }

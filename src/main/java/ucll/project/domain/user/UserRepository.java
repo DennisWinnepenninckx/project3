@@ -23,6 +23,4 @@ public interface UserRepository {
 
     // DELETE
     void delete(User user);
-
-    public List<Star> getStars();
 }
