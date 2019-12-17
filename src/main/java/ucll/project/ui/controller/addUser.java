@@ -1,5 +1,6 @@
 package ucll.project.ui.controller;
 
+import extra.SimpleMail;
 import io.cucumber.java.an.E;
 import ucll.project.domain.user.User;
 import ucll.project.domain.user.UserRepositoryDb;
@@ -28,7 +29,11 @@ public class addUser extends RequestHandler {
         User user = new User(Email,FirstName,LastName,"t",false);
 
         userService.getUserRepo().createUser(user);
-
+        try {
+            SimpleMail.test(Email);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         RequestDispatcher view = request.getRequestDispatcher("index.jsp");
         view.forward(request, response);
     }
