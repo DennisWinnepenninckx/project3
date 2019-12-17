@@ -1,7 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +15,7 @@
 </head>
 <body>
 <!-- Navigation -->
+<%@ include file="components/navigation.jspf" %>
 
 <div id="container">
     <main>
@@ -29,10 +28,10 @@
                 </ul>
             </div>
         </c:if>
-        <form id="login" novalidate="novalidate" action="Controller?command=Login" method="post">
+        <form novalidate="novalidate" action="Controller?command=Login" method="post">
             <!-- novalidate in order to be able to run tests correctly -->
             <p><label for="email">email</label>
-                <input type="email"  id="email" name="email" value="${email}" required>
+                <input  id="email" name="email" value="<c:out value='${email}'/>" required>
             </p>
             <p><label for="password">password</label>
                 <input type="password" id="password" name="password" required value="">
@@ -41,8 +40,6 @@
             <p><input type="submit" id="signUp" value="Login"></p>
         </form>
     </main>
-    <jsp:include page="sidebar.jsp"/>
-
 </div>
 </body>
 </html>
