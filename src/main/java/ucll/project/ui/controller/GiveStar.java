@@ -3,6 +3,7 @@ package ucll.project.ui.controller;
 import extra.SimpleMail;
 import ucll.project.domain.star.Star;
 import ucll.project.domain.star.StarDB;
+import ucll.project.domain.user.User;
 import ucll.project.domain.user.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,9 @@ public class GiveStar extends RequestHandler {
 
         StarDB starDB = new StarDB();
 
-        String sender_email = "arne.walschap@ucll.be";
+        User user = (User) request.getSession().getAttribute("user");
+
+        String sender_email = user.getEmail();
         String receiver_email = request.getParameter("receiver");
         String description = request.getParameter("description");
         List<String> tags = new ArrayList<>();
