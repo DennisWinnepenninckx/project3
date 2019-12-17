@@ -11,7 +11,7 @@ public class User {
     private String email, firstName, lastname;
     private Role role;
 
-    // hashed password
+    // hashed password1
     private transient String hashedPassword;
 
     public User() {
