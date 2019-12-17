@@ -4,21 +4,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import ucll.project.domain.user.User;
 import ucll.project.domain.user.UserRepository;
 import ucll.project.domain.user.UserRepositoryDb;
-import ucll.project.ui.ChromeDriverHelper;
-import ucll.project.ui.Config;
-import ucll.project.ui.FirefoxDriverHelper;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -33,8 +25,7 @@ public class CreateUser {
     @Given("the superuser is on the create user page")
     public void the_superuser_is_on_the_create_user_page() {
         // Write code here that turns the phrase above into concrete actions
-        /*driver = ChromeDriverHelper.getDriver();
-        driver.get(Config.BASE_URL);
+        /*driver.get(Config.BASE_URL);
         WebElement link = driver.findElement(By.xpath("//a[text() = 'Users']"));
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         link.click();*/
