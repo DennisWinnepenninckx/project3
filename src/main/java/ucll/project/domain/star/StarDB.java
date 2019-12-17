@@ -1,6 +1,5 @@
 package ucll.project.domain.star;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import ucll.project.db.ConnectionPool;
 import ucll.project.domain.user.User;
 
