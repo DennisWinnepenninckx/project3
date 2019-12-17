@@ -11,7 +11,7 @@
 <section>
     <c:forEach items="${stars}" var="star">
         <section class="star-class">
-            <img src="static/imgs/star.png" alt="">
+            <img src="../static/imgs/star.png" alt="">
             <div>
                 <table>
                     <tr>

@@ -38,7 +38,7 @@
             <p><input type="submit" id="signUp" value="Login"></p>
         </form>
     </main>
-    <jsp:include page="sidebar.jsp"/>
+    <jsp:include page="components/sidebar.jsp"/>
 </div>
 </body>
 </html>
