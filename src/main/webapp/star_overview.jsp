@@ -11,23 +11,26 @@
 <section>
     <c:forEach items="${stars}" var="star">
         <section class="star-class">
-            <table>
-                <tr>
-                    <th>Sender</th>
-                    <td>${star.sender}</td>
+            <img src="static/imgs/star.png" alt="">
+            <div>
+                <table>
+                    <tr>
+                        <th>Sender</th>
+                        <td>${star.sender}</td>
+                    </tr>
+                    <tr>
+                        <th>Receiver</th>
+                        <td>${star.receiver}</td>
+                    </tr>
+                </table>
+                <p>${star.description}</p>
+                <td>
+                    <ul><c:forEach items="${star.tags}" var="tag">
+                        <li>${tag}</li>
+                    </c:forEach></ul>
+                </td>
                 </tr>
-                <tr>
-                    <th>Receiver</th>
-                    <td>${star.receiver}</td>
-                </tr>
-            </table>
-            <td>${star.description}</td>
-            <td>
-                <ul><c:forEach items="${star.tags}" var="tag">
-                    <li>${tag}</li>
-                </c:forEach></ul>
-            </td>
-            </tr>
+            </div>
         </section>
     </c:forEach>
 </section>

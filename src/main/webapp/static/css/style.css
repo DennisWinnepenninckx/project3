@@ -80,6 +80,8 @@ body {
 }
 
 .star-class {
-    border-bottom: 1px solid #888888;
-    background: black;
+    padding: 2rem;
+    box-shadow: 3px 3px 0 #777777;
+    display: flex;
+    flex-direction: row;
 }
