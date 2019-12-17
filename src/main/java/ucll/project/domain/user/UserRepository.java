@@ -1,5 +1,7 @@
 package ucll.project.domain.user;
 
+import ucll.project.domain.star.Star;
+
 import java.util.List;
 
 public interface UserRepository {
@@ -21,4 +23,6 @@ public interface UserRepository {
 
     // DELETE
     void delete(User user);
+
+    public List<Star> getStars();
 }

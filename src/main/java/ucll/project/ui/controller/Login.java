@@ -1,6 +1,6 @@
 package ucll.project.ui.controller;
 
-import org.omg.CORBA.DynAnyPackage.Invalid;
+//import org.omg.CORBA.DynAnyPackage.Invalid;
 import ucll.project.domain.user.InvalidLogin;
 import ucll.project.domain.user.User;
 import ucll.project.domain.user.UserService;

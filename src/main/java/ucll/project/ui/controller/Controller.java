@@ -40,6 +40,7 @@ public class Controller extends HttpServlet {
                 command = "Index";
             }
             RequestHandler handler = handlerFactory.getHandler(command, service);
+            System.out.println(handler);
             handler.handleRequest(request, response);
         } catch (Exception e) {
             throw new ControllerException(e.getMessage());

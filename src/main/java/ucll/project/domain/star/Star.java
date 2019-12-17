@@ -11,6 +11,9 @@ public class Star {
     private String description;
     private String sender, receiver;
 
+    public Star() {
+    }
+
     public Star(List<String> tags, String description, String sender, String receiver) {
         this.tags = tags;
         this.description = description;

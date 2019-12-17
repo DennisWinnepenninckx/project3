@@ -1,6 +1,6 @@
 package ucll.project.domain.user;
-
 import ucll.project.db.ConnectionPool;
+import ucll.project.domain.star.Star;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -61,6 +61,25 @@ public class UserRepositoryDb implements UserRepository {
             throw new RuntimeException(e);
         }
     }
+
+    public List<Star> getStars() {
+        try (Connection conn = ConnectionPool.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM \"star\""))
+        {
+            List<Star> stars = new ArrayList<>();
+            while (rs.next()) {
+                //users.add(userFromResult(rs));
+                stars.add(starFromResult(rs));
+            }
+
+            System.out.println(stars);
+            return stars;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     @Override
     public User loginUser(String username, String password) throws InvalidLogin {
@@ -126,6 +145,15 @@ public class UserRepositoryDb implements UserRepository {
         user.setHashedPassword(rs.getString("password"));
         user.setIs_superuser(rs.getString("superuser").equals("true"));
         return user;
+    }
+
+    private static Star starFromResult(ResultSet rs) throws SQLException {
+        Star star = new Star();
+        star.setId(rs.getInt("id"));
+        star.setDescription(rs.getString("description"));
+        star.setDescription(rs.getString("sender_email"));
+        star.setDescription(rs.getString("receiver_email"));
+        return star;
     }
 
     private static int stmtSetUser(PreparedStatement stmt, int i, User user) throws SQLException {
