@@ -4,8 +4,6 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import ucll.project.domain.user.Gender;
-import ucll.project.domain.user.Role;
 import ucll.project.domain.user.User;
 
 import java.io.*;
@@ -13,7 +11,7 @@ import java.util.*;
 
 
 public class ExcelReadWrite {
-
+/*
     public ExcelReadWrite() {
 
     }
@@ -108,4 +106,6 @@ public class ExcelReadWrite {
             e.printStackTrace();
         }
     }
+
+ */
 }

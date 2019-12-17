@@ -15,10 +15,7 @@ public class User {
     // hashed password
     private transient String hashedPassword;
 
-    public User() {
-    }
-
-    public User(String userName, String firstName, String lastName, String email, Gender gender, Role role) {
+    public User(String userName, String firstName, String lastName, String email, Role role) {
         setFirstName(firstName);
         setLastName(lastName);
     }
