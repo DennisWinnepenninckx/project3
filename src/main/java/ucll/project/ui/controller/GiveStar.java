@@ -18,7 +18,11 @@ public class GiveStar extends RequestHandler {
 
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String sender_email = request.getParameter("sender");
+        // Should determine the sender here
+
+        StarDB starDB = new StarDB();
+
+        String sender_email = "arne.walschap@ucll.be";
         String receiver_email = request.getParameter("receiver");
         String description = request.getParameter("description");
         List<String> tags = new ArrayList<>();
@@ -31,8 +35,11 @@ public class GiveStar extends RequestHandler {
         if (tags.size() > 4) {
             throw new IllegalArgumentException("Can't have more than 4 tags");
         }
+        if (receiver_email.equals(sender_email)) {
+            throw new IllegalArgumentException("Can't send star to yourself");
+        }
         Star star = new Star(tags,description, sender_email, receiver_email);
-        new StarDB().createStar(star);
+        starDB.createStar(star);
 
         response.sendRedirect("Controller");
     }

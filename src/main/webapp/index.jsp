@@ -32,7 +32,7 @@
             mostly barebones HTML document.</p>
     </div>
     <jsp:include page="give-star.jsp"/>
-
+<jsp:include page="star_overview.jsp"></jsp:include>
 
 </main>
 </body>
