@@ -17,7 +17,6 @@
 </head>
 <body>
 <!-- Navigation -->
-<%@ include file="components/navigation.jspf" %>
 
 <div id="container">
     <main>
@@ -42,6 +41,8 @@
             <p><input type="submit" id="signUp" value="Login"></p>
         </form>
     </main>
+    <jsp:include page="sidebar.jsp"/>
+
 </div>
 </body>
 </html>
