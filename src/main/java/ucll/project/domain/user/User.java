@@ -8,9 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class User {
-    private String firstName;
-    private String lastName;
-    private String email;
+    private String email, firstName, lastname;
+    private Role role;
 
     // hashed password
     private transient String hashedPassword;
@@ -18,10 +17,26 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String firstName, String lastName, String email, Gender gender, Role role) {
+    public User(String email, String firstName, String lastName, Role role) {
         setFirstName(firstName);
-        setLastName(lastName);
+        setEmail(email);
+        setLastname(lastName);
+        setRole(role);
+
     }
+
+    public void setRole(Role role){
+        this.role = role;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
 
     public void hashAndSetPassword(String password) {
         if (password.length() < 4) {
@@ -57,9 +72,7 @@ public class User {
         return this.firstName;
     }
 
-    public String getLastName() {
-        return this.lastName;
-    }
+
 
     public String getEmail() {
         return this.email;
@@ -73,8 +86,8 @@ public class User {
         this.firstName = firstName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public Role getRole() {
+        return role;
     }
 
     public void setEmail(String email) {
@@ -89,6 +102,6 @@ public class User {
     }
 
     public String toString() {
-        return "User(firstName=" + this.getFirstName() + ", lastName=" + this.getLastName() + ", email=" + this.getEmail() + ", hashedPassword=" + this.getHashedPassword() + ")";
+        return "User(firstName=" + this.getFirstName() + ", lastName=" + this.getLastname() + ", email=" + this.getEmail() + ", hashedPassword=" + this.getHashedPassword() + ")";
     }
 }

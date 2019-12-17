@@ -5,10 +5,10 @@ import java.util.List;
 public interface UserRepository {
 
     // CREATE
-    void createUser(User user, String password);
+    void createUser(User user);
 
     // READ ONE
-    User get(int userId);
+    User get(String email);
 
     // READ ALL
     List<User> getAll();
