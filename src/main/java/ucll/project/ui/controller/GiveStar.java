@@ -14,6 +14,6 @@ public class GiveStar extends RequestHandler {
 
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        return null;
+
     }
 }
