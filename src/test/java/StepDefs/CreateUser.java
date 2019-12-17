@@ -4,10 +4,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.*;
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
 import ucll.project.domain.user.User;
 import ucll.project.domain.user.UserRepository;
 import ucll.project.domain.user.UserRepositoryDb;
+import ucll.project.ui.DriverHelper;
 
 import java.util.List;
 import java.util.Map;
@@ -17,10 +19,9 @@ import static org.junit.Assert.assertTrue;
 
 
 public class CreateUser {
+    private User user;
     private static WebDriver driver;
-    private UserRepository db = new UserRepositoryDb();;
-
-    @Before
+    private UserRepository db = new UserRepositoryDb();
 
     @Given("the superuser is on the create user page")
     public void the_superuser_is_on_the_create_user_page() {
@@ -52,7 +53,7 @@ public class CreateUser {
             email = dtListMaps.get(i).get("email");
         }
 
-        User user = new User(email,firstname,lastname,"password",false);
+        user = new User(email,firstname,lastname,"password",false);
         db.createUser(user);
 
         System.out.println(dtListMaps);
@@ -71,11 +72,12 @@ public class CreateUser {
             firstname = dtListMaps.get(i).get("firstname");
             email = dtListMaps.get(i).get("email");
         }
-        User user = db.get(email);
-        assertTrue(user!=null);
-        assertTrue(user.getEmail().equals(email));
-        assertTrue(user.getFirstName().equals(firstname));
-        assertTrue(user.getLastname().equals(lastname));
+        User checkUser = db.get(email);
+        assertTrue(checkUser!=null);
+        assertTrue(checkUser.getEmail().equals(email));
+        assertTrue(checkUser.getFirstName().equals(firstname));
+        assertTrue(checkUser.getLastname().equals(lastname));
+        db.delete(user);
     }
 
     @Given("a user with an email exists")
