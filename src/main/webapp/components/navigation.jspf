@@ -14,7 +14,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="Controller?command=Users">Users</a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="Controller?command=ToCreateUser">Create user</a>
+            </li>
             <c:if test="${user==null}">
             <li class="nav-item">
                 <a class="nav-link" href="Controller?command=ToLogin">Login</a>
