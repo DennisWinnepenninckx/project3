@@ -13,26 +13,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="/static/css/style.css" rel="stylesheet">
-    <title>Hello world!</title>
+    <link href="static/css/style.css" rel="stylesheet">
+    <title>Stars</title>
 </head>
 <body>
 
 <!-- Navigation -->
-<%@ include file="components/navigation.jspf" %>
+<jsp:include page="sidebar.jsp"></jsp:include>
 
 <!-- Page Content -->
 
 
-<main role="main" class="container">
 
-    <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a
-            mostly barebones HTML document.</p>
-    </div>
-
-</main>
 </body>
 
 <form novalidate="novalidate">

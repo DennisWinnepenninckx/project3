@@ -12,13 +12,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="/static/css/style.css" rel="stylesheet">
-    <title>Hello world!</title>
+    <link href="static/css/style.css" rel="stylesheet">
+    <title>Stars</title>
 </head>
 <body>
-<!-- Navigation -->
-<%@ include file="components/navigation.jspf" %>
-
 <div id="container">
     <main>
         <c:if test="${not empty errors}">
@@ -31,8 +28,9 @@
             </div>
         </c:if>
         <form id="login" novalidate="novalidate" action="Controller?command=Login" method="post">
-            <p><label for="email">email</label>
-                <input type="email"  id="email" name="email" value="${email}" required>
+            <p>
+                <label for="email">email</label>
+                <input type="email" id="email" name="email" value="${email}" required>
             </p>
             <p><label for="password">password</label>
                 <input type="password" id="password" name="password" required value="">
@@ -40,6 +38,7 @@
             <p><input type="submit" id="signUp" value="Login"></p>
         </form>
     </main>
+    <jsp:include page="sidebar.jsp"/>
 </div>
 </body>
 </html>
