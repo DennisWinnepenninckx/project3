@@ -14,8 +14,8 @@
 
         <form novalidate="novalidate" action="Servlet?command=Login" method="post">
             <!-- novalidate in order to be able to run tests correctly -->
-            <p><label for="userid">User id</label><input type="hidden" id="userid" name="userid" value="${id}"
-                                                         required > </p>
+            <p><label for="email">email</label><input type="hidden" id="email" name="email" value="${email}"
+                                                         required></p>
             <p><label for="password">password</label><input type="password" id="password" name="password"
                                                             required value=""> </p>
 
@@ -23,9 +23,6 @@
 
         </form>
     </main>
-    <footer>
-        &copy; Webontwikkeling 3, UC Leuven-Limburg
-    </footer>
 </div>
 </body>
 </html>
