@@ -116,6 +116,8 @@ body {
 
 main {
     width: 70%;
+    position: absolute;
+    left: 0;
 }
 
 nav {

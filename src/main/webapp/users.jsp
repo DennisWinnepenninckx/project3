@@ -19,8 +19,7 @@
 <body>
 
 <!-- Navigation -->
-<%@ include file="components/navigation.jspf" %>
-
+<jsp:include page="sidebar.jsp"></jsp:include>
 <!-- Page Content -->
 
 
