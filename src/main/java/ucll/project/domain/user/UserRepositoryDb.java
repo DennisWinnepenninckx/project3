@@ -12,7 +12,7 @@ public class UserRepositoryDb implements UserRepository {
     public void createUser(User user) {
         try (Connection conn = ConnectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement("INSERT INTO \"user\" " +
-                     "(email, firstname, lastname) VALUES (?, ?, ?)",
+                     "(email, firstname, lastname, password) VALUES (?, ?, ?, ?)",
                      Statement.RETURN_GENERATED_KEYS))
         {
             stmtSetUser(stmt, 1, user);
@@ -32,7 +32,7 @@ public class UserRepositoryDb implements UserRepository {
     @Override
     public User get(String email) {
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE id = ?"))
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE email = ?"))
         {
             stmt.setString(1, email);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -118,6 +118,7 @@ public class UserRepositoryDb implements UserRepository {
         user.setLastname(rs.getString("lastname"));
         user.setEmail(rs.getString("email"));
         user.setHashedPassword(rs.getString("password"));
+        user.setIs_superuser(rs.getString("is_superuser").equals("true"));
         return user;
     }
 
@@ -125,6 +126,7 @@ public class UserRepositoryDb implements UserRepository {
         stmt.setString(i++, user.getEmail());
         stmt.setString(i++, user.getFirstName());
         stmt.setString(i++, user.getLastname());
+        stmt.setString(i++, user.getHashedPassword());
         return i;
     }
 }

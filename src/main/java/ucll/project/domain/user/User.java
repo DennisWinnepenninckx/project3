@@ -8,8 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class User {
-    private String email, firstName, lastname;
-    private Role role;
+    private String email, firstName, lastname, password;
+    private boolean is_superuser;
 
     // hashed password1
     private transient String hashedPassword;
@@ -17,16 +17,12 @@ public class User {
     public User() {
     }
 
-    public User(String email, String firstName, String lastName, Role role) {
+    public User(String email, String firstName, String lastName, String password, boolean is_superuser) {
         setFirstName(firstName);
         setEmail(email);
         setLastname(lastName);
-        setRole(role);
-
-    }
-
-    public void setRole(Role role){
-        this.role = role;
+        setHashedPassword(getPasswordToHashedPassword(password));
+        setIs_superuser(is_superuser);
     }
 
     public String getLastname() {
@@ -36,7 +32,6 @@ public class User {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-
 
     public void hashAndSetPassword(String password) {
         if (password.length() < 4) {
@@ -73,7 +68,6 @@ public class User {
     }
 
 
-
     public String getEmail() {
         return this.email;
     }
@@ -86,8 +80,20 @@ public class User {
         this.firstName = firstName;
     }
 
-    public Role getRole() {
-        return role;
+    public boolean isIs_superuser() {
+        return is_superuser;
+    }
+
+    public void setIs_superuser(boolean is_superuser) {
+        this.is_superuser = is_superuser;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setEmail(String email) {
