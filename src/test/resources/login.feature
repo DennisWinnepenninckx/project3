@@ -12,15 +12,23 @@ Feature: Login
     Then he is logged in and sees the overview page
 
 #unhappy
-  Scenario Outline:  When somebody tries to login to an account but enters the wrong password, he gets an error
-    Given "<name>" is not logged in
-    And "<name>" is on the login-page
-    And "<name>" has "<valid>" account
-    When "<name>" enters "<credentials>"
-    Then he gets an error :"<error>"
+  Scenario: When somebody tries login with a nonexistent username, he gets an error
+    Given Dirk is not logged in
+    And Dirk is on the login-page
+    And Dirk has no account
+    When Dirk enters nonexistent credentials
+    Then he gets an error :"nonexisting user"
 
-    Examples:
-      | name    | valid   | credentials                          | error            |
-      | Dirk    | invalid | nonexisting credentials              | nonexisting user |
-      | Andreas | valid   | correct username with wrong password | wrong password   |
-      | Karrel  | valid   | empty field                          | empty field      |
+  Scenario:  When somebody tries to login, but forgets a field, he gets an error
+    Given Karrel is not logged in
+    And Karrel is on the login-page
+    And Karrel has an account
+    When Karrel forgets a field
+    Then he gets an error :"empty field"
+
+  Scenario:  When somebody tries to login to an account but enters the wrong password, he gets an error
+    Given Andreas is not logged in
+    And Andreas is on the login-page
+    And Andreas has an account
+    When Andreas enters the wrong password
+    Then he gets an error :"wrong password"
