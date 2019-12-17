@@ -1,6 +1,5 @@
 package ucll.project.ui.controller;
 
-import ucll.project.domain.user.UserRepository;
 import ucll.project.domain.user.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +11,7 @@ public class Users extends RequestHandler {
     }
 
     @Override
-    public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+    public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("users", this.getUserService().getUsers());
         return "users.jsp";
     }
