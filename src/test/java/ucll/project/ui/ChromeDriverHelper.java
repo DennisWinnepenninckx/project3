@@ -7,8 +7,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.io.File;
 import java.util.Map;
 
-class ChromeDriverHelper {
-    static ChromeDriver getDriver() {
+public class ChromeDriverHelper {
+    public static ChromeDriver getDriver() {
         // Setup the Chrome driver for the whole class
         WebDriverManager.chromedriver().setup();
         ChromeDriver driver;
