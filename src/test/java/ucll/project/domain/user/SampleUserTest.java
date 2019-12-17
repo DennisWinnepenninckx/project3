@@ -3,7 +3,6 @@ package ucll.project.domain.user;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 
 /**
  * This is a sample unit test, write your own!
