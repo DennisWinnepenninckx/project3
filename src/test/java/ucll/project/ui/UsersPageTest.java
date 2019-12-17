@@ -32,5 +32,4 @@ public class UsersPageTest {
         driver.close();
     }
 
-
 }
