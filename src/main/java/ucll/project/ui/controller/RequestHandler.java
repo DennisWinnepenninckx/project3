@@ -1,7 +1,6 @@
 package ucll.project.ui.controller;
 
 import ucll.project.domain.user.*;
-import ucll.project.ui.controller.ControllerException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,7 +33,7 @@ public abstract class RequestHandler {
 
     public UserService getUserService(){ return userService; }
 
-    public abstract String handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException;
+    public abstract void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException;
 
     public String getCommand() {
         return command;

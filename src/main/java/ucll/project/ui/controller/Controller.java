@@ -44,8 +44,7 @@ public class Controller extends HttpServlet {
                 command = "Index";
             }
             RequestHandler handler = handlerFactory.getHandler(command, service);
-            String destination = handler.handleRequest(request, response);
-            handler.forwardRequest(destination, request, response);
+            handler.handleRequest(request, response);
         } catch (Exception e) {
             throw new ControllerException(e.getMessage());
         }
