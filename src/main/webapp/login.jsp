@@ -30,7 +30,7 @@
         <form id="login" novalidate="novalidate" action="Controller?command=Login" method="post">
             <p>
                 <label for="email">email</label>
-                <input type="email" id="email" name="email" value="${email}" required>
+                <input type="email" id="email" name="email" value="<c:out value='${email}'/>" required>
             </p>
             <p><label for="password">password</label>
                 <input type="password" id="password" name="password" required value="">
@@ -38,7 +38,7 @@
             <p><input type="submit" id="signUp" value="Login"></p>
         </form>
     </main>
-    <jsp:include page="sidebar.jsp"/>
+    <jsp:include page="components/sidebar.jsp"/>
 </div>
 </body>
 </html>

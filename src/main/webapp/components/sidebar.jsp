@@ -11,7 +11,7 @@
 <nav>
     <c:if test="${user!=null}">
         <section class="profile">
-            <img class="profile-pic" src="static/imgs/profile.png" alt="profile_pic">
+            <img class="profile-pic" src="../static/imgs/profile.png" alt="profile_pic">
             <div>
                 <ul>
                     <li>${user.firstName} ${user.lastname}</li>
