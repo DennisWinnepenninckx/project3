@@ -32,12 +32,5 @@ public class UsersPageTest {
         driver.close();
     }
 
-    @Test
-    public void VisitUsersPageTest() {
-        WebElement link = driver.findElement(By.xpath("//a[text() = 'Users']"));
-        driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-        link.click();
-        assertEquals("All users", driver.getTitle());
-    }
 
 }
