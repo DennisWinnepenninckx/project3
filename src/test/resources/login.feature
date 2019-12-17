@@ -20,7 +20,7 @@ Feature: Login
     Then he gets an error :"<error>"
 
     Examples:
-      | name    | valid       | credentials                          | error            |
-      | Dirk    | nonexisting | nonexisting credentials              | nonexisting user |
-      | Andreas | existing    | correct username with wrong password | wrong password   |
-      | Karrel  | existing    | empty field                          | empty field      |
+      | name    | valid   | credentials                          | error            |
+      | Dirk    | invalid | nonexisting credentials              | nonexisting user |
+      | Andreas | valid   | correct username with wrong password | wrong password   |
+      | Karrel  | valid   | empty field                          | empty field      |
