@@ -30,10 +30,10 @@
                 </ul>
             </div>
         </c:if>
-        <form novalidate="novalidate" action="Controller?command=Login" method="post">
+        <form id="login" novalidate="novalidate" action="Controller?command=Login" method="post">
             <!-- novalidate in order to be able to run tests correctly -->
             <p><label for="email">email</label>
-                <input  id="email" name="email" value="${email}" required>
+                <input type="email"  id="email" name="email" value="${email}" required>
             </p>
             <p><label for="password">password</label>
                 <input type="password" id="password" name="password" required value="">
