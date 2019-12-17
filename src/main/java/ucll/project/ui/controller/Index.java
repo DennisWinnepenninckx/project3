@@ -19,7 +19,7 @@ public class Index extends RequestHandler {
 
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //String sender = readCookie(request, "loginCookie"); // have to get logged in user from this
+        //String sender = readCookie(request, "loginCookie"); /// have to get logged in user from this
 
 
         List<String> tags = new ArrayList<>();
