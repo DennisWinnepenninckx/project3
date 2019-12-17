@@ -31,12 +31,12 @@
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a
             mostly barebones HTML document.</p>
     </div>
-    <jsp:include page="give-star.jsp"/>
-    <jsp:include page="star_overview.jsp"></jsp:include>
-
     <c:if test="${user!=null}">
         <p>Welcome ${user.firstName}</p>
+        <jsp:include page="give-star.jsp"/>
+        <jsp:include page="star_overview.jsp"></jsp:include>
     </c:if>
+
 </main>
 </body>
 <!-- Footer -->
