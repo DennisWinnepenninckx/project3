@@ -4,6 +4,6 @@ Feature: Receive Mail
   So that I know
 
   Scenario: A user receives a mail when he receives a star
-    Given Dennis is an employee
-    When Dennis gets a star from a colleague
-    Then Dennis receives a mail telling him that he got a star
+    Given Karel is an employee
+    When Karel gets a star from a colleague
+    Then Karel receives a mail telling him that he got a star

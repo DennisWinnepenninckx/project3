@@ -1,6 +1,6 @@
 package ucll.project.domain.user;
-
 import ucll.project.db.ConnectionPool;
+import ucll.project.domain.star.Star;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -62,15 +62,44 @@ public class UserRepositoryDb implements UserRepository {
         }
     }
 
-    @Override
-    public User loginUser(String username, String password) throws InvalidLogin {
+    public List<Star> getStars() {
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE username = ?"))
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM \"star\""))
         {
-            stmt.setString(1, username);
+            List<Star> stars = new ArrayList<>();
+            while (rs.next()) {
+                //users.add(userFromResult(rs));
+                stars.add(starFromResult(rs));
+            }
+
+            System.out.println(stars);
+            return stars;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @Override
+    public User loginUser(String email, String password) throws InvalidLogin {
+        if(email==null || email.isEmpty()){
+            if(password==null || password.isEmpty()){
+                throw new InvalidLogin("No email nor password given");
+            }
+            throw new InvalidLogin("No email given");
+        }
+        if(password==null || password.isEmpty()){
+            throw new InvalidLogin("No password given");
+        }
+
+        try (Connection conn = ConnectionPool.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE email = ?"))
+        {//
+            stmt.setString(1, email);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.next()) {
-                    throw new InvalidLogin("Invalid username");
+                    throw new InvalidLogin("Invalid email");
                 }
 
                 User user = userFromResult(rs);
@@ -120,6 +149,15 @@ public class UserRepositoryDb implements UserRepository {
         user.setHashedPassword(rs.getString("password"));
         user.setIs_superuser(rs.getString("superuser").equals("true"));
         return user;
+    }
+
+    private static Star starFromResult(ResultSet rs) throws SQLException {
+        Star star = new Star();
+        star.setId(rs.getInt("id"));
+        star.setDescription(rs.getString("description"));
+        star.setDescription(rs.getString("sender_email"));
+        star.setDescription(rs.getString("receiver_email"));
+        return star;
     }
 
     private static int stmtSetUser(PreparedStatement stmt, int i, User user) throws SQLException {

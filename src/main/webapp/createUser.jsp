@@ -12,7 +12,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-                                                              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="/static/css/style.css" rel="stylesheet">
     <title>Hello world!</title>
 </head>
@@ -31,16 +31,24 @@
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a
             mostly barebones HTML document.</p>
     </div>
-    <jsp:include page="give-star.jsp"/>
-<<<<<<< HEAD
-<jsp:include page="star_overview.jsp"></jsp:include>
 
-=======
-
-    <p>Welcome ${user.firstName}</p>
->>>>>>> 2b0381db5fda13d55ea262b6f6077768d3083d2e
 </main>
 </body>
+
+<form novalidate="novalidate">
+    <!-- novalidate in order to be able to run tests correctly -->
+    <p><label for="firstName">First Name</label><input type="text" id="firstName" name="firstName" value=""
+        required value=""/> </p>
+    <p><label for="lastName">Last Name</label><input type="text" id="lastName" name="lastName" value=""
+        required/> </p>
+    <p><label for="email">Email</label><input type="email" id="email" name="email" value="" required/>
+    </p>
+    <p><input type="hidden" name="command" value="addUser"></p>
+    <p><input type="submit" id="signUp" value="Add User"></p>
+
+</form>
+
+
 <!-- Footer -->
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Bootstrap JS -->

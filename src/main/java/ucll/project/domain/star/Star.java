@@ -1,5 +1,11 @@
 package ucll.project.domain.star;
 
+
+import ucll.project.db.DBException;
+import ucll.project.domain.user.User;
+import ucll.project.domain.user.UserService;
+import ucll.project.ui.controller.Users;
+
 import java.util.List;
 import java.util.Random;
 
@@ -9,7 +15,15 @@ public class Star {
     private String description;
     private String sender, receiver;
 
-    public Star(List<String> tags, String description, String sender, String receiver) {
+    public Star() {
+    }
+
+    public Star(List<String> tags, String description, String sender, String receiver) {}
+
+    private UserService userService;
+    public Star(List<String> tags, String description, String sender, String receiver, UserService userService) {
+        this.userService = userService;
+
         this.tags = tags;
         this.description = description;
         this.sender = sender;
@@ -35,6 +49,13 @@ public class Star {
 
     public List<String> getTags() {
         return tags;
+    }
+    public String getTagsInString(){
+        String result = "";
+        for (String s : tags){
+            result += "-"+s + "\n";
+        }
+        return result;
     }
 
     public void setTags(List<String> tags) {
@@ -63,5 +84,22 @@ public class Star {
 
     public void setReceiver(String receiver) {
         this.receiver = receiver;
+    }
+
+    public User getUserReceiver(){
+        for (User u: userService.getUsers()){
+            if (u.getEmail().equals(receiver)){
+                return u;
+            }
+        }
+        throw new DBException("Did not find user with email " + receiver);
+    }
+    public User getUserSender(){
+        for (User u: userService.getUsers()){
+            if (u.getEmail().equals(sender)){
+                return u;
+            }
+        }
+        throw new DBException("Did not find user with email " + sender);
     }
 }

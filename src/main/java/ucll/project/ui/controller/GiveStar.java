@@ -28,7 +28,7 @@ public class GiveStar extends RequestHandler {
         List<String> tags = new ArrayList<>();
         int tagNum = 1;
         try {
-            tags.add(request.getParameter("tag"+tagNum++));
+            tags.add(request.getParameter("tag" + tagNum++));
         } catch (Exception ex) {
             System.out.println("End of tag list");
         }
@@ -38,8 +38,8 @@ public class GiveStar extends RequestHandler {
         if (receiver_email.equals(sender_email)) {
             throw new IllegalArgumentException("Can't send star to yourself");
         }
-        Star star = new Star(tags,description, sender_email, receiver_email);
-        starDB.createStar(star);
+        Star star = new Star(tags, description, sender_email, receiver_email);
+        new StarDB().createStar(star);
 
         response.sendRedirect("Controller");
     }
