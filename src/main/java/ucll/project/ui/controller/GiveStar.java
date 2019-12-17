@@ -1,5 +1,6 @@
 package ucll.project.ui.controller;
 
+import extra.SimpleMail;
 import ucll.project.domain.star.Star;
 import ucll.project.domain.star.StarDB;
 import ucll.project.domain.user.UserService;
@@ -41,6 +42,12 @@ public class GiveStar extends RequestHandler {
         Star star = new Star(tags, description, sender_email, receiver_email);
         new StarDB().createStar(star);
 
+        String message = "Beste, "  + star.getUserReceiver().getFirstName() +"\nYou just received a star with tags:" + star.getTagsInString() + "\nWith description: " + star.getDescription() + "\nFrom" + star.getUserSender().getFirstName();
+        try {
+            SimpleMail.send(receiver_email,message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         response.sendRedirect("Controller");
     }
 }
