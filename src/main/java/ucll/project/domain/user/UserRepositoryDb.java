@@ -82,20 +82,24 @@ public class UserRepositoryDb implements UserRepository {
 
 
     @Override
-    public User loginUser(String username, String password) throws InvalidLogin {
-        if(username==null || username.isEmpty()){
-            throw new InvalidLogin("No userid given");
+    public User loginUser(String email, String password) throws InvalidLogin {
+        if(email==null || email.isEmpty()){
+            if(password==null || password.isEmpty()){
+                throw new InvalidLogin("No email nor password given");
+            }
+            throw new InvalidLogin("No email given");
         }
         if(password==null || password.isEmpty()){
             throw new InvalidLogin("No password given");
         }
+
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE username = ?"))
-        {
-            stmt.setString(1, username);
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE email = ?"))
+        {//
+            stmt.setString(1, email);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.next()) {
-                    throw new InvalidLogin("Invalid username");
+                    throw new InvalidLogin("Invalid email");
                 }
 
                 User user = userFromResult(rs);
