@@ -19,7 +19,7 @@
 <body>
 
 <!-- Navigation -->
-<jsp:include page="sidebar.jsp"></jsp:include>
+<jsp:include page="sidebar.jsp"/>
 <!-- Page Content -->
 
 
