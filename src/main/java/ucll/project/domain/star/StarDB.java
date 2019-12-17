@@ -24,9 +24,22 @@ public class StarDB {
 
             for (String tag :
                     star.getTags()) {
-                stmt2.setString(1, tag);
-                stmt2.setInt(2, star.getId());
-                stmt2.executeUpdate();
+                addTag(tag, star.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void addTag(String name, int starid) {
+        try (Connection conn = ConnectionPool.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO \"star_tag_link\" " +
+                             "(tag, star) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+
+            stmt.setInt(2, starid);
+            stmt.setString(1, name);
+            if (stmt.executeUpdate() == 0) {
+                throw new RuntimeException("Failed to create star");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -37,7 +50,6 @@ public class StarDB {
         List<Star> stars = new ArrayList<>();
 
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM tags where star = ?", Statement.RETURN_GENERATED_KEYS);
              PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star", Statement.RETURN_GENERATED_KEYS)) {
 
             ResultSet starResult = stmt2.executeQuery();
@@ -56,13 +68,13 @@ public class StarDB {
     public List<String> getTagsOfStar(int starId) {
         List<String> tags = new ArrayList<>();
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM tags where star = ?", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM star_tag_link where star = ?", Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setInt(1, starId);
             ResultSet result = stmt.executeQuery();
             while (result.next()) {
                 try {
-                    tags.add(result.getString("name"));
+                    tags.add(result.getString("tag"));
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }

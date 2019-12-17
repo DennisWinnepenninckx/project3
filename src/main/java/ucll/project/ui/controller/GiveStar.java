@@ -1,5 +1,6 @@
 package ucll.project.ui.controller;
 
+import extra.SimpleMail;
 import ucll.project.domain.star.Star;
 import ucll.project.domain.star.StarDB;
 import ucll.project.domain.user.UserService;
@@ -28,7 +29,15 @@ public class GiveStar extends RequestHandler {
         List<String> tags = new ArrayList<>();
         int tagNum = 1;
         try {
-            tags.add(request.getParameter("tag" + tagNum++));
+            while (true) {
+                String tag = request.getParameter("tag" + tagNum++);
+                if (tag != null) {
+                    tags.add(tag);
+                }
+                else {
+                    break;
+                }
+            }
         } catch (Exception ex) {
             System.out.println("End of tag list");
         }
@@ -39,8 +48,14 @@ public class GiveStar extends RequestHandler {
             throw new IllegalArgumentException("Can't send star to yourself");
         }
         Star star = new Star(tags, description, sender_email, receiver_email);
-        new StarDB().createStar(star);
+        starDB.createStar(star);
 
+        String message = "Beste, " + star.getUserReceiver().getFirstName() + "\nYou just received a star with tags:" + star.getTagsInString() + "\nWith description: " + star.getDescription() + "\nFrom" + star.getUserSender().getFirstName();
+        try {
+            SimpleMail.send(receiver_email, message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         response.sendRedirect("Controller");
     }
 }

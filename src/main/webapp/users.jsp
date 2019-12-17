@@ -30,6 +30,19 @@
         <h1>Users page</h1>
 
     </div>
+    <table>
+        <tr>
+            <th class="yeet">First Name</th>
+            <th class="yeet">Last Name</th>
+            <th class="yeet">E-mail</th>
+        </tr>
+        <c:forEach var="user" items="${users}">
+        <tr>
+            <td>${user.firstName}</td>
+            <td>${user.lastname}</td>
+            <td>${user.email}</td>
+        </tr>
+        </c:forEach>
 
 </main>
 </body>

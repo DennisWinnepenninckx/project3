@@ -12,8 +12,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-                                                              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="/static/css/style.css" rel="stylesheet">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="static/css/style.css" rel="stylesheet">
     <title>Hello world!</title>
 </head>
 <body>
@@ -31,14 +31,14 @@
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a
             mostly barebones HTML document.</p>
     </div>
+
+    <c:if test="${user!=null}">
+        <p>Welcome ${user.firstName}</p>
+    </c:if>
+
     <jsp:include page="give-star.jsp"/>
-<<<<<<< HEAD
-<jsp:include page="star_overview.jsp"></jsp:include>
+    <jsp:include page="star_overview.jsp"></jsp:include>
 
-=======
-
-    <p>Welcome ${user.firstName}</p>
->>>>>>> 2b0381db5fda13d55ea262b6f6077768d3083d2e
 </main>
 </body>
 <!-- Footer -->

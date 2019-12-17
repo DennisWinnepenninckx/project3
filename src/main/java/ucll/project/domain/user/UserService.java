@@ -15,10 +15,6 @@ public class UserService {
         return userRepo.getAll();
     }
 
-    public List<Star>getStars(){
-        return userRepo.getStars();
-    }
-
     public UserRepository getUserRepo() {
         return userRepo;
     }
