@@ -34,9 +34,10 @@
 
     <c:if test="${user!=null}">
         <p>Welcome ${user.firstName}</p>
-        <jsp:include page="give-star.jsp"/>
-        <jsp:include page="star_overview.jsp"></jsp:include>
     </c:if>
+
+    <jsp:include page="give-star.jsp"/>
+    <jsp:include page="star_overview.jsp"></jsp:include>
 
 </main>
 </body>
