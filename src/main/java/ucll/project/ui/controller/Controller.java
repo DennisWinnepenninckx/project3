@@ -2,9 +2,6 @@ package ucll.project.ui.controller;
 
 import ucll.project.domain.user.UserService;
 
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
