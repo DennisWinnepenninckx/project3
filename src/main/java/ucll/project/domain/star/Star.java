@@ -1,4 +1,6 @@
-package domain;
+package ucll.project.domain.star;
+
+import ucll.project.domain.user.User;
 
 import java.util.List;
 
