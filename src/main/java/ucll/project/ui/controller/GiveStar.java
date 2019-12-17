@@ -34,5 +34,6 @@ public class GiveStar extends RequestHandler {
         Star star = new Star(tags,description, sender_email, receiver_email);
         new StarDB().createStar(star);
 
+        response.sendRedirect("Controller");
     }
 }

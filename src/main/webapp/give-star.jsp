@@ -9,11 +9,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %><html>
 <section>
-    <form action="/Controller?command=GiveStar">
+    <form action="Controller">
+        <input type="hidden" name="command" value="GiveStar">
         <input name="description" type="text">
         <select name="receiver" id="">
-            <c:forEach items="${persons}" var="person">
-                <option value="${person.email}">${person.firstname} ${person.lastname}</option>
+            <c:forEach items="${receivers}" var="receiver">
+                <option value="${receiver.email}">${receiver.firstName} ${receiver.lastname}</option>
             </c:forEach>
         </select>
         <select name="tag1">
@@ -36,5 +37,6 @@
                 <option value="${tag}">${tag}</option>
             </c:forEach>
         </select>
+        <button type="submit">Give Star!</button>
     </form>
 </section>
