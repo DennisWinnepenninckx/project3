@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -22,7 +23,7 @@ public class UsersPageTest {
 
     @BeforeClass
     public static void setDriver() {
-        driver = DriverHelper.getDriver();
+        driver = new ChromeDriver();
     }
 
     @AfterClass
@@ -33,7 +34,6 @@ public class UsersPageTest {
 
     @Test
     public void VisitUsersPageTest() {
-        driver.get(Config.BASE_URL);
         WebElement link = driver.findElement(By.xpath("//a[text() = 'Users']"));
         driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
         link.click();
