@@ -1,5 +1,6 @@
 package ucll.project.domain.star;
 
+
 import ucll.project.db.DBException;
 import ucll.project.domain.user.User;
 import ucll.project.domain.user.UserService;
@@ -13,14 +14,29 @@ public class Star {
     private List<String> tags;
     private String description;
     private String sender, receiver;
+
+    public Star() {
+    }
+
+    public Star(List<String> tags, String description, String sender, String receiver) {}
+
     private UserService userService;
     public Star(List<String> tags, String description, String sender, String receiver, UserService userService) {
         this.userService = userService;
+
         this.tags = tags;
         this.description = description;
         this.sender = sender;
         this.receiver = receiver;
         this.id = new Random().nextInt(1000000000);
+    }
+
+    public Star(int id, List<String> tags, String description, String sender, String receiver) {
+        this.tags = tags;
+        this.description = description;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.id = id;
     }
 
     public int getId() {

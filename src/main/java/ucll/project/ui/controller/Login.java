@@ -1,6 +1,6 @@
 package ucll.project.ui.controller;
 
-import org.omg.CORBA.DynAnyPackage.Invalid;
+//import org.omg.CORBA.DynAnyPackage.Invalid;
 import ucll.project.domain.user.InvalidLogin;
 import ucll.project.domain.user.User;
 import ucll.project.domain.user.UserService;
@@ -35,8 +35,7 @@ public class Login extends RequestHandler{
 
         if(errors.size()==0 && user!=null){
             HttpSession session = request.getSession();
-            session.setAttribute("login",user);
-            request.setAttribute("login",user);
+            session.setAttribute("user",user);
             response.sendRedirect("Controller");
         }else{
             request.setAttribute("errors",errors);
