@@ -21,10 +21,8 @@ public class UsersPageTest {
     private static WebDriver driver;
 
     @BeforeClass
-    public static void setDriver() throws MalformedURLException {
+    public static void setDriver() {
         driver = new FirefoxDriverHelper().getDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
     }
 
     @AfterClass
@@ -40,7 +38,6 @@ public class UsersPageTest {
         driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
         link.click();
         assertEquals("All users", driver.getTitle());
-
     }
 
 }
