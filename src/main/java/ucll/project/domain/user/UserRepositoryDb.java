@@ -62,25 +62,6 @@ public class UserRepositoryDb implements UserRepository {
         }
     }
 
-    public List<Star> getStars() {
-        try (Connection conn = ConnectionPool.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM \"star\""))
-        {
-            List<Star> stars = new ArrayList<>();
-            while (rs.next()) {
-                //users.add(userFromResult(rs));
-                stars.add(starFromResult(rs));
-            }
-
-            System.out.println(stars);
-            return stars;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
     @Override
     public User loginUser(String email, String password) throws InvalidLogin {
         if(email==null || email.isEmpty()){

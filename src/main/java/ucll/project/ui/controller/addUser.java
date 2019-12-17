@@ -31,6 +31,7 @@ public class addUser extends RequestHandler {
         userService.getUserRepo().createUser(user);
         String message = "Beste " + LastName +"\n" + "U bent ingelogd op de sterren-awards website";
         try {
+            //SimpleMail.send(Email);
             SimpleMail.send(Email, message);
         } catch (Exception e) {
             e.printStackTrace();
