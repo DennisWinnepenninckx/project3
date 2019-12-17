@@ -32,7 +32,6 @@
             mostly barebones HTML document.</p>
     </div>
     <jsp:include page="give-star.jsp"/>
-<<<<<<< HEAD
 <jsp:include page="star_overview.jsp"></jsp:include>
 
 

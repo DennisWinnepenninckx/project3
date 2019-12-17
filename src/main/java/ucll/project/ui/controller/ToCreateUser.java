@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class toCreateUser extends RequestHandler {
+public class ToCreateUser extends RequestHandler {
 
 
-    public toCreateUser(String command, UserService userService) {
+    public ToCreateUser(String command, UserService userService) {
         super(command, userService);
     }
 

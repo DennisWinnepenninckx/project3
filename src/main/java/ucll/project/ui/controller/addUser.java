@@ -29,11 +29,10 @@ public class addUser extends RequestHandler {
         User user = new User(Email,FirstName,LastName,"t",false);
 
         userService.getUserRepo().createUser(user);
-
-        String inhoud = "beste" + LastName + "\n" + "welkom bij BEDRIJF. Klik op volgende link om uw account in te stellen.";
-
+        String message = "";
         try {
             //SimpleMail.send(Email);
+            SimpleMail.send(Email, message);
         } catch (Exception e) {
             e.printStackTrace();
         }

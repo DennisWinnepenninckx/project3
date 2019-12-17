@@ -15,11 +15,11 @@
                 <a class="nav-link" href="Controller?command=Users">Users</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Controller?command=toCreateUser">Create User </a>
+                <a class="nav-link" href="Controller?command=ToCreateUser">Create user</a>
             </li>
             <c:if test="${user==null}">
             <li class="nav-item">
-                <a class="nav-link" href="Controller?command=Login">Login</a>
+                <a class="nav-link" href="Controller?command=ToLogin">Login</a>
             </li>
             </c:if>
             <%--<li class="nav-item dropdown">
