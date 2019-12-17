@@ -24,9 +24,22 @@ public class StarDB {
 
             for (String tag :
                     star.getTags()) {
-                stmt2.setString(1, tag);
-                stmt2.setInt(2, star.getId());
-                stmt2.executeUpdate();
+                addTag(tag, star.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void addTag(String name, int starid) {
+        try (Connection conn = ConnectionPool.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO \"star_tag_link\" " +
+                             "(tag, star) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+
+            stmt.setInt(2, starid);
+            stmt.setString(1, name);
+            if (stmt.executeUpdate() == 0) {
+                throw new RuntimeException("Failed to create star");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
