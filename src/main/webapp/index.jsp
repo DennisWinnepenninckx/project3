@@ -33,7 +33,7 @@
     </div>
     <jsp:include page="give-star.jsp"/>
 
-
+    <p>Welcome ${user.firstName}</p>
 </main>
 </body>
 <!-- Footer -->

@@ -35,8 +35,7 @@ public class Login extends RequestHandler{
 
         if(errors.size()==0 && user!=null){
             HttpSession session = request.getSession();
-            session.setAttribute("login",user);
-            request.setAttribute("login",user);
+            session.setAttribute("user",user);
             response.sendRedirect("Controller");
         }else{
             request.setAttribute("errors",errors);
