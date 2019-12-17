@@ -64,6 +64,12 @@ public class UserRepositoryDb implements UserRepository {
 
     @Override
     public User loginUser(String username, String password) throws InvalidLogin {
+        if(username==null || username.isEmpty()){
+            throw new InvalidLogin("No userid given");
+        }
+        if(password==null || password.isEmpty()){
+            throw new InvalidLogin("No password given");
+        }
         try (Connection conn = ConnectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE username = ?"))
         {
