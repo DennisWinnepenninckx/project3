@@ -20,6 +20,6 @@ public class mail extends RequestHandler {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-        return "";
+
     }
 }

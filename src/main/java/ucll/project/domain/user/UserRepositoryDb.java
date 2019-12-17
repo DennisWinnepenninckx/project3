@@ -9,13 +9,12 @@ import java.util.List;
 public class UserRepositoryDb implements UserRepository {
 
     @Override
-    public void createUser(User user, String password) {
+    public void createUser(User user) {
         try (Connection conn = ConnectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement("INSERT INTO \"user\" " +
-                     "(username, firstname, lastname, email, gender, role, password) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                     "(email, firstname, lastname, password) VALUES (?, ?, ?, ?)",
                      Statement.RETURN_GENERATED_KEYS))
         {
-            user.hashAndSetPassword(password);
             stmtSetUser(stmt, 1, user);
             if (stmt.executeUpdate() == 0) {
                 throw new RuntimeException("Failed to create user");
@@ -23,7 +22,7 @@ public class UserRepositoryDb implements UserRepository {
 
             try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                 generatedKeys.next();
-                user.setUserId(generatedKeys.getInt(1));
+                user.setEmail(generatedKeys.getString(1));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -31,11 +30,11 @@ public class UserRepositoryDb implements UserRepository {
     }
 
     @Override
-    public User get(int userId) {
+    public User get(String email) {
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE id = ?"))
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE email = ?"))
         {
-            stmt.setInt(1, userId);
+            stmt.setString(1, email);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return userFromResult(rs);
@@ -90,11 +89,11 @@ public class UserRepositoryDb implements UserRepository {
     public void update(User user) {
         try (Connection conn = ConnectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement("UPDATE \"user\" SET " +
-                     "username = ?, firstname = ?, lastname = ?, email = ?, gender = ?, role = ?, password = ? " +
-                     "WHERE id = ? "))
+                     "firstname = ?, lastname = ?, email = ?, password = ? " +
+                     "WHERE email = ? "))
         {
             int i = stmtSetUser(stmt, 1, user);
-            stmt.setInt(i, user.getUserId());
+            stmt.setString(i, user.getEmail());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -104,9 +103,9 @@ public class UserRepositoryDb implements UserRepository {
     @Override
     public void delete(User user) {
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("DELETE FROM \"user\" WHERE id = ?"))
+             PreparedStatement stmt = conn.prepareStatement("DELETE FROM \"user\" WHERE email = ?"))
         {
-            stmt.setInt(1, user.getUserId());
+            stmt.setString(1, user.getEmail());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -115,24 +114,18 @@ public class UserRepositoryDb implements UserRepository {
 
     private static User userFromResult(ResultSet rs) throws SQLException {
         User user = new User();
-        user.setUserId(rs.getInt("id"));
-        user.setUserName(rs.getString("username"));
         user.setFirstName(rs.getString("firstname"));
-        user.setLastName(rs.getString("lastname"));
+        user.setLastname(rs.getString("lastname"));
         user.setEmail(rs.getString("email"));
-        user.setGender(Gender.valueOf(rs.getString("gender")));
-        user.setRole(Role.valueOf(rs.getString("role")));
         user.setHashedPassword(rs.getString("password"));
+        user.setIs_superuser(rs.getString("is_superuser").equals("true"));
         return user;
     }
 
     private static int stmtSetUser(PreparedStatement stmt, int i, User user) throws SQLException {
-        stmt.setString(i++, user.getUserName());
-        stmt.setString(i++, user.getFirstName());
-        stmt.setString(i++, user.getLastName());
         stmt.setString(i++, user.getEmail());
-        stmt.setString(i++, user.getGender().toString());
-        stmt.setString(i++, user.getRole().toString());
+        stmt.setString(i++, user.getFirstName());
+        stmt.setString(i++, user.getLastname());
         stmt.setString(i++, user.getHashedPassword());
         return i;
     }

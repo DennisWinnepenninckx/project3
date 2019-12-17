@@ -12,6 +12,6 @@ public class Index extends RequestHandler {
 
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
-        return "index.jsp";
+
     }
 }

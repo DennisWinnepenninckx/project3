@@ -8,19 +8,29 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class User {
-    private String firstName;
-    private String lastName;
-    private String email;
+    private String email, firstName, lastname, password;
+    private boolean is_superuser;
 
-    // hashed password
+    // hashed password1
     private transient String hashedPassword;
 
     public User() {
     }
 
-    public User(String userName, String firstName, String lastName, String email, Gender gender, Role role) {
+    public User(String email, String firstName, String lastName, String password, boolean is_superuser) {
         setFirstName(firstName);
-        setLastName(lastName);
+        setEmail(email);
+        setLastname(lastName);
+        setHashedPassword(getPasswordToHashedPassword(password));
+        setIs_superuser(is_superuser);
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public void hashAndSetPassword(String password) {
@@ -57,9 +67,6 @@ public class User {
         return this.firstName;
     }
 
-    public String getLastName() {
-        return this.lastName;
-    }
 
     public String getEmail() {
         return this.email;
@@ -73,8 +80,20 @@ public class User {
         this.firstName = firstName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public boolean isIs_superuser() {
+        return is_superuser;
+    }
+
+    public void setIs_superuser(boolean is_superuser) {
+        this.is_superuser = is_superuser;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setEmail(String email) {
@@ -89,6 +108,6 @@ public class User {
     }
 
     public String toString() {
-        return "User(firstName=" + this.getFirstName() + ", lastName=" + this.getLastName() + ", email=" + this.getEmail() + ", hashedPassword=" + this.getHashedPassword() + ")";
+        return "User(firstName=" + this.getFirstName() + ", lastName=" + this.getLastname() + ", email=" + this.getEmail() + ", hashedPassword=" + this.getHashedPassword() + ")";
     }
 }
