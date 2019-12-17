@@ -13,9 +13,16 @@ public class Star {
     private List<String> tags;
     private String description;
     private String sender, receiver;
+
+    public Star() {
+    }
+
+    public Star(List<String> tags, String description, String sender, String receiver) {}
+
     private UserService userService;
     public Star(List<String> tags, String description, String sender, String receiver, UserService userService) {
         this.userService = userService;
+
         this.tags = tags;
         this.description = description;
         this.sender = sender;

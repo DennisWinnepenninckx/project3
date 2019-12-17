@@ -1,5 +1,7 @@
 package ucll.project.domain.user;
 
+import ucll.project.domain.star.Star;
+
 import java.util.List;
 
 public class UserService {
@@ -11,6 +13,10 @@ public class UserService {
 
     public List<User> getUsers(){
         return userRepo.getAll();
+    }
+
+    public List<Star>getStars(){
+        return userRepo.getStars();
     }
 
     public UserRepository getUserRepo() {
