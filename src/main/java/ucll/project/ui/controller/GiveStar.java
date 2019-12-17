@@ -39,7 +39,7 @@ public class GiveStar extends RequestHandler {
             throw new IllegalArgumentException("Can't send star to yourself");
         }
         Star star = new Star(tags, description, sender_email, receiver_email);
-        new StarDB().createStar(star);
+        starDB.createStar(star);
 
         response.sendRedirect("Controller");
     }

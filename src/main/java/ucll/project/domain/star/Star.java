@@ -4,7 +4,6 @@ package ucll.project.domain.star;
 import ucll.project.db.DBException;
 import ucll.project.domain.user.User;
 import ucll.project.domain.user.UserService;
-import ucll.project.ui.controller.Users;
 
 import java.util.List;
 import java.util.Random;
@@ -18,12 +17,15 @@ public class Star {
     public Star() {
     }
 
-    public Star(List<String> tags, String description, String sender, String receiver) {}
+    public Star(List<String> tags, String description, String sender, String receiver) {
+        this.tags = tags;
+        this.description = description;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.id = new Random().nextInt(1000000000);
+    }
 
-    private UserService userService;
     public Star(List<String> tags, String description, String sender, String receiver, UserService userService) {
-        this.userService = userService;
-
         this.tags = tags;
         this.description = description;
         this.sender = sender;
@@ -87,7 +89,7 @@ public class Star {
     }
 
     public User getUserReceiver(){
-        for (User u: userService.getUsers()){
+        for (User u: new UserService().getUsers()){
             if (u.getEmail().equals(receiver)){
                 return u;
             }
@@ -95,7 +97,7 @@ public class Star {
         throw new DBException("Did not find user with email " + receiver);
     }
     public User getUserSender(){
-        for (User u: userService.getUsers()){
+        for (User u: new UserService().getUsers()){
             if (u.getEmail().equals(sender)){
                 return u;
             }
