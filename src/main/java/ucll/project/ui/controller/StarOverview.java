@@ -17,7 +17,7 @@ public class StarOverview extends RequestHandler {
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<Star> stars= getUserService().getStars();
-        request.setAttribute("starList",stars);
+        //request.setAttribute("starList",stars);
 
         try {
             request.getRequestDispatcher("starOverviewPage.jsp").forward(request,response);
