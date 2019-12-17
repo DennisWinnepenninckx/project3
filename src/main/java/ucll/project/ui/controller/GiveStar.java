@@ -31,7 +31,7 @@ public class GiveStar extends RequestHandler {
         if (tags.size() > 4) {
             throw new IllegalArgumentException("Can't have more than 4 tags");
         }
-        Star star = new Star(tags,description, sender_email, receiver_email);
+        Star star = new Star(tags,description, sender_email, receiver_email, getUserService());
         new StarDB().createStar(star);
 
         response.sendRedirect("Controller");
