@@ -33,7 +33,6 @@ public class UsersPageTest {
 
     @Test
     public void VisitUsersPageTest() {
-        driver.get(Config.BASE_URL);
         WebElement link = driver.findElement(By.xpath("//a[text() = 'Users']"));
         driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
         link.click();
