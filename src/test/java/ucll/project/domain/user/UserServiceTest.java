@@ -15,19 +15,19 @@ public class UserServiceTest {
     @Before
     public void addTestUserRobbe(){
 
-        //userService.getUserRepo().createUser(new User("Rob","Robbe","De Bie","rob@gmail.com",Gender.valueOf("MALE"),Role.valueOf("USER")),"wwRob");
+        userService.getUserRepo().createUser(new User("Robbe@Bien.be", "Robbe", "Bien", "yeet", false));
     }
 
     @After
     public void deleteTestUserRobbe(){
-        //userService.getUserRepo().delete(new User("Rob","Robbe","De Bie","rob@gmail.com",Gender.valueOf("MALE"),Role.valueOf("USER")));
+        userService.getUserRepo().delete(new User("Robbe@Bien.be", "Robbe", "Bien", "yeet", false));
     }
 
 
     @Test
     public void getUsers_doesntReturnNull() {
-//        List<User> getUsersUsers = userService.getUsers();
-//        assertFalse(getUsersUsers == null);
+        List<User> getUsersUsers = userService.getUsers();
+        assertFalse(getUsersUsers == null);
 
     }
 
