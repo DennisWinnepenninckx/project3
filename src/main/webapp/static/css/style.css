@@ -1,5 +1,12 @@
 body {
     padding-top: 5rem;
+    padding-left: 2em;
+}
+
+main {
+    width: 70%;
+    position: absolute;
+    left: 0;
 }
 
 .yeet {
@@ -112,18 +119,11 @@ body {
     border-radius: 5%;
 }
 
-main {
-    width: 70%;
-    margin: 0;
-    position: absolute;
-    left: 0;
-}
-
 nav {
     position: absolute;
     right: 0;
     top: 5vh;
-    width: 25%;
+    max-width: 25%;
     border-left: 1px solid #999999;
     height: 90vh;
     padding: 2rem;
@@ -131,4 +131,8 @@ nav {
 
 nav ul {
     list-style: none;
+}
+
+input{
+    border-radius: 5px;
 }
