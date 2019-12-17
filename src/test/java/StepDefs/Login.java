@@ -9,25 +9,25 @@ public class Login {
 
     private static WebDriver driver;
 
-    @Given("Bobbe is on the login-page")
-    public void bobbe_is_on_the_login_page() {
+    @Given("Karel is on the login-page")
+    public void Karel_is_on_the_login_page() {
         // Write code here that turns the phrase above into concrete actions
     }
 
-    @Given("Bobbe is not logged in")
-    public void bobbe_is_not_logged_in() {
-        // Write code here that turns the phrase above into concrete actions
-
-    }
-
-    @Given("Bobbe has an account")
-    public void bobbe_has_an_account() {
+    @Given("Karel is not logged in")
+    public void Karel_is_not_logged_in() {
         // Write code here that turns the phrase above into concrete actions
 
     }
 
-    @When("Bobbe enters correct credentials")
-    public void bobbe_enters_correct_credentials() {
+    @Given("Karel has an account")
+    public void Karel_has_an_account() {
+        // Write code here that turns the phrase above into concrete actions
+
+    }
+
+    @When("Karel enters correct credentials")
+    public void Karel_enters_correct_credentials() {
         // Write code here that turns the phrase above into concrete actions
 
     }
@@ -38,26 +38,14 @@ public class Login {
 
     }
 
-    @Given("Dirk is not logged in")
-    public void dirk_is_not_logged_in() {
+    @Given("Karel has no account")
+    public void Karel_has_no_account() {
         // Write code here that turns the phrase above into concrete actions
 
     }
 
-    @Given("Dirk is on the login-page")
-    public void dirk_is_on_the_login_page() {
-        // Write code here that turns the phrase above into concrete actions
-
-    }
-
-    @Given("Dirk has no account")
-    public void dirk_has_no_account() {
-        // Write code here that turns the phrase above into concrete actions
-
-    }
-
-    @When("Dirk enters nonexistent credentials")
-    public void dirk_enters_nonexistent_credentials() {
+    @When("Karel enters nonexistent credentials")
+    public void Karel_enters_nonexistent_credentials() {
         // Write code here that turns the phrase above into concrete actions
 
     }
