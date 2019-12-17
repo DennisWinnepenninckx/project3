@@ -1,32 +1,39 @@
 body {
     padding-top: 5rem;
 }
+
 .yeet {
     padding-right: 5rem;
     background-color: red;
 }
+
 .starter-template {
     padding: 3rem 1.5rem;
     text-align: center;
 }
+
 @media only screen and (max-width: 567px) {
     .yeet {
         padding-right: 5rem;
         background-color: red;
     }
+
     /* basic style */
     table, td, th {
         border-collapse: collapse;
     }
+
     table {
         table-layout: fixed;
         width: 100%;
         box-sizing: border-box;
     }
+
     th {
         text-align: left;
         padding-right: 5rem;
     }
+
     td, th {
         padding: 5rem;
     }
@@ -35,9 +42,8 @@ body {
     thead {
         background-color: #333;
         color: #FFF;
-        display: none;/* hide table head */
+        display: none; /* hide table head */
     }
-
 
 
     td:nth-of-type(1), td:nth-of-type(2) {
@@ -94,4 +100,34 @@ body {
     box-shadow: 0 0 5px #777777;
     display: flex;
     flex-direction: row;
+}
+
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.profile-pic {
+    width: 20%;
+    border-radius: 5%;
+}
+
+main {
+    width: 70%;
+}
+
+nav {
+    position: absolute;
+    right: 0;
+    top: 5vh;
+    max-width: 25%;
+    border-left: 1px solid #999999;
+    height: 90vh;
+    padding: 2rem;
+}
+
+nav ul {
+    list-style: none;
 }

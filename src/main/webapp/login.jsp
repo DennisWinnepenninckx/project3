@@ -17,8 +17,6 @@
 </head>
 <body>
 <!-- Navigation -->
-<%@ include file="components/navigation.jspf" %>
-
 <div id="container">
     <main>
         <c:if test="${not empty errors}">
@@ -30,7 +28,7 @@
                 </ul>
             </div>
         </c:if>
-        <form novalidate="novalidate" action="Controller?command=Login" method="post">
+        <form style="margin-top: 5rem; margin-left: 1rem" novalidate="novalidate" action="Controller?command=Login" method="post">
             <!-- novalidate in order to be able to run tests correctly -->
             <p><label for="email">email</label>
                 <input  id="email" name="email" value="${email}" required>
