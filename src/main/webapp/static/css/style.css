@@ -86,7 +86,6 @@ body {
     tr:nth-of-type(2n) {
         background-color: #DDD;
     }
-
 }
 
 .star-class {
@@ -96,22 +95,3 @@ body {
     display: flex;
     flex-direction: row;
 }
-
-main{
-    padding: 2em;
-}
-
-input{
-    border-radius: 5px;
-}
-
-#login {
-    width: 300px;
-    clear: both;
-}
-
-#login input {
-    width: 100%;
-    clear: both;
-}
-

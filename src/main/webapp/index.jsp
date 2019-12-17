@@ -17,14 +17,12 @@
     <title>Hello world!</title>
 </head>
 <body>
-
-<!-- Navigation -->
-<%@ include file="components/navigation.jspf" %>
-
-<!-- Page Content -->
-
-
 <main role="main" class="container">
+    <c:if test="${user!=null}">
+        <p>Welcome ${user.firstName}</p>
+        <jsp:include page="give-star.jsp"/>
+        <jsp:include page="star_overview.jsp"></jsp:include>
+    </c:if>
 
 
     <c:if test="${user!=null}">
@@ -35,6 +33,7 @@
     </c:if>
 
 </main>
+<jsp:include page="sidebar.jsp"/>
 </body>
 <!-- Footer -->
 <!-- Optional JavaScript -->
