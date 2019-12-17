@@ -22,7 +22,7 @@ public class UsersPageTest {
 
     @BeforeClass
     public static void setDriver() {
-        driver = new FirefoxDriverHelper().getDriver();
+        driver = DriverHelper.getDriver();
     }
 
     @AfterClass
