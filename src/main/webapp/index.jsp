@@ -10,14 +10,14 @@
     <title>Stars</title>
 </head>
 <body>
-<main role="main" class="container">
-    <c:if test="${user!=null}">
-        <p>Welcome ${user.firstName}</p>
-        <jsp:include page="give-star.jsp"/>
-        <jsp:include page="star_overview.jsp"/>
-    </c:if>
-</main>
-<jsp:include page="sidebar.jsp"/>
+    <main role="main" class="container">
+        <c:if test="${user!=null}">
+            <p>Welcome ${user.firstName}</p>
+            <jsp:include page="give-star.jsp"/>
+            <jsp:include page="star_overview.jsp"/>
+        </c:if>
+    </main>
+    <jsp:include page="sidebar.jsp"/>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
