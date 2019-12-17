@@ -1,6 +1,8 @@
 package ucll.project.domain.star;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import ucll.project.db.ConnectionPool;
+import ucll.project.domain.user.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -45,8 +47,26 @@ public class StarDB {
             throw new RuntimeException(e);
         }
     }
+    public boolean usersHasStars(User user){
+        try (Connection conn = ConnectionPool.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE email = ?"))
+        {
+            stmt.setString(1, user.getEmail());
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    if(Integer.parseInt(String.valueOf(rs))<3){
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        }
 
-    public List<Star> getAll() {
+        public List<Star> getAll() {
         List<Star> stars = new ArrayList<>();
 
         try (Connection conn = ConnectionPool.getConnection();
