@@ -8,14 +8,9 @@ import java.util.ArrayList;
 public class main {
     public static void main(String[] args) {
         //ExcelReadWrite.read();
-        User user = new User("dennisw@live.Be","andr","ass", "pass", true);
-        User karrel = new User("dennisw@live.Be","andr","ass", "pass", false);
+        //User user = new User("arne.walschap@ucll.be","Arne","Walschap", "Andreas4Ever!", true);
 
-        ArrayList<User> users = new ArrayList<>();
         UserRepositoryDb db = new UserRepositoryDb();
-        db.createUser(user);
-        users.add(user);
-        users.add(karrel);
-        //ExcelReadWrite.write(users);
+        //db.createUser(user);
     }
 }

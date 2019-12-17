@@ -7,12 +7,12 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %><html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <section>
     <form action="Controller">
         <input type="hidden" name="command" value="GiveStar">
         <input name="description" type="text">
-        <select name="receiver" id="">
+        <select name="receiver">
             <c:forEach items="${receivers}" var="receiver">
                 <option value="${receiver.email}">${receiver.firstName} ${receiver.lastname}</option>
             </c:forEach>

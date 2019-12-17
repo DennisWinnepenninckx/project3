@@ -17,7 +17,7 @@ public class SimpleMail {
     private static final String SMTP_AUTH_PWD  = "BehaviourDrivenDesign";
 
 
-    public static void send(Star star, String StringMessage) throws Exception{
+    public static void send(String receiver, String StringMessage) throws Exception{
         Properties props = new Properties();
         props.put("mail.smtp.host", SMTP_HOST_NAME);
         props.put("mail.smtp.port", "587");
@@ -35,7 +35,7 @@ public class SimpleMail {
         message.setContent(StringMessage,"text/plain");
         message.setFrom(new InternetAddress(SMTP_AUTH_USER));
         message.addRecipient(Message.RecipientType.TO,
-                new InternetAddress(star.getUserReceiver().getEmail()));
+                new InternetAddress(receiver));
 
         transport.connect();
         transport.sendMessage(message,
