@@ -25,7 +25,6 @@ public class Controller extends HttpServlet {
         service = new UserService();
     }
 
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -46,38 +45,5 @@ public class Controller extends HttpServlet {
             throw new ControllerException(e.getMessage());
         }
     }
-
-    /*
-    public void handleRequest(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
-        String receiver = request.getParameter("receiver");
-        try{
-            this.getService().sendStandartMail(receiver);
-        }catch (MessagingException e){
-            throw new ServletException(e.getMessage(),e);
-        }
-        response.sendRedirect("Controller?action=");
-    }
-
-    public static void send(String destination){
-        final String username = "";
-        final String password = "";
-
-        Properties props = new Properties();
-        props.put("mail.smtp.auth","true");
-        props.put("mail.smtp.starttls.enable","true");
-        props.put("mail.smtp.host","smtp.gmail.com");
-        props.put("mail.smtp.port","587");
-
-        Session session = Session.getInstance(props,
-                new PasswordAuthentication(username,password)
-        );
-
-        try{
-            Message message = new Min
-        }
-    }
-    */
-
-
 }
 
