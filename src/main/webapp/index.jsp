@@ -8,9 +8,13 @@
 <main role="main" class="container">
     <c:if test="${user!=null}">
         <jsp:include page="components/give-star.jsp"/>
-        <jsp:include page="components/star_overview.jsp"/>
+        <jsp:include page="components/star_overview.jsp">
+            <jsp:param name="stars" value="${stars}"/>
+        </jsp:include>
     </c:if>
 </main>
-<jsp:include page="components/sidebar.jsp"/>
+<jsp:include page="components/sidebar.jsp">
+    <jsp:param name="page" value="home"/>
+</jsp:include>
 </body>
 </html>
