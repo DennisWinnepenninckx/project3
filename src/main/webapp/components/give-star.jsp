@@ -58,9 +58,6 @@
 
     function transformTag( tagData ){
         tagData.style = "--tag-bg:" + "#3595f6";
-
-        if( tagData.value.toLowerCase() == 'shit' )
-            tagData.value = 's✲✲t'
     }
 
     tagify.on('add', onAddTag)
