@@ -41,9 +41,9 @@ public class User {
         if(password.isEmpty()){
             throw new IllegalArgumentException("No password given");
         }
-        String[] p = this.password.split("::");
+        String[] p = this.hashedPassword.split("::");
         String salt = p[0];
-        return this.password.equals(sha512(password, salt));
+        return this.hashedPassword.equals(sha512(password, salt));
     }
 
     public void setPassword(String password) {
