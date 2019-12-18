@@ -1,13 +1,13 @@
 package ucll.project.ui.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import extra.SimpleMail;
 import ucll.project.db.DBController;
 import ucll.project.domain.star.Star;
 import ucll.project.domain.user.User;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -23,58 +23,67 @@ public class GiveStar extends RequestHandler {
 
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        List<String> errors = new ArrayList<>();
+
         User user = (User) request.getSession().getAttribute("user");
         String sender_email = user.getEmail();
-        if(getUserService().usersSendStarsThisMonth(user)>=3 && !user.getSuperUser()){
-            throw new IllegalStateException("geen superuser en meer dan 3 sterren gestuurd deze maand");
+        if (getUserService().usersSendStarsThisMonth(user) >= 3 && !user.getSuperUser()) {
+            errors.add("no superuser and more then 3 stars send this month");
         }
-
-        String receiver_string = request.getParameter("receiver");
-
-        ObjectMapper receiverMapper = new ObjectMapper();
-        receiverMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        List<Tag> receivers = receiverMapper.readValue(receiver_string, new TypeReference<ArrayList<Tag>>() {});
-        if (receivers.size() != 1) {
-            throw new IllegalArgumentException("Must have 1 receiver!");
-        }
-        String receiver_email = receivers.get(0).getValue();
+        String receiver_email = request.getParameter("receiver");
         String description = request.getParameter("description");
-        String jsonString = request.getParameter("tags");
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        List<Tag> tags = mapper.readValue(jsonString,
-                new TypeReference<ArrayList<Tag>>() {
-                });
-        if (tags.size() > 4) {
-            throw new IllegalArgumentException("Can't have more than 4 tags");
+        if (description.isEmpty()) {
+            errors.add("no description added");
         }
         if (receiver_email.equals(sender_email)) {
-            throw new IllegalArgumentException("Can't send star to yourself");
+            errors.add("Can't send star to yourself");
+            //throw new IllegalArgumentException("Can't send star to yourself");
         }
-        List<String> tagStrings = new ArrayList<>();
-        for (Tag tag :
-                tags) {
-            tagStrings.add(tag.getValue());
-        }
-        Star star = new Star(tagStrings, description, sender_email, receiver_email);
-        getUserService().createStar(star);
+        String jsonString = request.getParameter("tags");
+        try{
+            ObjectMapper mapper = new ObjectMapper();
+            List<Tag> tags = mapper.readValue(jsonString,
+                    new TypeReference<ArrayList<Tag>>() {
+                    });
+            if (tags.size() > 4) {
+                errors.add("Can't have more than 4 tags");
+            }
+            List<String> tagStrings = new ArrayList<>();
+            for (Tag tag :
+                    tags) {
+                tagStrings.add(tag.getValue());
+            }
 
-        String message = "Beste, " + star.getUserReceiver().getFirstName() + "\nYou just received a star with tags:" + star.getTagsInString() + "\nWith description: " + star.getDescription() + "\nFrom" + star.getUserSender().getFirstName();
-        try {
-            SimpleMail.send(receiver_email, message);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        List<User> superUsers = getUserService().getAllManagers();
-        String managerMessage = receiver_email + "just received a star with tags:" + star.getTagsInString() + "\nWith description: " + star.getDescription() + "\nFrom" + star.getUserSender().getFirstName();
-        for (User manager : superUsers){
+            Star star = new Star(tagStrings, description, sender_email, receiver_email);
+            getUserService().createStar(star);
+            String message = "Beste, " + star.getUserReceiver().getFirstName() + "\nYou just received a star with tags:" + star.getTagsInString() + "\nWith description: " + star.getDescription() + "\nFrom" + star.getUserSender().getFirstName();
             try {
-                if (!manager.getEmail().equals(user.getEmail()))
-                    SimpleMail.send(manager.getEmail(),managerMessage);
+                SimpleMail.send(receiver_email, message);
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            List<User> superUsers = getUserService().getAllManagers();
+            String managerMessage = receiver_email + "just received a star with tags:" + star.getTagsInString() + "\nWith description: " + star.getDescription() + "\nFrom" + star.getUserSender().getFirstName();
+            for (User manager : superUsers) {
+                try {
+                    SimpleMail.send(manager.getEmail(), managerMessage);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }catch (Exception e){
+            errors.add("no tags added");
         }
+        if(errors.size()!=0){
+            try {
+                request.setAttribute("errors", errors);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
+        }
+
         response.sendRedirect("Controller");
 
     }
@@ -82,7 +91,6 @@ public class GiveStar extends RequestHandler {
 
 class Tag {
     private String value;
-    private String style;
 
     public String getValue() {
         return value;
