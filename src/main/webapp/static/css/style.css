@@ -81,6 +81,8 @@
 
 body {
     display: flex;
+    margin: 0;
+    padding: 0;
     font-family: 'Source Serif Pro', serif;
     justify-content: space-between;
 }
@@ -103,7 +105,6 @@ h2 {
     border-bottom: 1px solid #555566;
 }
 
-
 main {
     display: block;
     margin: 5vh;
@@ -123,6 +124,14 @@ nav {
     padding: 2rem 0;
     width: 25%;
     height: 101vh;
+}
+
+nav ul li a {
+    text-decoration: none;
+}
+
+nav a {
+    text-decoration: none;
 }
 
 .link-nav a, .link-nav a:hover {
