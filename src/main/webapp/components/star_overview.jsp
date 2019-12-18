@@ -17,6 +17,7 @@
             </div>
             <div>
                 <span class="sender">Sent by ${star.senderUser.firstName} ${star.senderUser.lastname}</span>
+                <p>${star.date}</p>
                 <p>${star.description}</p>
                 <td>
                     <ul><c:forEach items="${star.tags}" var="tag">

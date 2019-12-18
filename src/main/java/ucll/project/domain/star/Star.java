@@ -5,6 +5,7 @@ import ucll.project.db.DBException;
 import ucll.project.domain.user.User;
 import ucll.project.domain.user.UserService;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -14,6 +15,15 @@ public class Star {
     private String description;
     private String sender, receiver;
     private User senderUser, receiverUser;
+    private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public User getSenderUser() {
         return senderUser;

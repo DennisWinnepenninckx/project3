@@ -75,9 +75,7 @@ public class StarDB {
             ResultSet starResult = stmt2.executeQuery();
 
             while (starResult.next()) {
-                Star star = new Star(starResult.getInt("id"), getTagsOfStar(starResult.getInt("id")), starResult.getString("description"), starResult.getString("sender_email"), starResult.getString("receiver_email"));
-                star.setSenderUser(DBController.getInstance().getUser(star.getSender()));
-                star.setReceiverUser(DBController.getInstance().getUser(star.getReceiver()));
+                Star star = starFromResult(starResult);
                 stars.add(star);
             }
 
@@ -85,6 +83,14 @@ public class StarDB {
             throw new RuntimeException(e);
         }
         return stars;
+    }
+
+    private Star starFromResult(ResultSet starResult) throws SQLException {
+        Star star = new Star(starResult.getInt("id"), getTagsOfStar(starResult.getInt("id")), starResult.getString("description"), starResult.getString("sender_email"), starResult.getString("receiver_email"));
+        star.setSenderUser(DBController.getInstance().getUser(star.getSender()));
+        star.setReceiverUser(DBController.getInstance().getUser(star.getReceiver()));
+        star.setDate(starResult.getDate("date"));
+        return star;
     }
 
     public List<String> getTagsOfStar(int starId) {
@@ -117,9 +123,7 @@ public class StarDB {
             ResultSet starResult = stmt2.executeQuery();
 
             while (starResult.next()) {
-                Star star = new Star(starResult.getInt("id"), getTagsOfStar(starResult.getInt("id")), starResult.getString("description"), starResult.getString("sender_email"), starResult.getString("receiver_email"));
-                star.setSenderUser(DBController.getInstance().getUser(star.getSender()));
-                star.setReceiverUser(DBController.getInstance().getUser(star.getReceiver()));
+                Star star = starFromResult(starResult);
                 stars.add(star);
             }
 
@@ -139,9 +143,7 @@ public class StarDB {
             ResultSet starResult = stmt2.executeQuery();
 
             while (starResult.next()) {
-                Star star = new Star(starResult.getInt("id"), getTagsOfStar(starResult.getInt("id")), starResult.getString("description"), starResult.getString("sender_email"), starResult.getString("receiver_email"));
-                star.setSenderUser(DBController.getInstance().getUser(star.getSender()));
-                star.setReceiverUser(DBController.getInstance().getUser(star.getReceiver()));
+                Star star = starFromResult(starResult);
                 stars.add(star);
             }
 
