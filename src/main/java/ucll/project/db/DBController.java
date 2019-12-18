@@ -74,5 +74,4 @@ public class DBController {
     public List<Star> getStarsUserReceived(User user) {
         return starDB.getAllReceivedStars(user);
     }
-
 }

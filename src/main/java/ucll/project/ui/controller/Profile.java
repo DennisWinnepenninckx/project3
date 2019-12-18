@@ -24,10 +24,12 @@ public class Profile extends RequestHandler {
 
     public void setGivenStars(HttpServletRequest request, HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("user");
-
+        request.setAttribute("givenStars", getUserService().getStarsUserGaveAway(user));
     }
 
     public void setReceivedStars(HttpServletRequest request, HttpServletResponse response) {
         // Dit is voor jou Dennis
+        User u = (User) request.getSession().getAttribute("user");
+        request.setAttribute("receivedStars", getUserService().getStarsUserReceived(u));
     }
 }

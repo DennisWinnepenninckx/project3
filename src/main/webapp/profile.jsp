@@ -11,8 +11,13 @@
 <html>
 <jsp:include page="components/header.jsp"/>
 <body>
+<main>
+    <h2>Received Stars</h2>
 <jsp:include page="components/received-stars.jsp"/>
+    <h2>Given Stars</h2>
 <jsp:include page="components/given-stars.jsp"/>
+</main>
+
 <jsp:include page="components/sidebar.jsp"/>
 </body>
 </html>
