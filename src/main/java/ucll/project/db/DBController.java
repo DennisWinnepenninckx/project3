@@ -67,4 +67,12 @@ public class DBController {
         return starDB.getTags();
     }
 
+    public List<Star> getStarsUserGaveAway(User user) {
+        return starDB.getAllGivenStarsUser(user);
+    }
+
+    public List<Star> getStarsUserReceived(User user) {
+        return starDB.getAllReceivedStars(user);
+    }
+
 }

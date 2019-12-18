@@ -1,6 +1,7 @@
 package ucll.project.ui.controller;
 
 import ucll.project.db.DBController;
+import ucll.project.domain.user.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,7 +23,8 @@ public class Profile extends RequestHandler {
     }
 
     public void setGivenStars(HttpServletRequest request, HttpServletResponse response) {
-        // Dit is voor Andreas
+        User user = (User) request.getSession().getAttribute("user");
+
     }
 
     public void setReceivedStars(HttpServletRequest request, HttpServletResponse response) {
