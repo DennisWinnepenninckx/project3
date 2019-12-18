@@ -7,12 +7,10 @@
 <body>
 <main role="main" class="container">
     <c:if test="${user!=null}">
-        <p>Welcome ${user.firstName}</p>
         <jsp:include page="components/give-star.jsp"/>
         <jsp:include page="components/star_overview.jsp"/>
     </c:if>
 </main>
 <jsp:include page="components/sidebar.jsp"/>
-</body>
 </body>
 </html>

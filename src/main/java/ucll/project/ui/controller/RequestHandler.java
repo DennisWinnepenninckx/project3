@@ -1,5 +1,6 @@
 package ucll.project.ui.controller;
 
+import ucll.project.db.DBController;
 import ucll.project.domain.user.*;
 
 import javax.servlet.RequestDispatcher;
@@ -11,9 +12,9 @@ import java.io.IOException;
 
 public abstract class RequestHandler {
     private String command;
-    private UserService userService;
+    private DBController userService;
 
-    public RequestHandler(String command, UserService userService){
+    public RequestHandler(String command, DBController userService){
         setCommand(command);
         setUserService(userService);
     }
@@ -25,14 +26,14 @@ public abstract class RequestHandler {
         this.command = command;
     }
 
-    private void setUserService(UserService userService){
+    private void setUserService(DBController userService){
         if (userService == null){
             throw new ControllerException("User service cannot be null.");
         }
         this.userService = userService;
     }
 
-    public UserService getUserService(){ return userService; }
+    public DBController getUserService(){ return userService; }
 
     public abstract void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException;
 

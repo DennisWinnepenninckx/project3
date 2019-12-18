@@ -1,6 +1,8 @@
-package ucll.project.domain.user;
+package ucll.project.db;
 
 import ucll.project.domain.star.Star;
+import ucll.project.domain.user.InvalidLogin;
+import ucll.project.domain.user.User;
 
 import java.util.List;
 

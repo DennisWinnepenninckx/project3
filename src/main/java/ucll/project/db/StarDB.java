@@ -1,6 +1,7 @@
-package ucll.project.domain.star;
+package ucll.project.db;
 
 import ucll.project.db.ConnectionPool;
+import ucll.project.domain.star.Star;
 import ucll.project.domain.user.User;
 
 import java.sql.*;
@@ -46,6 +47,7 @@ public class StarDB {
             throw new RuntimeException(e);
         }
     }
+
     public boolean usersHasStars(User user){
         try (Connection conn = ConnectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE email = ?"))

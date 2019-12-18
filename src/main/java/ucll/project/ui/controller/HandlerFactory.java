@@ -1,6 +1,6 @@
 package ucll.project.ui.controller;
 
-import ucll.project.domain.user.UserService;
+import ucll.project.db.DBController;
 
 public class HandlerFactory {
 
@@ -8,11 +8,11 @@ public class HandlerFactory {
 
     }
 
-    public RequestHandler getHandler(String command, UserService userService) {
+    public RequestHandler getHandler(String command, DBController userService) {
         RequestHandler handler = null;
         try {
             Class handlerClass = Class.forName("ucll.project.ui.controller." + command);
-            Object handlerObject = handlerClass.getConstructor(String.class, UserService.class).newInstance(command, userService);
+            Object handlerObject = handlerClass.getConstructor(String.class, DBController.class).newInstance(command, userService);
             handler = (RequestHandler) handlerObject;
         } catch (ClassNotFoundException e){
             throw new ControllerException(e.getMessage());

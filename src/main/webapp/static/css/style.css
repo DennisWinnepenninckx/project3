@@ -1,23 +1,3 @@
-body {
-    padding-top: 5rem;
-    padding-left: 2em;
-}
-
-main {
-    width: 70%;
-    position: absolute;
-    left: 0;
-}
-
-.yeet {
-    padding-right: 5rem;
-}
-
-.starter-template {
-    padding: 3rem 1.5rem;
-    text-align: center;
-}
-
 @media only screen and (max-width: 567px) {
     .yeet {
         padding-right: 5rem;
@@ -99,40 +79,190 @@ main {
     }
 }
 
-.star-class {
-    padding: 2rem;
-    margin: 2rem;
-    box-shadow: 0 0 5px #777777;
+body {
     display: flex;
-    flex-direction: row;
+    font-family: 'Source Serif Pro', serif;
+    justify-content: space-between;
+}
+
+img {
+    object-fit: contain;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+h1 {
+    margin: 1rem .3rem;
+    border-bottom: 1px solid #555566;
+    font-size: 1.5rem;
+}
+
+h2 {
+    margin: 1rem .3rem;
+    border-bottom: 1px solid #555566;
 }
 
 
-.profile {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-
-.profile-pic {
-    width: 20%;
-    border-radius: 5%;
+main {
+    display: block;
+    margin: 5vh;
+    background: #ffffff;
 }
 
 nav {
-    position: absolute;
+    padding: 2rem 0;
+    width: 25%;
+    height: 100vh;
+    position: fixed;
     right: 0;
-    top: 5vh;
-    max-width: 25%;
-    border-left: 1px solid #999999;
-    height: 90vh;
-    padding: 2rem;
+    background: #144a91;
+}
+
+#nav-placeholder {
+    padding: 2rem 0;
+    width: 25%;
+    height: 101vh;
+}
+
+.link-nav a, .link-nav a:hover {
+    color: white;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.material-icons {
+    margin: 0 2rem 0 1rem;
+}
+
+.link-nav a {
+    display: block;
+    padding: 1rem;
+}
+
+.link-nav a:hover {
+    text-decoration: none;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+.link-nav {
+    transition: .6s;
+}
+
+.link-nav:hover {
+    background: #3595f6;
 }
 
 nav ul {
     list-style: none;
 }
 
-input{
+input {
     border-radius: 5px;
+}
+
+form input, form select, form textarea, .tags-input {
+    display: block;
+    width: 80%;
+    margin-bottom: .6rem;
+    border: 1px solid #DDDDDD;
+    padding: .3rem;
+}
+
+form {
+    padding: 1rem;
+}
+
+form legend {
+    display: block;
+    width: 100%;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #555566;
+}
+
+form button {
+    margin: .3rem;
+    display: inline-block;
+    padding: .5rem;
+    border-radius: 2px;
+    background-color: #246ac1;
+    color: white;
+    font-family: 'Libre Franklin', sans-serif;
+    border: none;
+    cursor: pointer;
+}
+
+.content-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.content-list li {
+    padding: .4rem .2rem;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.content-list li:last-child {
+    border-bottom: none;
+}
+
+.star-class {
+    padding: 2rem;
+    margin: 2rem;
+    box-shadow: 0 0 5px #777777;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #246ac1;
+    border-radius: 10px;
+}
+
+.star-class img {
+    margin: 3rem;
+    width: 10%;
+}
+
+.star-class ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.star-class ul li {
+    display: inline-block;
+    padding: .4rem;
+    background: #3595f6;
+    border-radius: 3px;
+    margin: .3rem;
+}
+
+.star-class th {
+    padding-right: 2rem;
+}
+
+.account-banner {
+    margin: 2rem;
+    display: flex;
+    align-items: center;
+    height: 4rem;
+}
+
+.account-banner img {
+    margin-right: .5rem;
+    border-radius: 50%;
+}
+
+.account-banner h3 {
+    text-decoration: none;
+    color: white;
+}
+
+.yeet {
+    padding-right: 5rem;
 }
