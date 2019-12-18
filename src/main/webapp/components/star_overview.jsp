@@ -16,11 +16,11 @@
                 <span>${star.receiverUser.firstName} ${star.receiverUser.lastname}</span>
             </div>
             <div>
-                <span>Sent by ${star.senderUser.firstName} ${star.senderUser.lastname}</span>
+                <span class="sender">Sent by ${star.senderUser.firstName} ${star.senderUser.lastname}</span>
                 <p>${star.description}</p>
                 <td>
                     <ul><c:forEach items="${star.tags}" var="tag">
-                        <li><span class="material-icons">check_box</span><span class="tag-name">${tag}</span></li>
+                        <li><b>#</b><span class="tag-name">${tag}</span></li>
                     </c:forEach></ul>
                 </td>
                 </tr>

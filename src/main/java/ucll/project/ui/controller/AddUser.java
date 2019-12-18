@@ -17,7 +17,7 @@ public class AddUser extends RequestHandler {
     public AddUser(String command, DBController userService) {
         super(command, userService);
     }
-
+    //yeet
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String FirstName = request.getParameter("firstName");

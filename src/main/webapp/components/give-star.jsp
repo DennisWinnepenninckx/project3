@@ -39,7 +39,11 @@
         enforceWhitelist : true,
         whitelist: ["Integrity", "Curiosity", "Collaboration", "Client first", "Entrepreneurship", "Move faster", "Act smarter", "Go further", "Be sure", "Team spirit", "Office spirit"],
         maxTags: 4,
-        autoComplete: true
+        autoComplete: true,
+        dropdown : {
+            enabled   : 0,
+            maxItems  : 20,
+        }
     });
 
     tagify.on('add', onAddTag)
