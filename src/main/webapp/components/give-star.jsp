@@ -50,7 +50,7 @@
         enforceWhitelist: true,
         whitelist: [<c:forEach items="${receivers}" var="receiver">
             <c:if test="${user.email != receiver.email}">
-            "${receiver.email}",</c:if>
+            "<c:out value='${receiver.email}'/>",</c:if>
             </c:forEach>],
         maxTags: 1,
         autoComplete: true,
