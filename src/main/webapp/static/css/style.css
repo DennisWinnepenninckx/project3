@@ -232,15 +232,15 @@ form button {
 .star-class {
     padding: 2rem;
     margin: 2rem;
-    box-shadow: 0 0 5px #777777;
+    box-shadow: 0 0 5px #AAAAAA;
     display: flex;
     flex-direction: row;
     align-items: center;
-    background: #246ac1;
-    color: white;
+    background: #DDEEFF;
     border-radius: 10px;
     font-family: 'Libre Franklin', sans-serif;
     font-size: 1.2rem;
+    color: #144a91;
 }
 
 .star-class div:first-child {
@@ -263,6 +263,10 @@ form button {
     margin: 0;
 }
 
+.star-class .sender {
+    font-weight: bold;
+}
+
 .star-class ul li {
     display: flex;
     align-items: center;
@@ -270,6 +274,7 @@ form button {
     background: #3595f6;
     border-radius: 3px;
     margin: .3rem;
+    color: white;
 }
 
 .star-class .material-icons {
