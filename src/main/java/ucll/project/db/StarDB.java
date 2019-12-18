@@ -51,7 +51,7 @@ public class StarDB {
 
     public int usersSendStarsThisMonth(User user) {
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"star\" WHERE sender_email = ? and extract(month from date) = extract(month from now()) and extract(year from date) = extract(year from now()) ")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT count(*) FROM \"star\" WHERE sender_email = ? and extract(month from date) = extract(month from now()) and extract(year from date) = extract(year from now()) ")) {
             stmt.setString(1, user.getEmail());
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
