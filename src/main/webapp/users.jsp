@@ -23,6 +23,8 @@
         </c:forEach>
     </table>
 </main>
-<jsp:include page="components/sidebar.jsp"></jsp:include>
+<jsp:include page="components/sidebar.jsp">
+    <jsp:param name="page" value="users"/>
+</jsp:include>
 </body>
 </html>

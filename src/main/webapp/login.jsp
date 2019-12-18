@@ -27,6 +27,8 @@
         <p><input type="submit" id="signUp" value="Login"></p>
     </form>
 </main>
-<jsp:include page="components/sidebar.jsp"/>
+<jsp:include page="components/sidebar.jsp">
+    <jsp:param name="page" value="login"/>
+</jsp:include>
 </body>
 </html>

@@ -11,6 +11,8 @@
         <jsp:include page="components/star_overview.jsp"/>
     </c:if>
 </main>
-<jsp:include page="components/sidebar.jsp"/>
+<jsp:include page="components/sidebar.jsp">
+    <jsp:param name="page" value="home"/>
+</jsp:include>
 </body>
 </html>
