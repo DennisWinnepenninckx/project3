@@ -40,6 +40,18 @@ function getSenderStars(id, sender) {
     });
 }
 
+function searchStars(searchTerm, id) {
+    $.ajax({
+        type: 'POST',
+        data: {"op": "searchStars", searchTerm: searchTerm},
+        url: 'Controller?command=JsonController',
+        success: function (result) {
+            result = $.parseJSON(result);
+            buildStars(result, id);
+        }
+    });
+}
+
 function buildStars(stars, id) {
     let parent = document.getElementById(id);
     while (parent.firstChild) {

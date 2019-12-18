@@ -14,6 +14,9 @@
         </c:if>
         <jsp:include page="components/give-star.jsp"/>
         <jsp:include page="components/star_overview.jsp"/>
+        <form action="#">
+            <input type="text" style=" border-radius: 5px" width="50%" id="starSearch" class="material-icons" placeholder="search">
+        </form>
         <ul class="content-list" id="all">
         </ul>
 
@@ -27,4 +30,13 @@
 
 <script>
     getAllStars("all");
+
+
+    let inputStarSearch = document.getElementById("starSearch");
+
+    inputStarSearch.addEventListener('input', function () {
+        searchStars(inputStarSearch.value.toLowerCase(), "all");
+
+    });
+
 </script>

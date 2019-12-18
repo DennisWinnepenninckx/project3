@@ -1,6 +1,5 @@
 package ucll.project.db;
 
-import ucll.project.db.ConnectionPool;
 import ucll.project.domain.star.Comment;
 import ucll.project.domain.star.Star;
 import ucll.project.domain.user.User;
@@ -191,6 +190,29 @@ public class StarDB {
             throw new RuntimeException(e);
         }
         return comments;
+    }
+
+    public List<Star> searchStars(String searchTerm) {
+        List<Star> stars = new ArrayList<>();
+        searchTerm = "%" + searchTerm + "%";
+
+        try (Connection conn = ConnectionPool.getConnection();
+             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star where lower(description) like ? or lower(sender_email) like ? or lower(receiver_email) like ? order by date desc", Statement.RETURN_GENERATED_KEYS)) {
+
+            stmt2.setString(1, searchTerm);
+            stmt2.setString(2, searchTerm);
+            stmt2.setString(3, searchTerm);
+            ResultSet starResult = stmt2.executeQuery();
+
+            while (starResult.next()) {
+                Star star = starFromResult(starResult);
+                stars.add(star);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return stars;
     }
 
     private Comment commentFromResult(ResultSet result) throws SQLException {

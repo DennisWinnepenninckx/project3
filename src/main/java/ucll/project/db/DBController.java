@@ -45,6 +45,10 @@ public class DBController {
         return result;
     }
 
+    public List<Star> searchStars(String searchTerm) {
+        return starDB.searchStars(searchTerm);
+    }
+
     public void createUser(User user) {
         userRepositoryDb.createUser(user);
     }

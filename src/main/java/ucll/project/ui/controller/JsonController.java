@@ -69,6 +69,10 @@ public class JsonController extends RequestHandler {
             case "whoami":
                 out.print(((User)request.getSession().getAttribute("user")).getEmail());
                 break;
+            case "searchStars":
+                List<Star> stars2 = getUserService().searchStars(request.getParameter("searchTerm"));
+                out.print(stars2.toString().replaceAll("'", "\""));
+                break;
         }
     }
 }
