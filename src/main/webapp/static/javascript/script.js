@@ -42,6 +42,9 @@ function getSenderStars(id, sender) {
 
 function buildStars(stars, id) {
     let parent = document.getElementById(id);
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
     let list = stars.map(star => {
         return buildStar(star);
     });
@@ -64,7 +67,7 @@ function buildStar(star) {
         taglist.appendChild(buildTag(star.tags[i]));
     }
     let starid = copy.getElementsByClassName("star-id")[0];
-    starid.innerText = star.id;
+    starid.value = star.id;
     let comments = copy.getElementsByClassName("comments")[0];
     comments.style.display = "block";
     for (let i = 0; i < star.comments.length; i++) {

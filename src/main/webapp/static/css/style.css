@@ -396,11 +396,11 @@ button.material-icons {
 #give-star {
     display: none;
     position: absolute;
-    height: 600px;
+    height: 350px;
     width: 600px;
     margin-left: -300px;
     top: 50%;
-    margin-top: -300px;
+    margin-top: -175px;
     left: 50%;
     background: white;
     box-shadow: 0 0 10px #144a91;
