@@ -10,7 +10,7 @@ public class main {
 
         User user = new User();
         user.setEmail("andreas.milants@gmail.com");
-        user.hashAndSetPassword("pushbanaan");
+        user.setNewPassword("pushbanaan");
         user.setLastname("Milants");
         user.setFirstName("Andreas");
         user.setSuperUser(true);

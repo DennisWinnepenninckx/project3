@@ -57,7 +57,7 @@ public class User {
         if (password.isEmpty()) {
             throw new IllegalArgumentException("No password given");
         }
-        this.password = sha512(password, salt());
+        this.hashedPassword = sha512(password, salt());
     }
 
     private static String sha512(String password, String salt) {

@@ -85,7 +85,7 @@ public class UserRepositoryDb implements UserRepository {
                 }
 
                 User user = userFromResult(rs);
-                if (!user.isValidPassword(password)) {
+                if (!user.isCorrectPassword(password)) {
                     throw new InvalidLogin("Incorrect credentials");
                 }
 
