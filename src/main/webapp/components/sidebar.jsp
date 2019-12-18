@@ -16,7 +16,7 @@
             <h3>${user.firstName} ${user.lastname}</h3>
         </section>
         </a>
-    </c:if>
+
     <ul>
         <li ${param.page eq "home" ? "id=current":""} class="link-nav">
             <a href="Controller?command=Index"><span class="material-icons">home</span><span>Home</span></a>
@@ -27,6 +27,7 @@
         <li ${param.page eq "createUser" ? "id=current":""} class="link-nav">
             <a href="Controller?command=ToCreateUser"><span class="material-icons">person_add</span><span>Create User</span></a>
         </li>
+        </c:if>
         <c:choose>
         <c:when test="${user==null}">
             <li ${param.page eq "login" ? "id=current":""} class="link-nav">

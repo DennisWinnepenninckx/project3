@@ -40,7 +40,7 @@ public class Controller extends HttpServlet {
             if (command == null || command.trim().isEmpty()) {
                 command = "Index";
             }
-            if(request.getSession().getAttribute("user")==null){
+            if(request.getSession().getAttribute("user")==null && !command.equals("Login")){
                 request.getRequestDispatcher("login.jsp").forward(request,response);
             }
             RequestHandler handler = handlerFactory.getHandler(command, service);
