@@ -8,13 +8,64 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<form action="#">
+    <input type="text" style=" border-radius: 5px" ; width="50%" id="starSearch" placeholder="search">
+</form>
+<script>
+    let inputStarSearch = document.getElementById("starSearch");
+
+    inputStarSearch.addEventListener('input', function () {
+        let searchQuery = inputStarSearch.value.toLowerCase();
+        let classes = document.getElementsByClassName("Star");
+
+        if (searchQuery.toLowerCase().includes("receiver:")) {
+            searchQuery= searchQuery.replace("receiver:","").trim();
+            for (let index = 0; index < classes.length; index++) {
+                let txt = classes[index].children[0].children[0].children[1].innerHTML;
+                if (txt.toLowerCase().includes(searchQuery)) {
+                    classes[index].style.display = "block";
+                } else {
+                    classes[index].style.display = "none";
+                }
+            }
+        } else if (searchQuery.toLowerCase().includes("sender:")) {
+            searchQuery= searchQuery.replace("sender:","").trim();
+            for (let index = 0; index < classes.length; index++) {
+                let txt = classes[index].children[0].children[1].children[0].innerHTML;
+                if (txt.toLowerCase().includes(searchQuery)) {
+                    classes[index].style.display = "block";
+                } else {
+                    classes[index].style.display = "none";
+                }
+            }
+        } else if(searchQuery.toLowerCase().includes("tag:")){
+            searchQuery= searchQuery.replace("tag:","").trim();
+            for (let index = 0; index < classes.length; index++) {
+                let txt = classes[index].children[0].children[1].children[2].innerHTML;
+                if (txt.toLowerCase().includes(searchQuery)) {
+                    classes[index].style.display = "block";
+                } else {
+                    classes[index].style.display = "none";
+                }
+            }
+        }
+        if (searchQuery == ""){
+            for (let index = 0; index < classes.length; index++) {
+                classes[index].style.display = "block";
+            }
+        }
+
+    });
+
+
+</script>
 <ul class="content-list">
     <c:forEach items="${stars}" var="star">
-        <li>
+        <li class="Star">
             <div class="star-class">
                 <div>
                     <img src="../static/imgs/star.png" alt="">
-                    <span><c:out value="${star.receiverUser.firstName}"/> <c:out
+                    <span class="receiver"><c:out value="${star.receiverUser.firstName}"/> <c:out
                             value="${star.receiverUser.lastname}"/></span>
                 </div>
                 <div>

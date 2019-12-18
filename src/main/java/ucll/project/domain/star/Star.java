@@ -99,8 +99,15 @@ public class Star {
     @Override
     public String toString() {
         return "Star{" +
-                "sender='" + sender + '\'' +
+                "id=" + id +
+                ", tags=" + tags +
+                ", description='" + description + '\'' +
+                ", sender='" + sender + '\'' +
                 ", receiver='" + receiver + '\'' +
+                ", senderUser=" + senderUser +
+                ", receiverUser=" + receiverUser +
+                ", date=" + date +
+                ", comments=" + comments +
                 '}';
     }
 
