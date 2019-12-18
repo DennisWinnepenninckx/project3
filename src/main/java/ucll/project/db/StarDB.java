@@ -1,6 +1,7 @@
 package ucll.project.db;
 
 import ucll.project.db.ConnectionPool;
+import ucll.project.domain.star.Comment;
 import ucll.project.domain.star.Star;
 import ucll.project.domain.user.User;
 
@@ -90,6 +91,7 @@ public class StarDB {
         star.setSenderUser(DBController.getInstance().getUser(star.getSender()));
         star.setReceiverUser(DBController.getInstance().getUser(star.getReceiver()));
         star.setDate(starResult.getDate("date"));
+        star.setComments(getCommentsFromStar(star.getId()));
         return star;
     }
 
@@ -151,6 +153,31 @@ public class StarDB {
             throw new RuntimeException(e);
         }
         return stars;
+    }
+
+    private List<Comment> getCommentsFromStar(int starId) {
+        List<Comment> comments = new ArrayList<>();
+
+        try (Connection conn = ConnectionPool.getConnection();
+             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM comment where star = ? order by date desc", Statement.RETURN_GENERATED_KEYS)) {
+
+            stmt2.setInt(1, starId);
+            ResultSet starResult = stmt2.executeQuery();
+
+            while (starResult.next()) {
+                Comment comment = commentFromResult(starResult);
+                comments.add(comment);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return comments;
+    }
+
+    private Comment commentFromResult(ResultSet result) throws SQLException {
+        Comment comment = new Comment(result.getString("user_email"), DBController.getInstance().getUser(result.getString("user_email")), result.getString("comment"), result.getInt("star"));
+        return comment;
     }
 
     public List<String> getTags() {

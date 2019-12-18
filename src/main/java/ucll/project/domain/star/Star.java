@@ -16,6 +16,15 @@ public class Star {
     private String sender, receiver;
     private User senderUser, receiverUser;
     private Date date;
+    private List<Comment> comments;
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     public Date getDate() {
         return date;
