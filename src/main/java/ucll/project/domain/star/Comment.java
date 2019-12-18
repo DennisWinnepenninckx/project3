@@ -2,17 +2,29 @@ package ucll.project.domain.star;
 
 import ucll.project.domain.user.User;
 
+import java.util.Date;
+
 public class Comment {
     private String user_email;
     private User user;
     private String comment;
-    private int Star;
+    private Date datetime;
+    private int star;
 
-    public Comment(String user_email, User user, String comment, int star) {
+    public Comment(String user_email, User user, String comment, int star, Date datetime) {
         this.user_email = user_email;
         this.user = user;
         this.comment = comment;
-        Star = star;
+        this.star = star;
+        this.datetime = datetime;
+    }
+
+    public Date getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(Date datetime) {
+        this.datetime = datetime;
     }
 
     public String getUser_email() {
@@ -40,10 +52,10 @@ public class Comment {
     }
 
     public int getStar() {
-        return Star;
+        return star;
     }
 
     public void setStar(int star) {
-        Star = star;
+        this.star = star;
     }
 }

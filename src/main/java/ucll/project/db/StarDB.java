@@ -159,7 +159,7 @@ public class StarDB {
         List<Comment> comments = new ArrayList<>();
 
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM comment where star = ? order by date desc", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM comment where star = ? order by datetime desc", Statement.RETURN_GENERATED_KEYS)) {
 
             stmt2.setInt(1, starId);
             ResultSet starResult = stmt2.executeQuery();
@@ -176,7 +176,7 @@ public class StarDB {
     }
 
     private Comment commentFromResult(ResultSet result) throws SQLException {
-        Comment comment = new Comment(result.getString("user_email"), DBController.getInstance().getUser(result.getString("user_email")), result.getString("comment"), result.getInt("star"));
+        Comment comment = new Comment(result.getString("user_email"), DBController.getInstance().getUser(result.getString("user_email")), result.getString("reaction"), result.getInt("star"), result.getTime("datetime"));
         return comment;
     }
 

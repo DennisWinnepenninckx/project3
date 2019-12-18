@@ -58,9 +58,5 @@ public class AddUser extends RequestHandler {
                 rh.handleRequest(request,response);
             }
         }
-
-
-
-
     }
 }
