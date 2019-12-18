@@ -1,6 +1,7 @@
 package ucll.project.ui.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import extra.SimpleMail;
 import ucll.project.db.DBController;
@@ -27,10 +28,20 @@ public class GiveStar extends RequestHandler {
         if(getUserService().usersSendStarsThisMonth(user)>=3 && !user.getSuperUser()){
             throw new IllegalStateException("geen superuser en meer dan 3 sterren gestuurd deze maand");
         }
-        String receiver_email = request.getParameter("receiver");
+
+        String receiver_string = request.getParameter("receiver");
+
+        ObjectMapper receiverMapper = new ObjectMapper();
+        receiverMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        List<Tag> receivers = receiverMapper.readValue(receiver_string, new TypeReference<ArrayList<Tag>>() {});
+        if (receivers.size() != 1) {
+            throw new IllegalArgumentException("Must have 1 receiver!");
+        }
+        String receiver_email = receivers.get(0).getValue();
         String description = request.getParameter("description");
         String jsonString = request.getParameter("tags");
         ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         List<Tag> tags = mapper.readValue(jsonString,
                 new TypeReference<ArrayList<Tag>>() {
                 });
@@ -70,6 +81,7 @@ public class GiveStar extends RequestHandler {
 
 class Tag {
     private String value;
+    private String style;
 
     public String getValue() {
         return value;
