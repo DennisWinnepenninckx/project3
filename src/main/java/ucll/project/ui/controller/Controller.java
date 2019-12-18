@@ -38,10 +38,10 @@ public class Controller extends HttpServlet {
         try {
             String command = request.getParameter("command");
             if (command == null || command.trim().isEmpty()) {
-                if(request.getSession().getAttribute("user")==null){
-                    request.getRequestDispatcher("login.jsp").forward(request,response);
-                }
                 command = "Index";
+            }
+            if(request.getSession().getAttribute("user")==null){
+                request.getRequestDispatcher("login.jsp").forward(request,response);
             }
             RequestHandler handler = handlerFactory.getHandler(command, service);
             System.out.println(handler);

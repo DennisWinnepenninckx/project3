@@ -171,7 +171,7 @@ nav ul {
 }
 
 #current{
-    background: #f6a73d;
+    background: #042a61;
 }
 
 nav ul {
@@ -182,17 +182,30 @@ input {
     border-radius: 5px;
 }
 
-form input, form select, form textarea, .tags-input {
+form input, form select, form textarea, .tags-input{
     display: block;
     width: 80%;
+}
+
+form input, form select, form textarea, .tags-input, form .checkbox {
     margin-bottom: .6rem;
     border: 1px solid #DDDDDD;
     padding: .3rem;
 }
 
-form input.checkbox{
+form label {
+    font-size: 1.1rem;
+}
+
+form .checkbox {
     display: inline-block;
-    width: auto;
+    width: 1.1rem;
+    height: 1.1rem;
+    background-color: #eee;
+}
+
+form .checkbox:hover {
+    cursor: pointer;
 }
 
 form {
@@ -204,6 +217,7 @@ form legend {
     width: 100%;
     font-size: 1.2rem;
     border-bottom: 1px solid #555566;
+    margin-bottom: 2rem;
 }
 
 form button {
@@ -216,6 +230,7 @@ form button {
     font-family: 'Libre Franklin', sans-serif;
     border: none;
     cursor: pointer;
+    font-size: 1.1rem;
 }
 
 .content-list {
@@ -283,6 +298,10 @@ form button {
 
 .star-class .material-icons {
     margin: 0;
+}
+
+.star-class b {
+    margin-right: .2rem;
 }
 
 .star-class th {
