@@ -13,10 +13,10 @@
         <li class="star-class">
             <div>
                 <img src="../static/imgs/star.png" alt="">
-                <span>${star.receiver}</span>
+                <span>${star.receiverUser.firstName} ${star.receiverUser.lastname}</span>
             </div>
             <div>
-                <span>Sent by ${star.sender}</span>
+                <span>Sent by ${star.senderUser.firstName} ${star.senderUser.lastname}</span>
                 <p>${star.description}</p>
                 <td>
                     <ul><c:forEach items="${star.tags}" var="tag">
