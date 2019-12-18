@@ -4,6 +4,8 @@ import ucll.project.domain.star.Star;
 import ucll.project.domain.user.InvalidLogin;
 import ucll.project.domain.user.User;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class DBController {
@@ -25,6 +27,17 @@ public class DBController {
 
     public List<User> getAllUsers() {
         return userRepositoryDb.getAll();
+    }
+    public List<User> getAllSuperUser() {
+        List<User> users = userRepositoryDb.getAll();
+        List<User> result = new ArrayList<>();
+
+        for (User u:users){
+            if ((u.getSuperUser())){
+                result.add(u);
+            }
+        }
+        return result;
     }
 
     public void createUser(User user) {
