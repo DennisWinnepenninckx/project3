@@ -20,7 +20,7 @@
         </c:if>
 
         <label for="email">email</label>
-        <input type="email" id="email" name="email" value="<c:out value='${email}'/>" required>
+        <input type="email" id="email" name="email" value="<c:out value='${email}'/>" maxlength="55" required>
         <label for="password">password</label>
         <input type="password" id="password" name="password" required value="">
         <button type="submit">Login!</button>

@@ -37,7 +37,7 @@ public class Controller extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String command = request.getParameter("command");
-            if (command == null || command.trim().isEmpty()) {
+            if (command == null || command.trim().isEmpty()){
                 command = "Index";
             }
             if(request.getSession().getAttribute("user")==null && !command.equals("Login")){

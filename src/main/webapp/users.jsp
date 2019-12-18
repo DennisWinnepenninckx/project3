@@ -16,9 +16,9 @@
         </tr>
         <c:forEach var="user" items="${users}">
         <tr>
-            <td>${user.firstName}</td>
-            <td>${user.lastname}</td>
-            <td>${user.email}</td>
+            <td><c:out value='${user.firstName}'/></td>
+            <td><c:out value='${user.lastname}'/></td>
+            <td><c:out value='${user.email}'/></td>
         </tr>
         </c:forEach>
     </table>

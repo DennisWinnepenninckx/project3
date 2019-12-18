@@ -18,7 +18,7 @@ public class User {
     // hashed password1
     private transient String hashedPassword;
 
-    public User() {
+    public User(){
     }
 
     public User(String email, String firstName, String lastName, String password, boolean superUser) {

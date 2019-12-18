@@ -13,15 +13,14 @@
         <li class="star-class">
             <div>
                 <img src="../static/imgs/star.png" alt="">
-                <span>${star.receiverUser.firstName} ${star.receiverUser.lastname}</span>
+                <span><c:out value="${star.receiverUser.firstName}"/> <c:out value="${star.receiverUser.lastname}"/></span>
             </div>
             <div>
-                <span class="sender">Sent by ${star.senderUser.firstName} ${star.senderUser.lastname}</span>
-                <p>${star.date}</p>
-                <p>${star.description}</p>
+                <span class="sender">Sent by <c:out value="${star.senderUser.firstName}"/> <c:out value="${star.senderUser.lastname}"/></span>
+                <p><c:out value="${star.description}"/></p>
                 <td>
                     <ul><c:forEach items="${star.tags}" var="tag">
-                        <li><b>#</b><span class="tag-name">${tag}</span></li>
+                        <li><b>#</b><span class="tag-name"><c:out value="${tag}"/></span></li>
                     </c:forEach></ul>
                 </td>
                 </tr>

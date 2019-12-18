@@ -17,6 +17,7 @@ public class ToCreateUser extends RequestHandler {
 
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
         RequestDispatcher view = request.getRequestDispatcher("createUser.jsp");
         view.forward(request, response);
     }
