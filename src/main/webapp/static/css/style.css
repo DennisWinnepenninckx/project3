@@ -182,6 +182,11 @@ form input, form select, form textarea, .tags-input {
     padding: .3rem;
 }
 
+form input.checkbox{
+    display: inline-block;
+    width: auto;
+}
+
 form {
     padding: 1rem;
 }

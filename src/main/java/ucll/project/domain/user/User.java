@@ -119,5 +119,11 @@ public class User {
         return "User(firstName=" + this.getFirstName() + ", lastName=" + this.getLastname() + ", email=" + this.getEmail() + ", hashedPassword=" + this.getHashedPassword() + ")";
     }
 
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 
+    public void setManager(boolean manager) {
+        this.manager = manager;
+    }
 }
