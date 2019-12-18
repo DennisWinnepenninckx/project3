@@ -20,10 +20,10 @@ Feature: Login
     Then he gets an error :"nonexisting user"
 
   Scenario:  When somebody tries to login, but forgets a field, he gets an error
-    Given Karrel is not logged in
-    And Karrel is on the login-page
-    And Karrel has an account
-    When Karrel forgets a field
+    Given Karel is not logged in
+    And Karel is on the login-page
+    And Karel has an account
+    When Karel forgets a field
     Then he gets an error :"empty field"
 
   Scenario:  When somebody tries to login to an account but enters the wrong password, he gets an error

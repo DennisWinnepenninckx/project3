@@ -1,5 +1,4 @@
 package ucll.project.db;
-import ucll.project.domain.star.Star;
 import ucll.project.domain.user.InvalidLogin;
 import ucll.project.domain.user.User;
 
@@ -13,7 +12,7 @@ public class UserRepositoryDb implements UserRepository {
     public void createUser(User user) {
         try (Connection conn = ConnectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement("INSERT INTO \"user\" " +
-                     "(email, firstname, lastname, password) VALUES (?, ?, ?, ?)",
+                     "(email, firstname, lastname, password, superuser, admin, manager) VALUES (?, ?, ?, ?,?,?,?)",
                      Statement.RETURN_GENERATED_KEYS))
         {
             stmtSetUser(stmt, 1, user);
@@ -129,7 +128,9 @@ public class UserRepositoryDb implements UserRepository {
         user.setLastname(rs.getString("lastname"));
         user.setEmail(rs.getString("email"));
         user.setHashedPassword(rs.getString("password"));
-        user.setIs_superuser(rs.getString("superuser").equals("true"));
+        user.setSuperUser(rs.getString("superuser").equals("true"));
+        user.setAdmin(rs.getBoolean("admin"));
+        user.setManager(rs.getBoolean("manager"));
         return user;
     }
 
@@ -138,6 +139,9 @@ public class UserRepositoryDb implements UserRepository {
         stmt.setString(i++, user.getFirstName());
         stmt.setString(i++, user.getLastname());
         stmt.setString(i++, user.getHashedPassword());
+        stmt.setBoolean(i++, user.getSuperUser());
+        stmt.setBoolean(i++, user.isAdmin());
+        stmt.setBoolean(i++, user.isManager());
         return i;
     }
 }

@@ -5,9 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import extra.SimpleMail;
 import ucll.project.db.DBController;
 import ucll.project.domain.star.Star;
-import ucll.project.db.StarDB;
 import ucll.project.domain.user.User;
-import ucll.project.domain.user.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +24,9 @@ public class GiveStar extends RequestHandler {
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
         String sender_email = user.getEmail();
+        if(getUserService().usersSendStarsThisMonth(user)>=3 || !user.getSuperUser()){
+            throw new IllegalStateException("geen superuser en meer dan 3 sterren gestuurd deze maand");
+        }
         String receiver_email = request.getParameter("receiver");
         String description = request.getParameter("description");
         String jsonString = request.getParameter("tags");
@@ -53,7 +54,17 @@ public class GiveStar extends RequestHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        List<User> superUsers = getUserService().getAllSuperUser();
+        String managerMessage = receiver_email + "just received a star with tags:" + star.getTagsInString() + "\nWith description: " + star.getDescription() + "\nFrom" + star.getUserSender().getFirstName();
+        for (User manager : superUsers){
+            try {
+                SimpleMail.send(manager.getEmail(),managerMessage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         response.sendRedirect("Controller");
+
     }
 }
 
