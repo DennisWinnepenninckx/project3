@@ -19,7 +19,12 @@
         let classes = document.getElementsByClassName("Star");
 
         if (searchQuery.toLowerCase().includes("receiver:")) {
-            searchQuery= searchQuery.replace("receiver:","").trim();
+            searchQuery = searchQuery.replace("receiver:", "").trim();
+            if (!searchQuery || /^\s*$/.test(searchQuery)) {
+                for (let index = 0; index < classes.length; index++) {
+                    classes[index].style.display = "block";
+                }
+            }
             for (let index = 0; index < classes.length; index++) {
                 let txt = classes[index].children[0].children[0].children[1].innerHTML;
                 if (txt.toLowerCase().includes(searchQuery)) {
@@ -29,7 +34,12 @@
                 }
             }
         } else if (searchQuery.toLowerCase().includes("sender:")) {
-            searchQuery= searchQuery.replace("sender:","").trim();
+            searchQuery = searchQuery.replace("sender:", "").trim();
+            if (!searchQuery || /^\s*$/.test(searchQuery)) {
+                for (let index = 0; index < classes.length; index++) {
+                    classes[index].style.display = "block";
+                }
+            }
             for (let index = 0; index < classes.length; index++) {
                 let txt = classes[index].children[0].children[1].children[0].innerHTML;
                 if (txt.toLowerCase().includes(searchQuery)) {
@@ -38,8 +48,13 @@
                     classes[index].style.display = "none";
                 }
             }
-        } else if(searchQuery.toLowerCase().includes("tag:")){
-            searchQuery= searchQuery.replace("tag:","").trim();
+        } else if (searchQuery.toLowerCase().includes("tag:")) {
+            searchQuery = searchQuery.replace("tag:", "").trim();
+            if (!searchQuery || /^\s*$/.test(searchQuery)) {
+                for (let index = 0; index < classes.length; index++) {
+                    classes[index].style.display = "block";
+                }
+            }
             for (let index = 0; index < classes.length; index++) {
                 let txt = classes[index].children[0].children[1].children[2].innerHTML;
                 if (txt.toLowerCase().includes(searchQuery)) {
@@ -49,17 +64,22 @@
                 }
             }
         }
-        if (searchQuery == ""){
+        if (!searchQuery || /^\s*$/.test(searchQuery)) {
             for (let index = 0; index < classes.length; index++) {
                 classes[index].style.display = "block";
             }
         }
-
+        let counter = 0;
+        for (let index = 0; index < classes.length; index++) {
+            if (classes[index].style.display == "none"){counter++;}
+            if (counter = classes.length){document.getElementById("sorry").style.display = "block";}
+            else{document.getElementById("sorry").style.display = "none";}
+        }
     });
-
 
 </script>
 <ul class="content-list">
+    <div class="star-class" id="sorry" style="display: none;">No matches found, be the first!</div>
     <c:forEach items="${stars}" var="star">
         <li class="Star">
             <div class="star-class">
