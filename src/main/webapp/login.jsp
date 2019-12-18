@@ -16,7 +16,7 @@
             </ul>
         </div>
     </c:if>
-    <form id="login" novalidate="novalidate" action="Controller?command=Login" method="post">
+    <form id="login" action="Controller?command=Login" method="post">
         <p>
             <label for="email">email</label>
             <input type="email" id="email" name="email" value="<c:out value='${email}'/>" required>

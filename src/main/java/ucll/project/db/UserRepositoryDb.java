@@ -64,6 +64,7 @@ public class UserRepositoryDb implements UserRepository {
 
     @Override
     public User loginUser(String email, String password) throws InvalidLogin {
+        //just in case
         if(email==null || email.isEmpty()){
             if(password==null || password.isEmpty()){
                 throw new InvalidLogin("No email nor password given");
@@ -80,12 +81,12 @@ public class UserRepositoryDb implements UserRepository {
             stmt.setString(1, email);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.next()) {
-                    throw new InvalidLogin("Invalid email");
+                    throw new InvalidLogin("Incorrect credentials");
                 }
 
                 User user = userFromResult(rs);
                 if (!user.isValidPassword(password)) {
-                    throw new InvalidLogin("Invalid password");
+                    throw new InvalidLogin("Incorrect credentials");
                 }
 
                 return user;
