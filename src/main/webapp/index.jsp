@@ -7,6 +7,11 @@
 <body>
 <main role="main" class="container">
     <c:if test="${user!=null}">
+        <c:if test="${errors!= null}">
+            <div class="alert alert-danger">
+                <p>${errors}</p>
+            </div>
+        </c:if>
         <jsp:include page="components/give-star.jsp"/>
         <jsp:include page="components/star_overview.jsp"/>
         <ul class="content-list" id="all">
