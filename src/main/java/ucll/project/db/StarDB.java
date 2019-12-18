@@ -47,6 +47,7 @@ public class StarDB {
             throw new RuntimeException(e);
         }
     }
+
     public boolean usersHasStars(User user){
         try (Connection conn = ConnectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE email = ?"))
