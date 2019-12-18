@@ -10,10 +10,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav>
     <c:if test="${user!=null}">
+        <a href="Controller?command=Profile">
         <section class="account-banner">
             <img class="profile-pic" src="../static/imgs/profile.png" alt="profile_pic">
             <h3>${user.firstName} ${user.lastname}</h3>
         </section>
+        </a>
     </c:if>
     <ul>
         <li class="link-nav">
@@ -38,5 +40,4 @@
     </ul>
 </nav>
 <div id="nav-placeholder">
-
 </div>
