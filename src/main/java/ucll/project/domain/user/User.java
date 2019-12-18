@@ -1,11 +1,15 @@
 package ucll.project.domain.user;
 
 import javax.xml.bind.DatatypeConverter;
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static org.apache.poi.poifs.crypt.HashAlgorithm.sha512;
 
 public class User {
     private String email, firstName, lastname, password;
@@ -21,7 +25,7 @@ public class User {
         setFirstName(firstName);
         setEmail(email);
         setLastname(lastName);
-        setHashedPassword(getPasswordToHashedPassword(password));
+        setNewPassword(password);;
         setSuperUser(superUser);
     }
 
@@ -33,32 +37,58 @@ public class User {
         this.lastname = lastname;
     }
 
-    public void hashAndSetPassword(String password) {
-        if (password.length() < 4) {
-            throw new IllegalArgumentException("Too short password!");
+    public boolean isCorrectPassword(String password) {
+        if(password.isEmpty()){
+            throw new IllegalArgumentException("No password given");
         }
-        String hashed = getPasswordToHashedPassword(password);
-        setHashedPassword(hashed);
+        String[] p = this.password.split("::");
+        String salt = p[0];
+        return this.password.equals(sha512(password, salt));
     }
 
-    // This function will hash the password
-    protected String getPasswordToHashedPassword(String password) {
-        MessageDigest digest = null;
+    public void setPassword(String password) {
+        if(password.isEmpty()){
+            throw new IllegalArgumentException("No password given");
+        }
+        this.password = password;
+    }
+
+    public void setNewPassword(String password) {
+        if (password.isEmpty()) {
+            throw new IllegalArgumentException("No password given");
+        }
+        this.password = sha512(password, salt());
+    }
+
+    private static String sha512(String password, String salt) {
         try {
-            digest = MessageDigest.getInstance("SHA-256");
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException();
+            MessageDigest crypt = MessageDigest.getInstance("SHA-512");
+            crypt.reset();
+            password += salt;
+            byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
+            crypt.update(passwordBytes);
+            byte[] digest = crypt.digest();
+            String p = new BigInteger(1, digest).toString(16);
+            return salt + "::" + p;
         }
-        digest.update(password.getBytes(StandardCharsets.UTF_8));
-        String hash = DatatypeConverter.printHexBinary(digest.digest()).toUpperCase();
-        return hash;
+        catch (NoSuchAlgorithmException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
     }
 
-    public boolean isValidPassword(String password) {
-        if (getHashedPassword() == null) {
-            return false;
+    private static String salt() {
+        int leftLimit = 97; // letter 'a'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 16;
+        Random random = new Random();
+        StringBuilder buffer = new StringBuilder(targetStringLength);
+        for (int i = 0; i < targetStringLength; i++) {
+            int randomLimitedInt = leftLimit + (int)
+                    (random.nextFloat() * (rightLimit - leftLimit + 1));
+            buffer.append((char) randomLimitedInt);
         }
-        return getPasswordToHashedPassword(password).equals(getHashedPassword());
+        return buffer.toString();
     }
 
     // Getters and setters and toString
@@ -100,9 +130,6 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public void setEmail(String email) {
         Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
