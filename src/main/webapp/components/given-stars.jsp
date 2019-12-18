@@ -11,22 +11,16 @@
 <ul class="content-list">
     <c:forEach items="${givenStars}" var="star">
         <li class="star-class">
-            <img src="../static/imgs/star.png" alt="">
             <div>
-                <table>
-                    <tr>
-                        <th>Sender</th>
-                        <td>${star.sender}</td>
-                    </tr>
-                    <tr>
-                        <th>Receiver</th>
-                        <td>${star.receiver}</td>
-                    </tr>
-                </table>
+                <img src="../static/imgs/star.png" alt="">
+                <span>${star.receiverUser.firstName} ${star.receiverUser.lastname}</span>
+            </div>
+            <div>
+                <span>Sent by ${star.senderUser.firstName} ${star.senderUser.lastname}</span>
                 <p>${star.description}</p>
                 <td>
                     <ul><c:forEach items="${star.tags}" var="tag">
-                        <li>${tag}</li>
+                        <li><span class="material-icons">check_box</span><span class="tag-name">${tag}</span></li>
                     </c:forEach></ul>
                 </td>
                 </tr>

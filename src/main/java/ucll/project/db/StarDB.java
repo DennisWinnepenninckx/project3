@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StarDB {
+
     public void createStar(Star star) {
         try (Connection conn = ConnectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement("INSERT INTO \"star\" " +
@@ -75,6 +76,8 @@ public class StarDB {
 
             while (starResult.next()) {
                 Star star = new Star(starResult.getInt("id"), getTagsOfStar(starResult.getInt("id")), starResult.getString("description"), starResult.getString("sender_email"), starResult.getString("receiver_email"));
+                star.setSenderUser(DBController.getInstance().getUser(star.getSender()));
+                star.setReceiverUser(DBController.getInstance().getUser(star.getReceiver()));
                 stars.add(star);
             }
 
@@ -108,13 +111,15 @@ public class StarDB {
         List<Star> stars = new ArrayList<>();
 
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star where sender_email = ?", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star where sender_email = ? order by date desc", Statement.RETURN_GENERATED_KEYS)) {
 
             stmt2.setString(1, user.getEmail());
             ResultSet starResult = stmt2.executeQuery();
 
             while (starResult.next()) {
                 Star star = new Star(starResult.getInt("id"), getTagsOfStar(starResult.getInt("id")), starResult.getString("description"), starResult.getString("sender_email"), starResult.getString("receiver_email"));
+                star.setSenderUser(DBController.getInstance().getUser(star.getSender()));
+                star.setReceiverUser(DBController.getInstance().getUser(star.getReceiver()));
                 stars.add(star);
             }
 
@@ -128,13 +133,15 @@ public class StarDB {
         List<Star> stars = new ArrayList<>();
 
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star where receiver_email = ?", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star where receiver_email = ? order by date desc", Statement.RETURN_GENERATED_KEYS)) {
 
             stmt2.setString(1, user.getEmail());
             ResultSet starResult = stmt2.executeQuery();
 
             while (starResult.next()) {
                 Star star = new Star(starResult.getInt("id"), getTagsOfStar(starResult.getInt("id")), starResult.getString("description"), starResult.getString("sender_email"), starResult.getString("receiver_email"));
+                star.setSenderUser(DBController.getInstance().getUser(star.getSender()));
+                star.setReceiverUser(DBController.getInstance().getUser(star.getReceiver()));
                 stars.add(star);
             }
 
