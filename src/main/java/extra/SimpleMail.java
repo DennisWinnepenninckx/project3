@@ -18,6 +18,7 @@ public class SimpleMail {
 
 
     public static void send(String receiver, String StringMessage) throws Exception{
+        //mail send
         Properties props = new Properties();
         props.put("mail.smtp.host", SMTP_HOST_NAME);
         props.put("mail.smtp.port", "587");
