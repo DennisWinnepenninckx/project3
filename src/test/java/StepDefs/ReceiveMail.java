@@ -23,4 +23,10 @@ public class ReceiveMail {
         // Write code here that turns the phrase above into concrete actions
         System.out.println("This is the then step");
     }
+
+    @Then("his manager Andreas receives a mail telling him that Karel got a star")
+    public void his_manager_Andreas_receives_a_mail_telling_him_that_Karel_got_a_star() {
+        // Write code here that turns the phrase above into concrete actions
+        System.out.println("manager");
+    }
 }
