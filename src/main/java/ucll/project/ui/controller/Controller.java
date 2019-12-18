@@ -44,7 +44,6 @@ public class Controller extends HttpServlet {
                 request.getRequestDispatcher("login.jsp").forward(request,response);
             }
             RequestHandler handler = handlerFactory.getHandler(command, service);
-            System.out.println(handler);
             handler.handleRequest(request, response);
         } catch (Exception e) {
             throw new ControllerException(e.getMessage());
