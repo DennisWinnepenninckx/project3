@@ -23,10 +23,12 @@ public class AddUser extends RequestHandler {
         String FirstName = request.getParameter("firstName");
         String LastName  = request.getParameter("lastName");
         String Email  = request.getParameter("email");
-        User user = new User(Email,FirstName,LastName,"t",false);
+        System.out.println(request.getParameter("role"));
+        boolean isSuperuser = request.getParameter("role").equals("superuser");
+        User user = new User(Email,FirstName,LastName,"t",isSuperuser);
 
         getUserService().createUser(user);
-        String message = "Beste " + LastName +"\n" + "U hebt een account op de sterren-awards website";
+        String message = "Beste " + FirstName + " " + LastName +"\n" + "U hebt een account op de sterren-awards website";
         try {
             //SimpleMail.send(Email);
             SimpleMail.send(Email, message);
