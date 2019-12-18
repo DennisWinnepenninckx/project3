@@ -13,11 +13,11 @@
         <c:if test="${useralreadyexists != null}">
             <p>${useralreadyexists}</p>
         </c:if>
-        <label for="firstName">First Name</label><input type="text" id="firstName" name="firstName" value=""
+        <label for="firstName">First Name</label><input type="text" id="firstName" name="firstName" maxlength="20" value=""
                                                         required />
-        <label for="lastName">Last Name</label><input type="text" id="lastName" name="lastName" value=""
+        <label for="lastName">Last Name</label><input type="text" id="lastName" maxlength="20" name="lastName" value=""
                                                       required/>
-        <label for="email">Email</label><input type="email" id="email" name="email" value="" required/>
+        <label for="email">Email</label><input type="email" id="email" name="email" maxlength="55" value="" required/>
         <p>
             <input class="checkbox" type="checkbox" name="superuser" value="superuser" id="superuser"> <label
                 for="superuser">Superuser</label>
