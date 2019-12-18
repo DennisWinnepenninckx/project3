@@ -36,7 +36,7 @@ public class StarDB {
     private void addTag(String name, int starid) {
         try (Connection conn = ConnectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement("INSERT INTO \"star_tag_link\" " +
-                             "(tag, star) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+                     "(tag, star) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setInt(2, starid);
             stmt.setString(1, name);
@@ -48,30 +48,28 @@ public class StarDB {
         }
     }
 
-    public boolean usersHasStars(User user){
+    public int usersHasStars(User user) {
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE email = ?"))
-        {
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE sender_email = ? and extract(month from date) = extract(month from now()) and extract(year from date) = extract(year from now()) ")) {
             stmt.setString(1, user.getEmail());
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    if(Integer.parseInt(String.valueOf(rs))<3){
-                        return true;
-                    }
-                    return false;
+                    return Integer.parseInt(String.valueOf(rs));
                 }
-                return false;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-        }
+        return 3;
+    }
 
-        public List<Star> getAll() {
+    public List<Star> getAll() {
         List<Star> stars = new ArrayList<>();
 
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star order by date desc", Statement.RETURN_GENERATED_KEYS)) {
 
             ResultSet starResult = stmt2.executeQuery();
 
@@ -104,6 +102,46 @@ public class StarDB {
             throw new RuntimeException(e);
         }
         return tags;
+    }
+
+    public List<Star> getAllGivenStarsUser(User user) {
+        List<Star> stars = new ArrayList<>();
+
+        try (Connection conn = ConnectionPool.getConnection();
+             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star where sender_email = ?", Statement.RETURN_GENERATED_KEYS)) {
+
+            stmt2.setString(1, user.getEmail());
+            ResultSet starResult = stmt2.executeQuery();
+
+            while (starResult.next()) {
+                Star star = new Star(starResult.getInt("id"), getTagsOfStar(starResult.getInt("id")), starResult.getString("description"), starResult.getString("sender_email"), starResult.getString("receiver_email"));
+                stars.add(star);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return stars;
+    }
+
+    public List<Star> getAllReceivedStars(User user) {
+        List<Star> stars = new ArrayList<>();
+
+        try (Connection conn = ConnectionPool.getConnection();
+             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star where receiver_email = ?", Statement.RETURN_GENERATED_KEYS)) {
+
+            stmt2.setString(1, user.getEmail());
+            ResultSet starResult = stmt2.executeQuery();
+
+            while (starResult.next()) {
+                Star star = new Star(starResult.getInt("id"), getTagsOfStar(starResult.getInt("id")), starResult.getString("description"), starResult.getString("sender_email"), starResult.getString("receiver_email"));
+                stars.add(star);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return stars;
     }
 
     public List<String> getTags() {

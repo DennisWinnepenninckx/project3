@@ -55,7 +55,7 @@ public class DBController {
         starDB.createStar(star);
     }
 
-    public boolean userHasStars(User user) {
+    public int userHasStars(User user) {
         return starDB.usersHasStars(user);
     }
 
@@ -65,6 +65,14 @@ public class DBController {
 
     public List<String> getTags() {
         return starDB.getTags();
+    }
+
+    public List<Star> getStarsUserGaveAway(User user) {
+        return starDB.getAllGivenStarsUser(user);
+    }
+
+    public List<Star> getStarsUserReceived(User user) {
+        return starDB.getAllReceivedStars(user);
     }
 
 }
