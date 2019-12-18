@@ -13,7 +13,7 @@ import java.util.Properties;
 public class SimpleMail {
 
     private static final String SMTP_HOST_NAME = "smtp.gmail.com";
-    private static final String SMTP_AUTH_USER = "sandervanthillo@gmail.com";
+    private static final String SMTP_AUTH_USER = "star4everyone@gmail.com";
     private static final String SMTP_AUTH_PWD  = "BehaviourDrivenDesign";
 
 

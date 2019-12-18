@@ -10,6 +10,9 @@
         <legend>
             Create a User!
         </legend>
+        <c:if test="${useralreadyexists != null}">
+            <p>${useralreadyexists}</p>
+        </c:if>
         <label for="firstName">First Name</label><input type="text" id="firstName" name="firstName" value=""
                                                         required value=""/>
         <label for="lastName">Last Name</label><input type="text" id="lastName" name="lastName" value=""
