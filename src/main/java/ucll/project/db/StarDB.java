@@ -48,29 +48,28 @@ public class StarDB {
         }
     }
 
-    public boolean usersHasStars(User user) {
+    public int usersHasStars(User user) {
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE email = ?")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE sender_email = ? and extract(month from date) = extract(month from now()) and extract(year from date) = extract(year from now()) ")) {
             stmt.setString(1, user.getEmail());
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    if (Integer.parseInt(String.valueOf(rs)) < 3) {
-                        return true;
-                    }
-                    return false;
+                    return Integer.parseInt(String.valueOf(rs));
                 }
-                return false;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        return 3;
     }
 
     public List<Star> getAll() {
         List<Star> stars = new ArrayList<>();
 
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star order by date desc", Statement.RETURN_GENERATED_KEYS)) {
 
             ResultSet starResult = stmt2.executeQuery();
 

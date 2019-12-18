@@ -55,7 +55,7 @@ public class DBController {
         starDB.createStar(star);
     }
 
-    public boolean userHasStars(User user) {
+    public int userHasStars(User user) {
         return starDB.usersHasStars(user);
     }
 
