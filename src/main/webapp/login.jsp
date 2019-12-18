@@ -8,20 +8,22 @@
 <body>
 <main>
 
-    <form id="login" action="Controller?command=Login" method="post">
+    <form id="login" novalidate action="Controller?command=Login" method="post">
         <legend>
             Login!
         </legend>
 
+        <c:if test="${error!= null}">
         <div class="alert alert-danger">
             <p>${error}</p>
         </div>
+        </c:if>
 
         <label for="email">email</label>
         <input type="email" id="email" name="email" value="<c:out value='${email}'/>" required>
         <label for="password">password</label>
         <input type="password" id="password" name="password" required value="">
-        <button type="submit" >Login!</button>
+        <button type="submit">Login!</button>
 
     </form>
 </main>
