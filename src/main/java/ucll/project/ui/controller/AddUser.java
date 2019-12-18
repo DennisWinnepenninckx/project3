@@ -23,9 +23,14 @@ public class AddUser extends RequestHandler {
         String FirstName = request.getParameter("firstName");
         String LastName  = request.getParameter("lastName");
         String Email  = request.getParameter("email");
-        System.out.println(request.getParameter("role"));
-        boolean isSuperuser = request.getParameter("role").equals("superuser");
+
+        boolean isSuperuser = request.getParameter("superuser").equals("superuser");
+        boolean isAdmin = request.getParameter("admin").equals("admin");
+        boolean isManager = request.getParameter("manager").equals("manager");
+
         User user = new User(Email,FirstName,LastName,"t",isSuperuser);
+        user.setAdmin(isAdmin);
+        user.setManager(isManager);
 
         getUserService().createUser(user);
         String message = "Beste " + FirstName + " " + LastName +"\n" + "U hebt een account op de sterren-awards website";

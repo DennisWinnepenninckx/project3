@@ -13,15 +13,10 @@
                                                          required/></p>
         <p><label for="email">Email</label><input type="email" id="email" name="email" value="" required/>
         </p>
-        <p>
-            <input type="checkbox" name="superuser" value="superuser">superuser
-            <input type="checkbox" name="admin" value="admin">admin
-        </p>
-        <select name="role" id="role">
-            <option value="user">USER</option>
-            <option value="superuser">SUPERUSER</option>
-            <option value="admin">ADMIN</option>
-        </select>
+        <p><input class="checkbox" type="checkbox" name="superuser" value="superuser"> SUPERUSER</p>
+        <p><input class="checkbox" type="checkbox" name="admin" value="admin"> ADMIN</p>
+        <p><input class="checkbox" type="checkbox" name="manager" value="manager"> MANAGER</p>
+
         <p><input type="submit" id="signUp" value="Add User"></p>
     </form>
 </main>

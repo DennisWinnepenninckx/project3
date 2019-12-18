@@ -48,13 +48,13 @@ public class StarDB {
         }
     }
 
-    public int usersHasStars(User user) {
+    public int usersSendStarsThisMonth(User user) {
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE sender_email = ? and extract(month from date) = extract(month from now()) and extract(year from date) = extract(year from now()) ")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"star\" WHERE sender_email = ? and extract(month from date) = extract(month from now()) and extract(year from date) = extract(year from now()) ")) {
             stmt.setString(1, user.getEmail());
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    return Integer.parseInt(String.valueOf(rs));
+                    return rs.getInt(1);
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);

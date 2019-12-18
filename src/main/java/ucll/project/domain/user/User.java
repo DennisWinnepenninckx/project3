@@ -9,8 +9,8 @@ import java.util.regex.Pattern;
 
 public class User {
     private String email, firstName, lastname, password;
-    private boolean superUser;
-
+    private boolean superUser,manager,admin;
+    //comment
     // hashed password1
     private transient String hashedPassword;
 
@@ -84,6 +84,14 @@ public class User {
         return superUser;
     }
 
+    public boolean isManager() {
+        return manager;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
     public void setSuperUser(boolean superUser) {
         this.superUser = superUser;
     }
@@ -111,5 +119,11 @@ public class User {
         return "User(firstName=" + this.getFirstName() + ", lastName=" + this.getLastname() + ", email=" + this.getEmail() + ", hashedPassword=" + this.getHashedPassword() + ")";
     }
 
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 
+    public void setManager(boolean manager) {
+        this.manager = manager;
+    }
 }
