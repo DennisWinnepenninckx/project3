@@ -24,19 +24,21 @@
         <li ${param.page eq "users" ? "id=current":""} class="link-nav">
             <a href="Controller?command=Users"><span class="material-icons">supervisor_account</span><span>Users</span></a>
         </li>
-        <li class="link-nav">
+        <li ${param.page eq "createUser" ? "id=current":""} class="link-nav">
             <a href="Controller?command=ToCreateUser"><span class="material-icons">person_add</span><span>Create User</span></a>
         </li>
-        <c:if test="${user==null}">
-            <li class="link-nav">
+        <c:choose>
+        <c:when test="${user==null}">
+            <li ${param.page eq "login" ? "id=current":""} class="link-nav">
                 <a href="Controller?command=ToLogin"><span class="material-icons">exit_to_app</span><span>Login</span></a>
             </li>
-        </c:if>
-        <c:if test="${user!=null}">
+        </c:when>
+        <c:otherwise>
             <li class="link-nav">
                 <a href="Controller?command=Logout"><span class="material-icons">exit_to_app</span><span>Logout</span></a>
             </li>
-        </c:if>
+        </c:otherwise>
+        </c:choose>
     </ul>
 </nav>
 <div id="nav-placeholder">
