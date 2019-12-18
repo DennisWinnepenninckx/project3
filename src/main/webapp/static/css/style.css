@@ -182,12 +182,12 @@ input {
     border-radius: 5px;
 }
 
-form input, form select, form textarea, .tags-input{
+form input, form select, form textarea, .tags-input, .names-input{
     display: block;
     width: 80%;
 }
 
-form input, form select, form textarea, .tags-input, form .checkbox {
+form input, form select, form textarea, .tags-input, .names-input, form .checkbox {
     margin-bottom: .6rem;
     border: 1px solid #DDDDDD;
     padding: .3rem;
@@ -269,6 +269,7 @@ form button {
     margin: 3rem;
     align-items: center;
     text-align: center;
+    line-height: 1.6rem;
 }
 
 .star-class img {
