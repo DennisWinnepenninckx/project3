@@ -18,10 +18,22 @@ public class Profile extends RequestHandler {
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         setGivenStars(request, response);
         setReceivedStars(request, response);
+        setAmountOfStarsLeft(request,response);
         RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
         view.forward(request, response);
     }
+    public void setAmountOfStarsLeft(HttpServletRequest request, HttpServletResponse response){
+        User user = (User) request.getSession().getAttribute("user");
 
+        int amount_of_stars = getUserService().usersSendStarsThisMonth(user);
+        if (user.getSuperUser()){
+            request.setAttribute("amountOfStars", null);
+
+        }else{
+            request.setAttribute("amountOfStars", 3 - amount_of_stars);
+
+        }
+    }
     public void setGivenStars(HttpServletRequest request, HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("user");
         request.setAttribute("givenStars", getUserService().getStarsUserGaveAway(user));

@@ -21,12 +21,14 @@
         <li ${param.page eq "home" ? "id=current":""} class="link-nav">
             <a href="Controller?command=Index"><span class="material-icons">home</span><span>Home</span></a>
         </li>
-        <li ${param.page eq "users" ? "id=current":""} class="link-nav">
-            <a href="Controller?command=Users"><span class="material-icons">supervisor_account</span><span>Users</span></a>
-        </li>
-        <li ${param.page eq "createUser" ? "id=current":""} class="link-nav">
-            <a href="Controller?command=ToCreateUser"><span class="material-icons">person_add</span><span>Create User</span></a>
-        </li>
+        <c:if test="${user.admin}">
+            <li ${param.page eq "users" ? "id=current":""} class="link-nav">
+                <a href="Controller?command=Users"><span class="material-icons">supervisor_account</span><span>Users</span></a>
+            </li>
+            <li ${param.page eq "createUser" ? "id=current":""} class="link-nav">
+                <a href="Controller?command=ToCreateUser"><span class="material-icons">person_add</span><span>Create User</span></a>
+            </li>
+        </c:if>
         </c:if>
         <c:choose>
         <c:when test="${user==null}">

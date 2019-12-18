@@ -65,11 +65,12 @@ public class GiveStar extends RequestHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        List<User> superUsers = getUserService().getAllSuperUser();
+        List<User> superUsers = getUserService().getAllManagers();
         String managerMessage = receiver_email + "just received a star with tags:" + star.getTagsInString() + "\nWith description: " + star.getDescription() + "\nFrom" + star.getUserSender().getFirstName();
         for (User manager : superUsers){
             try {
-                SimpleMail.send(manager.getEmail(),managerMessage);
+                if (!manager.getEmail().equals(user.getEmail()))
+                    SimpleMail.send(manager.getEmail(),managerMessage);
             } catch (Exception e) {
                 e.printStackTrace();
             }
