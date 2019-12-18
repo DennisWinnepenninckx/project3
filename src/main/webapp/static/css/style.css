@@ -94,6 +94,10 @@ img {
     max-height: 100%;
 }
 
+main {
+    width: 70%;
+}
+
 h1 {
     margin: 1rem .3rem;
     border-bottom: 1px solid #555566;
@@ -228,12 +232,23 @@ form button {
     flex-direction: row;
     align-items: center;
     background: #246ac1;
+    color: white;
     border-radius: 10px;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.2rem;
+}
+
+.star-class div:first-child {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    margin: 3rem;
+    align-items: center;
+    text-align: center;
 }
 
 .star-class img {
-    margin: 3rem;
-    width: 10%;
+    margin-bottom: .5rem;
 }
 
 .star-class ul {
@@ -244,11 +259,16 @@ form button {
 }
 
 .star-class ul li {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     padding: .4rem;
     background: #3595f6;
     border-radius: 3px;
     margin: .3rem;
+}
+
+.star-class .material-icons {
+    margin: 0;
 }
 
 .star-class th {
@@ -256,15 +276,20 @@ form button {
 }
 
 .account-banner {
-    margin: 2rem;
+    padding: 2rem;
     display: flex;
     align-items: center;
     height: 4rem;
+    transition: .6s;
 }
 
 .account-banner img {
     margin-right: .5rem;
     border-radius: 50%;
+}
+
+.account-banner:hover {
+    background: #246ac1;
 }
 
 .account-banner h3 {

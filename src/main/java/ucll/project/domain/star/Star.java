@@ -13,6 +13,23 @@ public class Star {
     private List<String> tags;
     private String description;
     private String sender, receiver;
+    private User senderUser, receiverUser;
+
+    public User getSenderUser() {
+        return senderUser;
+    }
+
+    public void setSenderUser(User senderUser) {
+        this.senderUser = senderUser;
+    }
+
+    public User getReceiverUser() {
+        return receiverUser;
+    }
+
+    public void setReceiverUser(User receiverUser) {
+        this.receiverUser = receiverUser;
+    }
 
     public Star() {
     }
@@ -58,6 +75,14 @@ public class Star {
             result += "-"+s + "\n";
         }
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Star{" +
+                "sender='" + sender + '\'' +
+                ", receiver='" + receiver + '\'' +
+                '}';
     }
 
     public void setTags(List<String> tags) {
