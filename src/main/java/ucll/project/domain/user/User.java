@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class User {
     private String email, firstName, lastname, password;
-    private boolean is_superuser;
+    private boolean superUser;
 
     // hashed password1
     private transient String hashedPassword;
@@ -17,12 +17,12 @@ public class User {
     public User() {
     }
 
-    public User(String email, String firstName, String lastName, String password, boolean is_superuser) {
+    public User(String email, String firstName, String lastName, String password, boolean superUser) {
         setFirstName(firstName);
         setEmail(email);
         setLastname(lastName);
         setHashedPassword(getPasswordToHashedPassword(password));
-        setIs_superuser(is_superuser);
+        setSuperUser(superUser);
     }
 
     public String getLastname() {
@@ -80,12 +80,12 @@ public class User {
         this.firstName = firstName;
     }
 
-    public boolean isIs_superuser() {
-        return is_superuser;
+    public boolean getSuperUser() {
+        return superUser;
     }
 
-    public void setIs_superuser(boolean is_superuser) {
-        this.is_superuser = is_superuser;
+    public void setSuperUser(boolean superUser) {
+        this.superUser = superUser;
     }
 
     public String getPassword() {
@@ -110,4 +110,6 @@ public class User {
     public String toString() {
         return "User(firstName=" + this.getFirstName() + ", lastName=" + this.getLastname() + ", email=" + this.getEmail() + ", hashedPassword=" + this.getHashedPassword() + ")";
     }
+
+
 }

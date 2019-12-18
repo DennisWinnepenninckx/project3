@@ -20,6 +20,8 @@ public class CreateUser {
     private static WebDriver driver;
     private UserRepository db = new UserRepositoryDb();
 
+
+
     @Given("Arne is on the create user page")
     public void arne_is_on_the_create_user_page() {
         // Write code here that turns the phrase above into concrete actions
