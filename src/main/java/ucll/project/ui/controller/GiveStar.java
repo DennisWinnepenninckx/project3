@@ -84,6 +84,7 @@ public class GiveStar extends RequestHandler {
         }catch (Exception e){
             errors.add("no tags added");
         }
+        System.out.println(errors.size());
         if(errors.size()!=0){
             try {
                 request.setAttribute("errors", errors);
@@ -92,9 +93,9 @@ public class GiveStar extends RequestHandler {
                 e.printStackTrace();
             }
         }
-
-        response.sendRedirect("Controller");
-
+        else {
+            response.sendRedirect("Controller");
+        }
     }
 }
 

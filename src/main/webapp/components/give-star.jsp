@@ -18,11 +18,19 @@
         <legend>
             Give someone a Star!
         </legend>
+
         <c:if test="${error!= null}">
             <div class="alert alert-danger">
                 <p>${error}</p>
             </div>
         </c:if>
+        <c:forEach var="error" items="${errors}">
+            <tr>
+                <td><c:out value='${error}'/></td>
+                <td><c:out value='${error}'/></td>
+                <td><c:out value='${error}'/></td>
+            </tr>
+        </c:forEach>
         <input type="hidden" name="command" value="GiveStar">
         <textarea name="description" maxlength="128"></textarea>
         <input class="names-input" name="receiver" placeholder="Send star to">
