@@ -28,12 +28,12 @@ public class DBController {
     public List<User> getAllUsers() {
         return userRepositoryDb.getAll();
     }
-    public List<User> getAllSuperUser() {
+    public List<User> getAllManagers() {
         List<User> users = userRepositoryDb.getAll();
         List<User> result = new ArrayList<>();
 
         for (User u:users){
-            if ((u.getSuperUser())){
+            if ((u.isManager())){
                 result.add(u);
             }
         }

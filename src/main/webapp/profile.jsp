@@ -12,6 +12,14 @@
 <jsp:include page="components/header.jsp"/>
 <body>
 <main>
+    <c:choose>
+        <c:when test="${amountOfStars eq null}">
+            <h2>Stars left this month: ∞ </h2>
+        </c:when>
+        <c:otherwise>
+            <h2>Stars left this month: ${amountOfStars}</h2>
+        </c:otherwise>
+    </c:choose>
     <h2>Received Stars</h2>
 <jsp:include page="components/received-stars.jsp"/>
     <h2>Given Stars</h2>
