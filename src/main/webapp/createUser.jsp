@@ -20,6 +20,8 @@
         <p><input type="submit" id="signUp" value="Add User"></p>
     </form>
 </main>
-<jsp:include page="components/sidebar.jsp"></jsp:include>
+<jsp:include page="components/sidebar.jsp">
+    <jsp:param name="page" value="createUser"/>
+</jsp:include>
 </body>
 </html>
