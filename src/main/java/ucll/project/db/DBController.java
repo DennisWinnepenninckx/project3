@@ -68,8 +68,8 @@ public class DBController {
         starDB.createStar(star);
     }
 
-    public int userHasStars(User user) {
-        return starDB.usersHasStars(user);
+    public int usersSendStarsThisMonth(User user) {
+        return starDB.usersSendStarsThisMonth(user);
     }
 
     public List<String> getTagsOfStar(int starId) {
