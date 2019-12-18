@@ -50,7 +50,8 @@ public class StarDB {
 
     public boolean usersHasStars(User user){
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE email = ?"))
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM \"user\" WHERE sender_email = ? and extract(month from date) = extract(month from now()) and extract(year from date) = extract(year from now()) "))
+                //where sender_email = 'arne.walschap@ucll.be' and extract(month from date) = extract(month from now()) and extract(year from date) = extract(year from now())
         {
             stmt.setString(1, user.getEmail());
             try (ResultSet rs = stmt.executeQuery()) {
@@ -71,7 +72,7 @@ public class StarDB {
         List<Star> stars = new ArrayList<>();
 
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star order by date desc", Statement.RETURN_GENERATED_KEYS)) {
 
             ResultSet starResult = stmt2.executeQuery();
 
