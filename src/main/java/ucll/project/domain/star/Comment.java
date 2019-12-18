@@ -19,6 +19,12 @@ public class Comment {
         this.datetime = datetime;
     }
 
+    public Comment(String user_email, String comment, int star) {
+        this.user_email = user_email;
+        this.comment = comment;
+        this.star = star;
+    }
+
     public Date getDatetime() {
         return datetime;
     }
@@ -57,5 +63,16 @@ public class Comment {
 
     public void setStar(int star) {
         this.star = star;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "'user_email':'" + user_email + '\'' +
+                ", 'user_firstname':'" + user.getFirstName() +"'"+
+                ", 'user_lastname':'" + user.getLastname() +"'"+
+                ", 'comment':'" + comment + '\'' +
+                ", 'datetime':'" + datetime + "'" +
+                '}';
     }
 }

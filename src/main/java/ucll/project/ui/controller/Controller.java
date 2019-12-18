@@ -1,6 +1,7 @@
 package ucll.project.ui.controller;
 
 import ucll.project.db.DBController;
+import ucll.project.domain.user.User;
 import ucll.project.domain.user.UserService;
 
 import javax.servlet.ServletContext;
@@ -43,8 +44,13 @@ public class Controller extends HttpServlet {
             if(request.getSession().getAttribute("user")==null && !command.equals("Login")){
                 request.getRequestDispatcher("login.jsp").forward(request,response);
             }
-            RequestHandler handler = handlerFactory.getHandler(command, service);
-            handler.handleRequest(request, response);
+            else {
+                if (request.getSession().getAttribute("user")!= null) {
+                    request.setAttribute("my_email", ((User)request.getSession().getAttribute("user")).getEmail());
+                }
+                RequestHandler handler = handlerFactory.getHandler(command, service);
+                handler.handleRequest(request, response);
+            }
         } catch (Exception e) {
             throw new ControllerException(e.getMessage());
         }

@@ -38,6 +38,7 @@ public class Login extends RequestHandler {
         if (error==null && user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
+            request.setAttribute("my_email", user.getEmail());
             response.sendRedirect("Controller");
         } else {
             request.setAttribute("error", error);

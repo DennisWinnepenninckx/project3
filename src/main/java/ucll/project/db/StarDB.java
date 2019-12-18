@@ -86,6 +86,24 @@ public class StarDB {
         return stars;
     }
 
+    public void makeComment(Comment comment) {
+        try (Connection conn = ConnectionPool.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO \"comment\" " +
+                             "(user_email, star, reaction) VALUES (?, ?, ?)",
+                     Statement.RETURN_GENERATED_KEYS);
+             PreparedStatement stmt2 = conn.prepareStatement("INSERT INTO star_tag_link (tag, star) VALUES (?, ?)")) {
+            stmt.setString(1, comment.getUser_email());
+            stmt.setInt(2, comment.getStar());
+            stmt.setString(3, comment.getComment());
+
+            if (stmt.executeUpdate() == 0) {
+                throw new RuntimeException("Failed to create comment");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private Star starFromResult(ResultSet starResult) throws SQLException {
         Star star = new Star(starResult.getInt("id"), getTagsOfStar(starResult.getInt("id")), starResult.getString("description"), starResult.getString("sender_email"), starResult.getString("receiver_email"));
         star.setSenderUser(DBController.getInstance().getUser(star.getSender()));

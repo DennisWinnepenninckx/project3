@@ -88,20 +88,42 @@ public class Star {
     public List<String> getTags() {
         return tags;
     }
-    public String getTagsInString(){
+
+    public String getTagsInString() {
         String result = "";
-        for (String s : tags){
-            result += "-"+s + "\n";
+        for (String s : tags) {
+            result += "-" + s + "\n";
         }
         return result;
     }
 
     @Override
     public String toString() {
-        return "Star{" +
-                "sender='" + sender + '\'' +
-                ", receiver='" + receiver + '\'' +
+        return "{" +
+                "'id':" + id +
+                ", 'tags':" + tagsToString() +
+                ", 'description':'" + description + '\'' +
+                ", 'sender':'" + sender + '\'' +
+                ", 'receiver':'" + receiver + '\'' +
+                ", 'senderUserFirstname':'" + senderUser.getFirstName() + "'" +
+                ", 'senderUserLastname':'" + senderUser.getLastname() + "'" +
+                ", 'receiverUserFirstname':'" + receiverUser.getFirstName() + "'" +
+                ", 'receiverUserLastname':'" + receiverUser.getLastname() + "'" +
+                ", 'date':'" + date + "'" +
+                ", 'comments':" + comments +
                 '}';
+    }
+
+    private String tagsToString() {
+        StringBuilder tagst = new StringBuilder("[");
+        for (int i = 0; i < tags.size(); i++) {
+            tagst.append("'").append(tags.get(i)).append("'");
+            if (i < tags.size() - 1) {
+                tagst.append(",");
+            }
+        }
+        tagst.append("]");
+        return tagst.toString();
     }
 
     public void setTags(List<String> tags) {
@@ -132,17 +154,18 @@ public class Star {
         this.receiver = receiver;
     }
 
-    public User getUserReceiver(){
-        for (User u: new UserService().getUsers()){
-            if (u.getEmail().equals(receiver)){
+    public User getUserReceiver() {
+        for (User u : new UserService().getUsers()) {
+            if (u.getEmail().equals(receiver)) {
                 return u;
             }
         }
         throw new DBException("Did not find user with email " + receiver);
     }
-    public User getUserSender(){
-        for (User u: new UserService().getUsers()){
-            if (u.getEmail().equals(sender)){
+
+    public User getUserSender() {
+        for (User u : new UserService().getUsers()) {
+            if (u.getEmail().equals(sender)) {
                 return u;
             }
         }

@@ -13,25 +13,20 @@
 <script src="static/javascript/tagify.min.js"></script>
 <link href="static/css/tagify.css" rel="stylesheet">
 
-<section>
+<section id="give-star">
+    <span class="material-icons close" id="close">close</span>
     <form action="Controller">
         <legend>
             Give someone a Star!
         </legend>
-        <c:if test="${error!= null}">
-            <div class="alert alert-danger">
-                <p>${error}</p>
-            </div>
-        </c:if>
         <input type="hidden" name="command" value="GiveStar">
-        <textarea name="description" maxlength="128"></textarea>
+        <textarea name="description" placeholder="Why do I deserve a star?" maxlength="128"></textarea>
         <input class="names-input" name="receiver" placeholder="Send star to">
         <input class="tags-input" name='tags' placeholder='Tags'>
         <button type="submit">Give Star!</button>
     </form>
 </section>
 <script>
-
     let input = document.querySelector("input[name=tags]");
     let tagify = new Tagify(input, {
         enforceWhitelist: true,
@@ -45,19 +40,48 @@
         }
     });
 
-    let input2 = document.querySelector(".names-input");
-    let tagify2 = new Tagify(input2, {
-        enforceWhitelist: true,
-        whitelist: [<c:forEach items="${receivers}" var="receiver">
-            <c:if test="${user.email != receiver.email}">
-            "<c:out value='${receiver.email}'/>",</c:if>
-            </c:forEach>],
-        maxTags: 1,
-        autoComplete: true,
-        transformTag: transformTag,
-        dropdown: {
-            enabled: 0,
-            maxItems: 20,
+    window.addEventListener("load", bla, false);
+
+    function bla() {
+        let close = document.getElementById("close");
+        close.addEventListener("click", onClose, false);
+    }
+
+    function onClose() {
+        let form = document.getElementById("give-star");
+        form.classList.remove("appear");
+    }
+
+    $.ajax({
+        type: 'POST',
+        data: {"op":"emails"},
+        url: 'Controller?command=JsonController',
+        success: function (result) {
+            result = JSON.parse(result);
+            let input2 = document.querySelector(".names-input");
+            let tagify2 = new Tagify(input2, {
+                enforceWhitelist: true,
+                whitelist: result,
+                maxTags: 1,
+                autoComplete: true,
+                transformTag: transformTag,
+                dropdown: {
+                    enabled: 0,
+                    maxItems: 20,
+                }
+            });
+
+            tagify2.on('add', onAddTag)
+                .on('remove', onRemoveTag)
+                .on('input', onInput)
+                .on('edit', onTagEdit)
+                .on('invalid', onInvalidTag)
+                .on('click', onTagClick)
+                .on('focus', onTagifyFocusBlur)
+                .on('blur', onTagifyFocusBlur)
+                .on('dropdown:show', onDropdownShow)
+                .on('dropdown:hide', onDropdownHide)
+                .on('dropdown:select', onDropdownSelect)
         }
     });
 
@@ -77,15 +101,4 @@
         .on('dropdown:hide', onDropdownHide)
         .on('dropdown:select', onDropdownSelect)
 
-    tagify2.on('add', onAddTag)
-        .on('remove', onRemoveTag)
-        .on('input', onInput)
-        .on('edit', onTagEdit)
-        .on('invalid', onInvalidTag)
-        .on('click', onTagClick)
-        .on('focus', onTagifyFocusBlur)
-        .on('blur', onTagifyFocusBlur)
-        .on('dropdown:show', onDropdownShow)
-        .on('dropdown:hide', onDropdownHide)
-        .on('dropdown:select', onDropdownSelect)
 </script>

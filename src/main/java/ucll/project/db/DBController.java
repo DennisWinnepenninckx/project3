@@ -1,5 +1,6 @@
 package ucll.project.db;
 
+import ucll.project.domain.star.Comment;
 import ucll.project.domain.star.Star;
 import ucll.project.domain.user.InvalidLogin;
 import ucll.project.domain.user.User;
@@ -16,6 +17,10 @@ public class DBController {
     private DBController() {
         starDB = new StarDB();
         userRepositoryDb = new UserRepositoryDb();
+    }
+
+    public void makeComment(Comment comment) {
+        starDB.makeComment(comment);
     }
 
     public static DBController getInstance() {

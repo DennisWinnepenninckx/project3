@@ -1,6 +1,7 @@
 package ucll.project.ui.controller;
 
 import ucll.project.db.DBController;
+import ucll.project.domain.star.Comment;
 import ucll.project.domain.user.User;
 
 import javax.servlet.RequestDispatcher;
@@ -16,13 +17,11 @@ public class MakeComment extends RequestHandler {
 
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String comment = request.getParameter("comment");
+        String commentSt = request.getParameter("comment");
         String star = request.getParameter("star");
-        User user = (User) request.getSession().getAttribute("user");
-
-
-
-        RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-        view.forward(request, response);
+        String user = ((User)request.getSession().getAttribute("user")).getEmail();
+        Comment comment = new Comment(user, commentSt, Integer.parseInt(star));
+        getUserService().makeComment(comment);
+        response.sendRedirect("Controller");
     }
 }

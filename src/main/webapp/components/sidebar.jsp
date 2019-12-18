@@ -19,7 +19,9 @@
     </c:if>
     <ul>
         <c:if test="${user!=null}">
-
+            <li class="link-nav" id="give-star-button">
+                <a href="#"><span class="material-icons">star</span><span>Give Star</span></a>
+            </li>
             <li ${param.page eq "home" ? "id=current":""} class="link-nav">
                 <a href="Controller?command=Index"><span class="material-icons">home</span><span>Home</span></a>
             </li>
@@ -51,3 +53,17 @@
 </nav>
 <div id="nav-placeholder">
 </div>
+
+<script>
+    window.addEventListener("load", initPage, false);
+
+    function initPage() {
+        let button = document.getElementById("give-star-button");
+        button.addEventListener("click", onGiveStar, false);
+    }
+
+    function onGiveStar() {
+        let form = document.getElementById("give-star");
+        form.classList.add("appear");
+    }
+</script>

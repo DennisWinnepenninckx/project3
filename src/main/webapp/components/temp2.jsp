@@ -13,24 +13,22 @@
 <body>
 <main>
 
+    <c:choose>
+        <c:when test="${amountOfStars eq null}">
+            <h2>Stars left this month: ∞ </h2>
+        </c:when>
+        <c:otherwise>
+            <h2>Stars left this month: ${amountOfStars}</h2>
+        </c:otherwise>
+    </c:choose>
     <h2>Received Stars</h2>
-    <jsp:include page="components/star_overview.jsp"/>
-    <ul class="content-list" id="received">
-    </ul>
+    <jsp:include page="components/received-stars.jsp"/>
     <h2>Given Stars</h2>
-    <jsp:include page="components/star_overview.jsp"/>
-    <ul class="content-list" id="sent">
-    </ul>
+    <jsp:include page="components/given-stars.jsp"/>
 </main>
 
 <jsp:include page="components/sidebar.jsp">
     <jsp:param name="page" value="profile"/>
 </jsp:include>
 </body>
-
-<script>
-    let email = "${my_email}";
-    getReceivedStars("received", email);
-    getSenderStars("sent", email);
-</script>
 </html>
