@@ -18,6 +18,8 @@
 <jsp:include page="components/given-stars.jsp"/>
 </main>
 
-<jsp:include page="components/sidebar.jsp"/>
+<jsp:include page="components/sidebar.jsp">
+    <jsp:param name="page" value="profile"/>
+</jsp:include>
 </body>
 </html>

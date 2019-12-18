@@ -24,7 +24,7 @@ public class GiveStar extends RequestHandler {
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
         String sender_email = user.getEmail();
-        if(getUserService().usersSendStarsThisMonth(user)>=3 || !user.getSuperUser()){
+        if(getUserService().usersSendStarsThisMonth(user)>=3 && !user.getSuperUser()){
             throw new IllegalStateException("geen superuser en meer dan 3 sterren gestuurd deze maand");
         }
         String receiver_email = request.getParameter("receiver");
