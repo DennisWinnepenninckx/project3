@@ -1,9 +1,6 @@
 package ucll.project.application;
 
-import ucll.project.domain.user.User;
-import ucll.project.domain.user.UserRepositoryDb;
-
-import java.util.ArrayList;
+import ucll.project.db.UserRepositoryDb;
 
 public class main {
     public static void main(String[] args) {

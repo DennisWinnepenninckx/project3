@@ -2,33 +2,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<!-- Header -->
 <!doctype html>
 <html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="static/css/style.css" rel="stylesheet">
-    <title>All users</title>
-</head>
+<jsp:include page="components/header.jsp"/>
 <body>
-
-<!-- Navigation -->
-<jsp:include page="sidebar.jsp"/>
-<!-- Page Content -->
-
-
-<main role="main" class="container">
-
-    <div class="starter-template">
-        <h1>Users page</h1>
-
-    </div>
+<main>
+    <h1>User Overview</h1>
     <table>
         <tr>
             <th class="yeet">First Name</th>
@@ -42,17 +21,8 @@
             <td>${user.email}</td>
         </tr>
         </c:forEach>
-
+    </table>
 </main>
-</body>
-<!-- Footer -->
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+<jsp:include page="components/sidebar.jsp"></jsp:include>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package ucll.project.domain.user;
 
-import ucll.project.domain.star.Star;
+import ucll.project.db.UserRepository;
+import ucll.project.db.UserRepositoryDb;
 
 import java.util.List;
 

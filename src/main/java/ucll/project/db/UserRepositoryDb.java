@@ -1,6 +1,7 @@
-package ucll.project.domain.user;
-import ucll.project.db.ConnectionPool;
+package ucll.project.db;
 import ucll.project.domain.star.Star;
+import ucll.project.domain.user.InvalidLogin;
+import ucll.project.domain.user.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -130,15 +131,6 @@ public class UserRepositoryDb implements UserRepository {
         user.setHashedPassword(rs.getString("password"));
         user.setIs_superuser(rs.getString("superuser").equals("true"));
         return user;
-    }
-
-    private static Star starFromResult(ResultSet rs) throws SQLException {
-        Star star = new Star();
-        star.setId(rs.getInt("id"));
-        star.setDescription(rs.getString("description"));
-        star.setDescription(rs.getString("sender_email"));
-        star.setDescription(rs.getString("receiver_email"));
-        return star;
     }
 
     private static int stmtSetUser(PreparedStatement stmt, int i, User user) throws SQLException {

@@ -1,5 +1,6 @@
 package ucll.project.ui.controller;
 
+import ucll.project.db.DBController;
 import ucll.project.domain.user.UserService;
 
 import javax.servlet.ServletException;
@@ -9,7 +10,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class Logout extends RequestHandler{
-    public Logout(String command, UserService userService) {
+
+    public Logout(String command, DBController userService) {
         super(command, userService);
     }
 

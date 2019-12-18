@@ -1,4 +1,4 @@
-Feature:
+Feature: Logout
   As a user
   I can log out
   So that someone else can login on that device
