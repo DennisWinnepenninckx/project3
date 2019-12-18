@@ -7,24 +7,22 @@
 <jsp:include page="components/header.jsp"/>
 <body>
 <main>
-    <c:if test="${not empty errors}">
-        <div class="alert alert-danger">
-            <ul>
-                <c:forEach var="error" items="${errors}">
-                    <li>${error}</li>
-                </c:forEach>
-            </ul>
-        </div>
-    </c:if>
-    <form id="login" novalidate="novalidate" action="Controller?command=Login" method="post">
+
+    <form id="login" action="Controller?command=Login" method="post">
         <legend>
             Login!
         </legend>
+
+        <div class="alert alert-danger">
+            <p>${error}</p>
+        </div>
+
         <label for="email">email</label>
         <input type="email" id="email" name="email" value="<c:out value='${email}'/>" required>
         <label for="password">password</label>
         <input type="password" id="password" name="password" required value="">
-        <button type="submit">Login!</button>
+        <button type="submit" >Login!</button>
+
     </form>
 </main>
 <jsp:include page="components/sidebar.jsp">

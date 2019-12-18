@@ -23,24 +23,24 @@ public class Login extends RequestHandler {
 
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        List<String> errors = new ArrayList<>();
+        String error = null;
         User user = null;
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         request.setAttribute("email", email);
         try {
-            user = getUserService().loginUser(email, password);
+            user = getUserService().loginUser(email,password);
         } catch (InvalidLogin e) {
-            errors.add(e.getMessage());
+            error=(e.getMessage());
         }
 
-        if (errors.size() == 0 && user != null) {
+        if (error==null && user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             response.sendRedirect("Controller");
         } else {
-            request.setAttribute("errors", errors);
+            request.setAttribute("error", error);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }

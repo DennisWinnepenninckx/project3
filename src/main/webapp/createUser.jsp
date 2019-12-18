@@ -22,15 +22,6 @@
                 for="admin">Admin</label>
             <input class="checkbox" type="checkbox" name="manager" value="manager" id="manager"> <label
                 for="manager">Manager</label>
-        <p>
-            <label for="firstName">First Name</label><input type="text" id="firstName" name="firstName" value="" required/>
-        </p>
-        <p>
-            <label for="lastName">Last Name</label><input type="text" id="lastName" name="lastName" value="" required/>
-        </p>
-        <p>
-            <label for="email">Email</label><input type="email" id="email" name="email" value="" required/>
-        </p>
         <button type="submit">Create User!</button>
     </form>
 </main>
