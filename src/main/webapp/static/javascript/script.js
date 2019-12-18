@@ -5,4 +5,3 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // Jquery can also be used
 });
 
-
