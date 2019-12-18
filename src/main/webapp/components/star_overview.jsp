@@ -63,6 +63,15 @@
                     classes[index].style.display = "none";
                 }
             }
+        }else{
+            for (let index = 0; index < classes.length; index++) {
+                let txt = classes[index].children[0].innerHTML;
+                if (txt.toLowerCase().includes(searchQuery)) {
+                    classes[index].style.display = "block";
+                } else {
+                    classes[index].style.display = "none";
+                }
+            }
         }
         if (!searchQuery || /^\s*$/.test(searchQuery)) {
             for (let index = 0; index < classes.length; index++) {
@@ -71,15 +80,22 @@
         }
         let counter = 0;
         for (let index = 0; index < classes.length; index++) {
-            if (classes[index].style.display == "none"){counter++;}
-            if (counter = classes.length){document.getElementById("sorry").style.display = "block";}
-            else{document.getElementById("sorry").style.display = "none";}
+            if (classes[index].style.display == "none") {
+                counter++;
+            }
+            if (counter == classes.length) {
+                document.getElementById("sorry").style.display = "block";
+            } else {
+                document.getElementById("sorry").style.display = "none";
+            }
         }
     });
 
 </script>
 <ul class="content-list">
-    <div class="star-class" id="sorry" style="display: none;">No matches found, be the first!</div>
+    <div class="star-class" id="sorry" style="display: none;">
+        no matches found, be the first!
+    </div>
     <c:forEach items="${stars}" var="star">
         <li class="Star">
             <div class="star-class">
