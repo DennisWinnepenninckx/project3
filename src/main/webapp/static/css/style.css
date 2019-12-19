@@ -279,6 +279,12 @@ button.material-icons {
     padding-bottom: 0;
 }
 
+.comment-sender {
+    display: inline-block;
+    min-width: 10rem;
+    margin: 0 1rem 0 0;
+}
+
 .new-comment input {
     height: 100%;
 }
@@ -289,10 +295,6 @@ button.material-icons {
 
 .comment {
     display: flex;
-}
-
-.comment p {
-    margin: 0 1rem 0 0;
 }
 
 .star-class {
@@ -338,7 +340,6 @@ button.material-icons {
 .star-class img {
     margin-bottom: .5rem;
     border-radius: 50%;
-    border: 1px solid #144a91;
 }
 
 .star-class ul {
@@ -375,6 +376,7 @@ button.material-icons {
 }
 
 .account-banner {
+    position: relative;
     padding: 2rem;
     display: flex;
     align-items: center;
@@ -411,7 +413,8 @@ button.material-icons {
     box-sizing: border-box;
 }
 
-#give-star {
+
+#give-star, #imageForm {
     display: block;
     position: absolute;
     height: 350px;
@@ -426,11 +429,31 @@ button.material-icons {
     transition: .6s left;
 }
 
-#give-star.appear {
+#change-pic {
+    position: absolute;
+    font-size: 2rem;
+    left: 1rem;
+    display: none;
+    color: white;
+    padding: 1rem;
+    background: rgba(0,0,0,.4);
+    border-radius: 50%;
+    transition: .3s;
+}
+
+#change-pic:hover {
+    background: rgba(0,0,0,.8);
+}
+
+.account-banner:hover #change-pic {
+    display: block;
+}
+
+#give-star.appear, #imageForm.appear {
     left: 50%;
 }
 
-#give-star .close {
+#give-star .close, #imageForm .close {
     position: absolute;
     display: block;
     top: 0;
@@ -460,8 +483,11 @@ button.material-icons {
 
 #starsGaveAway span:hover {
     position: relative;
-    cursor: pointer;
     top: -.2rem;
+}
+
+#starsGaveAway:hover {
+    cursor: default;
 }
 
 .loader {
@@ -479,7 +505,7 @@ button.material-icons {
     100% { transform: rotate(360deg); }
 }
 
-#give-star .close:hover {
+#give-star .close:hover, #imageForm .close:hover {
     cursor: pointer;
 }
 

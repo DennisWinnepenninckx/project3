@@ -13,6 +13,7 @@
         <a href="Controller?command=Profile">
             <section  ${param.page eq "profile" ? "id=current":""} class="account-banner">
                 <img class="profile-pic" src="Controller?command=GetImage&fileName=${user.profilepic}" alt="profile_pic">
+                <div id="change-pic" class="material-icons">camera_alt</div>
                 <h3>${user.firstName} ${user.lastname}</h3>
             </section>
         </a>
@@ -81,16 +82,47 @@
 </div>
 <jsp:include page="give-star.jsp"/>
 
+<form id="imageForm" action="Controller?command=Image" method="post" enctype="multipart/form-data">
+    <span class="material-icons close" id="close2">close</span>
+    <label for="file">Image</label>
+    <input type="file" name="file" id="file" accept="image/*" multiple>
+    <button type="submit">upload</button>
+</form>
+
 <script>
     window.addEventListener("load", initPage, false);
 
     function initPage() {
         let button = document.getElementById("give-star-button");
         button.addEventListener("click", onGiveStar, false);
+        let b2 = document.getElementById("change-pic");
+        b2.addEventListener("click", onChangePic, false);
+
+        $('#change-pic').click(function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    }
+
+    function onChangePic() {
+        let form = document.getElementById("imageForm");
+        form.classList.add("appear");
     }
 
     function onGiveStar() {
         let form = document.getElementById("give-star");
         form.classList.add("appear");
+    }
+
+    window.addEventListener("load", bla2, false);
+
+    function bla2() {
+        let close = document.getElementById("close2");
+        close.addEventListener("click", onClose2, false);
+    }
+
+    function onClose2() {
+        let form = document.getElementById("imageForm");
+        form.classList.remove("appear");
     }
 </script>

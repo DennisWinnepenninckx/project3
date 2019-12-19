@@ -33,10 +33,7 @@
 
 <li id="comment" class="comment">
     <p>
-        <b class="comment-sender"></b>
-    </p>
-    <p class="comment-comment">
-
+        <b class="comment-sender"></b><span class="comment-comment"></span>
     </p>
 </li>
 
