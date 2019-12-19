@@ -421,6 +421,10 @@ button.material-icons {
     padding: 1rem;
 }
 
+#give-star {
+    z-index: 10;
+}
+
 #give-star .close:hover {
     cursor: pointer;
 }
