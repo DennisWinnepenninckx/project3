@@ -47,7 +47,7 @@
     <ul>
         <c:if test="${user!=null}">
             <li class="link-nav" id="give-star-button">
-                <a href="#"><span class="material-icons">star</span><span>Give Star</span></a>
+                <a href="#" onclick="return false;"><span class="material-icons">star</span><span>Give Star</span></a>
             </li>
             <li ${param.page eq "home" ? "id=current":""} class="link-nav">
                 <a href="Controller?command=Index"><span class="material-icons">home</span><span>Home</span></a>

@@ -127,6 +127,7 @@ function buildStar(star) {
 
 function buildComment(comment) {
     let commentEl = document.getElementById("comment").cloneNode(true);
+    commentEl.style.display = "block";
     let sender = commentEl.getElementsByClassName("comment-sender")[0];
     sender.innerText = comment.user_firstname + " " + comment.user_lastname;
     let content = commentEl.getElementsByClassName("comment-comment")[0];

@@ -31,7 +31,7 @@
     </ul>
 </li>
 
-<li id="comment" class="comment">
+<li id="comment" class="comment" style="display: none">
     <p>
         <b class="comment-sender"></b><span class="comment-comment"></span>
     </p>

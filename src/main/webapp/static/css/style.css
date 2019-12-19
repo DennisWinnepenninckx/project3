@@ -98,10 +98,9 @@ img {
 }
 
 main {
-
     font-family: 'Libre Franklin', sans-serif;
     width: 70%;
-    padding: 2rem;
+    padding: 0;
 }
 
 h1 {
@@ -416,7 +415,7 @@ button.material-icons {
 
 #give-star, #imageForm {
     display: block;
-    position: absolute;
+    position: fixed;
     height: 350px;
     margin-left: -300px;
     top: 50%;
