@@ -6,4 +6,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="static/javascript/script.js"></script>
+    <link rel="shortcut icon" type="image/png" href="static/imgs/star16px.png"/>
+    <link rel="shortcut icon" type="image/png" href="static/imgs/star16px.png"/>
+
+
 </head>
