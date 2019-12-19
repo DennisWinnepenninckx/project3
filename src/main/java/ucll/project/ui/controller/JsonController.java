@@ -47,6 +47,7 @@ public class JsonController extends RequestHandler {
             case "stars":
                 String sender = request.getParameter("sender");
                 String receiver = request.getParameter("receiver");
+                String searchTerm = request.getParameter("searchTerm");
                 List<Star> stars;
                 if (sender!=null) {
                     stars = getUserService().getStarsUserGaveAway(getUserService().getUser(sender));
@@ -54,24 +55,29 @@ public class JsonController extends RequestHandler {
                 else if (receiver!=null) {
                     stars = getUserService().getStarsUserReceived(getUserService().getUser(receiver));
                 }
+                else if (searchTerm!= null) {
+                    stars = getUserService().searchStars(request.getParameter("searchTerm"));
+                }
                 else {
                     stars = getUserService().getAllStars();
                 }
-
                 String start = request.getParameter("start");
                 String stop = request.getParameter("stop");
-
+                List<Star> stars1 = new ArrayList<>();
                 if (start != null) {
-                    stars = stars.subList(Integer.parseInt(start), Integer.parseInt(stop));
+                    if (Integer.parseInt(start) < stars.size()) {
+                        int i = Integer.parseInt(start);
+                        while (i <= Integer.parseInt(stop) && i < stars.size()) {
+                            stars1.add(stars.get(i));
+                            i++;
+                        }
+                    }
+                    stars = stars1;
                 }
                 out.print(stars.toString().replaceAll("'", "\""));
                 break;
             case "whoami":
                 out.print(((User)request.getSession().getAttribute("user")).getEmail());
-                break;
-            case "searchStars":
-                List<Star> stars2 = getUserService().searchStars(request.getParameter("searchTerm"));
-                out.print(stars2.toString().replaceAll("'", "\""));
                 break;
         }
     }

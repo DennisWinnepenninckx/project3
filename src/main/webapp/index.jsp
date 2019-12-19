@@ -12,10 +12,10 @@
                 <p>${errors}</p>
             </div>
         </c:if>
-        <jsp:include page="components/give-star.jsp"/>
         <jsp:include page="components/star_overview.jsp"/>
-        <form action="#">
-            <input type="text" style=" border-radius: 5px" width="50%" id="starSearch" class="material-icons" placeholder="search">
+        <form id="searchBar" action="#" style="display: flex">
+            <span class="material-icons">search</span>
+            <input type="text" style=" border-radius: 5px" width="50%" id="starSearch">
         </form>
         <ul class="content-list" id="all">
         </ul>
@@ -29,14 +29,25 @@
 </html>
 
 <script>
-    getAllStars("all");
+    let searchBar = document.getElementById("searchBar");
+    searchBar.addEventListener("submit", searchSomething, false);
 
+    searchStars("all");
 
-    let inputStarSearch = document.getElementById("starSearch");
+    function searchSomething() {
+        let searchWord = document.getElementById("starSearch");
+        searchTerm = searchWord.value;
+        searchStars("all");
+    }
 
-    inputStarSearch.addEventListener('input', function () {
-        searchStars(inputStarSearch.value.toLowerCase(), "all");
+    window.onscroll = function() {
+        let d = document.documentElement;
+        let offset = d.scrollTop + window.innerHeight;
+        let height = d.offsetHeight;
 
-    });
+        if (offset === height) {
+            addToListSearch("all")
+        }
+    };
 
 </script>
