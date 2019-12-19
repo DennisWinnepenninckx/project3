@@ -30,5 +30,6 @@ public class Users extends RequestHandler {
             request.setAttribute("users", this.getUserService().getAllUsers());
             request.getRequestDispatcher("users.jsp").forward(request, response);
         }
+
     }
 }

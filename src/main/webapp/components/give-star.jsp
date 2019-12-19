@@ -33,7 +33,7 @@
             </tr>
         </c:forEach>
         <input type="hidden" name="command" value="GiveStar">
-        <textarea name="description" placeholder="Why do I deserve a star?" maxlength="128"></textarea>
+        <textarea class="nonresizable" name="description" placeholder="Why does he/she deserve a star?" maxlength="128"></textarea>
         <input class="names-input" name="receiver" placeholder="Send star to">
         <input class="tags-input" name='tags' placeholder='Tags'>
         <button type="submit">Give Star!</button>

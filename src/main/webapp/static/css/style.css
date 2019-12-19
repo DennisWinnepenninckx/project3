@@ -440,3 +440,8 @@ button.material-icons {
     display: block;
     opacity: 1;
 }
+
+textarea.nonresizable{
+    resize: none;
+    box-sizing: border-box;
+}
