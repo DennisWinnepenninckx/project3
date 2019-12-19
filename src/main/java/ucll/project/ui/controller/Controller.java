@@ -47,6 +47,7 @@ public class Controller extends HttpServlet {
             else {
                 if (request.getSession().getAttribute("user")!= null) {
                     request.setAttribute("my_email", ((User)request.getSession().getAttribute("user")).getEmail());
+                    request.setAttribute("starsGave", service.usersSendStarsThisMonth((User) request.getSession().getAttribute("user")));
                 }
                 RequestHandler handler = handlerFactory.getHandler(command, service);
                 handler.handleRequest(request, response);

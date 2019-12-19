@@ -16,6 +16,32 @@
                 <h3>${user.firstName} ${user.lastname}</h3>
             </section>
         </a>
+        <div id="starsGaveAway" ${user.superUser ? 'class="superuserstars"':''}>
+            <c:choose>
+                <c:when test="${starsGave >= 3}">
+                    <span class="material-icons">star_border</span>
+                </c:when>
+                <c:otherwise>
+                    <span class="material-icons">star</span>
+                </c:otherwise>
+            </c:choose>
+            <c:choose>
+                <c:when test="${starsGave >= 2}">
+                    <span class="material-icons">star_border</span>
+                </c:when>
+                <c:otherwise>
+                    <span class="material-icons">star</span>
+                </c:otherwise>
+            </c:choose>
+            <c:choose>
+                <c:when test="${starsGave >= 1}">
+                    <span class="material-icons">star_border</span>
+                </c:when>
+                <c:otherwise>
+                    <span class="material-icons">star</span>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </c:if>
     <ul>
         <c:if test="${user!=null}">
