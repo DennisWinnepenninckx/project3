@@ -22,13 +22,21 @@ public class NewPassword extends RequestHandler {
         String p2=request.getParameter("p2");
 
         if(p1!=null && p1.equals(p2)){
-            User user = (User) request.getSession().getAttribute("user");
-            user.setNewPassword(p1);
-            getUserService().resetPassword(user);
+            try{
+                User user = (User) request.getSession().getAttribute("user");
+                user.setNewPassword(p1);
+                getUserService().resetPassword(user);
+                response.sendRedirect("Controller");
+            }catch(Exception e){
+                error="passwords empty";
+                request.setAttribute("error",error);
+                request.getRequestDispatcher("profile.jsp").forward(request,response);
+            }
         }else{
             error="passwords not identical";
             request.setAttribute("error",error);
+            request.getRequestDispatcher("profile.jsp").forward(request,response);
         }
-        response.sendRedirect("Controller?command=Profile");
+
     }
 }
