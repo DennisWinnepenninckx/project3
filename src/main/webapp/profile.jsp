@@ -19,7 +19,7 @@
         <button type="submit">upload</button>
     </form>
 
-    <form id="login" novalidate action="Controller?command=NewPassword" method="post">
+    <form id="passwordReset" novalidate action="Controller?command=NewPassword" method="post">
         <legend>
             Reset password
         </legend>

@@ -18,17 +18,17 @@ public class NewPassword extends RequestHandler {
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, Exception {
         String error = "";
-        String p1=request.getParameter("password1");
-        String p2=request.getParameter("password2");
-        if(p1.equals(p2)){
+        String p1=request.getParameter("p1");
+        String p2=request.getParameter("p2");
+
+        if(p1!=null && p1.equals(p2)){
             User user = (User) request.getSession().getAttribute("user");
             user.setNewPassword(p1);
-            getUserService().updateUser(user);
+            getUserService().resetPassword(user);
         }else{
             error="passwords not identical";
             request.setAttribute("error",error);
         }
-        request.getRequestDispatcher("profile.jsp").forward(request,response);
-
+        response.sendRedirect("Controller?command=Profile");
     }
 }

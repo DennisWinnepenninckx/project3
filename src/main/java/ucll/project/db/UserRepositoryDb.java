@@ -112,6 +112,22 @@ public class UserRepositoryDb implements UserRepository {
     }
 
     @Override
+    public void resetPassword(User user) {
+        try (Connection conn = ConnectionPool.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("UPDATE \"user\" SET " +
+                     "password = ? " +
+                     "WHERE email = ? "))
+        {
+            stmt.setString(1, user.getHashedPassword());
+            stmt.setString(2,user.getEmail());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @Override
     public void delete(User user) {
         try (Connection conn = ConnectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement("DELETE FROM \"user\" WHERE email = ?"))

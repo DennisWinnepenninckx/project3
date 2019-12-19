@@ -23,6 +23,9 @@ public interface UserRepository {
     // UPDATE
     void update(User user);
 
+    // RESET PASSWORD
+    void resetPassword(User user);
+
     // DELETE
     void delete(User user);
     void deleteUsingEmail(String email);
