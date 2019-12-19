@@ -16,7 +16,7 @@ public class AddUser extends RequestHandler {
     }
 
     @Override
-    public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         User sessionUser = (User) session.getAttribute("user");
         if (sessionUser == null || !sessionUser.isAdmin()){
