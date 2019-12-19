@@ -9,7 +9,7 @@
 <li style="display: none" id="copy" class="this-is-a-star">
     <div class="star-class">
         <div>
-            <img src="../static/imgs/profile.png">
+            <img class="ppicture" src="">
             <span class="receiver"></span>
         </div>
         <div style="word-wrap: break-word;">

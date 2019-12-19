@@ -39,6 +39,7 @@ public class AddUser extends RequestHandler {
             User user = new User(Email,FirstName,LastName,"t",isSuperuser);
             user.setAdmin(isAdmin);
             user.setManager(isManager);
+            user.setProfilepic("profile.png");
             user.setNewPassword(request.getParameter("password"));
 
             try{

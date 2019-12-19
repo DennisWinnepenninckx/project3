@@ -12,7 +12,7 @@
     <c:if test="${user!=null}">
         <a href="Controller?command=Profile">
             <section  ${param.page eq "profile" ? "id=current":""} class="account-banner">
-                <img class="profile-pic" src="../static/imgs/profile.png" alt="profile_pic">
+                <img class="profile-pic" src="Controller?command=GetImage&fileName=${user.profilepic}" alt="profile_pic">
                 <h3>${user.firstName} ${user.lastname}</h3>
             </section>
         </a>

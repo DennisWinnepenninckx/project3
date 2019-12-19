@@ -107,6 +107,7 @@ public class Star {
                 ", 'receiver':'" + receiver + '\'' +
                 ", 'senderUserFirstname':'" + senderUser.getFirstName() + "'" +
                 ", 'senderUserLastname':'" + senderUser.getLastname() + "'" +
+                ", 'receiverPic':'" + receiverUser.getProfilepic() + "'" +
                 ", 'receiverUserFirstname':'" + receiverUser.getFirstName() + "'" +
                 ", 'receiverUserLastname':'" + receiverUser.getLastname() + "'" +
                 ", 'date':'" + date + "'" +

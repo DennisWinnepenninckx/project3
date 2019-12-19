@@ -143,7 +143,28 @@ public class UserRepositoryDb implements UserRepository {
         user.setSuperUser(rs.getBoolean("superuser"));
         user.setAdmin(rs.getBoolean("admin"));
         user.setManager(rs.getBoolean("manager"));
+        user.setProfilepic(rs.getString("profilepic"));
         return user;
+    }
+
+    public void updatePic(User user) {
+        try (Connection conn = ConnectionPool.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("update \"user\" SET profilepic = ? where email = ?",
+                     Statement.RETURN_GENERATED_KEYS))
+        {
+            stmt.setString(1, user.getProfilepic());
+            stmt.setString(2, user.getEmail());
+            if (stmt.executeUpdate() == 0) {
+                throw new RuntimeException("Failed to create user");
+            }
+
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                generatedKeys.next();
+                user.setEmail(generatedKeys.getString(1));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static int stmtSetUser(PreparedStatement stmt, int i, User user) throws SQLException {
@@ -154,6 +175,7 @@ public class UserRepositoryDb implements UserRepository {
         stmt.setBoolean(i++, user.getSuperUser());
         stmt.setBoolean(i++, user.isAdmin());
         stmt.setBoolean(i++, user.isManager());
+        stmt.setString(i++, user.getProfilepic());
         return i;
     }
 }
