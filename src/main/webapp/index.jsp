@@ -13,7 +13,7 @@
             </div>
         </c:if>
         <jsp:include page="components/star_overview.jsp"/>
-        <form id="searchBar" action="#" style="display: flex">
+        <form id="searchBar" action="#" style="display: flex" onsubmit="return false;">
             <span class="material-icons">search</span>
             <input type="text" style=" border-radius: 5px" width="50%" id="starSearch">
         </form>
