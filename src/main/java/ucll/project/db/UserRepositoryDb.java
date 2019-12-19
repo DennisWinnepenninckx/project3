@@ -122,6 +122,17 @@ public class UserRepositoryDb implements UserRepository {
             throw new RuntimeException(e);
         }
     }
+    @Override
+    public void deleteUsingEmail(String email){
+        try (Connection conn = ConnectionPool.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("DELETE FROM \"user\" WHERE email = ?"))
+        {
+            stmt.setString(1, email);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private static User userFromResult(ResultSet rs) throws SQLException {
         User user = new User();
