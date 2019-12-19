@@ -126,6 +126,7 @@ nav {
     position: fixed;
     right: 0;
     background: #144a91;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 #nav-placeholder {
@@ -293,6 +294,7 @@ button.material-icons {
 }
 
 .star-class {
+    margin: 0;
     padding: 2rem;
     box-shadow: 0 0 5px #AAAAAA;
     display: flex;
@@ -303,6 +305,13 @@ button.material-icons {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 1.2rem;
     color: #144a91;
+}
+
+.this-is-a-star {
+    padding: 0;
+    background: #F0F0F0;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
 .star-class .description {
@@ -401,18 +410,22 @@ button.material-icons {
 }
 
 #give-star {
-    display: none;
+    display: block;
     position: absolute;
     height: 350px;
-    width: 600px;
     margin-left: -300px;
     top: 50%;
     margin-top: -175px;
-    left: 50%;
+    left: -100%;
     background: white;
     box-shadow: 0 0 10px #144a91;
-    opacity: 0;
-    transition: 2s opacity;
+    width: 600px;
+    z-index: 10;
+    transition: .6s left;
+}
+
+#give-star.appear {
+    left: 50%;
 }
 
 #give-star .close {
@@ -426,10 +439,6 @@ button.material-icons {
     margin-top: -30px;
     color: white;
     padding: 1rem;
-}
-
-#give-star {
-    z-index: 10;
 }
 
 #starsGaveAway {
@@ -474,11 +483,6 @@ button.material-icons {
 
 #give-star form input, #give-star form select, #give-star form textarea, #give-star .tags-input, #give-star .names-input {
     width: 100%;
-}
-
-#give-star.appear {
-    display: block;
-    opacity: 1;
 }
 
 textarea.nonresizable{
