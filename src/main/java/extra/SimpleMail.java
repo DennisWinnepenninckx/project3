@@ -34,7 +34,7 @@ public class SimpleMail {
 
         MimeMessage message = new MimeMessage(mailSession);
         message.setSubject("Star-website");
-        message.setContent(StringMessage,"text/plain");
+        message.setContent(StringMessage,"text/html");
         message.setFrom(new InternetAddress(SMTP_AUTH_USER));
         message.addRecipient(Message.RecipientType.TO,
                 new InternetAddress(receiver));
