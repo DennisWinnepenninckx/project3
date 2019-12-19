@@ -29,16 +29,9 @@ public class Index extends RequestHandler {
         //String sender = readCookie(request, "loginCookie"); /// have to get logged in user from this
         loggedIn(request, response);
 
-        List<String> tags = new ArrayList<>();
-        tags.add("Excel");
-        tags.add("HardWork");
-        tags.add("LateNights");
-        tags.add("Wow!");
-        request.setAttribute("tags", tags);
-
         request.setAttribute("receivers", getUserService().getAllUsers());
 
-        request.setAttribute("stars", getUserService().getAllStars());
+        //request.setAttribute("stars", getUserService().getAllStars());
 
         RequestDispatcher view = request.getRequestDispatcher("index.jsp");
         view.forward(request, response);

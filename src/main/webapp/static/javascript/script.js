@@ -41,6 +41,7 @@ function searchStars(id) {
             result = $.parseJSON(result);
             clearStarsArray(result);
             buildStars(result, id);
+            document.getElementById("spinner").style.display = "none";
         }
     });
 }
@@ -54,6 +55,7 @@ function addToListSearch(id) {
         success: function (result) {
             result = $.parseJSON(result);
             addToStars(changeStarsArray(result), id);
+            document.getElementById("spinner").style.display = "none";
         }
     });
 }

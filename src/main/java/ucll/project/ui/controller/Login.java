@@ -39,6 +39,7 @@ public class Login extends RequestHandler {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             request.setAttribute("my_email", user.getEmail());
+            request.setAttribute("starsGave", getUserService().usersSendStarsThisMonth((User) request.getSession().getAttribute("user")));
             response.sendRedirect("Controller");
         } else {
             request.setAttribute("error", error);

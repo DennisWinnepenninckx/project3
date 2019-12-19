@@ -19,8 +19,9 @@
         </form>
         <ul class="content-list" id="all">
         </ul>
+        <div id="spinner" style="display: none" class="loader"></div>
 
-        </c:if>
+    </c:if>
 </main>
 <jsp:include page="components/sidebar.jsp">
     <jsp:param name="page" value="home"/>
@@ -32,9 +33,11 @@
     let searchBar = document.getElementById("searchBar");
     searchBar.addEventListener("submit", searchSomething, false);
 
+    document.getElementById("spinner").style.display = "block";
     searchStars("all");
 
     function searchSomething() {
+        document.getElementById("spinner").style.display = "block";
         let searchWord = document.getElementById("starSearch");
         searchTerm = searchWord.value;
         searchStars("all");
@@ -47,6 +50,7 @@
 
         if (offset === height) {
             addToListSearch("all")
+            document.getElementById("spinner").style.display = "block";
         }
     };
 
