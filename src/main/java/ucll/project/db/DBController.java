@@ -99,4 +99,8 @@ public class DBController {
     public List<Star> getStarsUserReceived(User user) {
         return starDB.getAllReceivedStars(user);
     }
+
+    public void updatePic(User user) {
+        userRepositoryDb.updatePic(user);
+    }
 }

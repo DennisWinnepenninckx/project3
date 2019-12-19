@@ -12,7 +12,24 @@ import java.util.regex.Pattern;
 import static org.apache.poi.poifs.crypt.HashAlgorithm.sha512;
 
 public class User {
-    private String email, firstName, lastname, password;
+    private String email;
+    private String firstName;
+    private String lastname;
+    private String password;
+
+    public String getProfilepic() {
+        return profilepic;
+    }
+
+    public void setProfilepic(String profilepic) {
+        this.profilepic = profilepic;
+    }
+
+    public boolean isSuperUser() {
+        return superUser;
+    }
+
+    private String profilepic;
     private boolean superUser,manager,admin;
     //comment
     // hashed password1

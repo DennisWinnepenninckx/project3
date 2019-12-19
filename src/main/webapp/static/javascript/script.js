@@ -102,6 +102,8 @@ function buildStars(stars, id) {
 function buildStar(star) {
     let copy = document.getElementById("copy").cloneNode(true);
     copy.style.display = "block";
+    let ppic = copy.getElementsByClassName("ppicture")[0];
+    ppic.src = "Controller?command=GetImage&fileName=" + star.receiverPic;
     let receiver = copy.getElementsByClassName("receiver")[0];
     receiver.innerText = star.receiverUserFirstname + " " + star.receiverUserLastname;
     let sender = copy.getElementsByClassName("sender")[0];
