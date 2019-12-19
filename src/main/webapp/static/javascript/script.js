@@ -4,18 +4,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // Jquery can also be used
 });
 
-function getAllStars(id) {
-    $.ajax({
-        type: 'POST',
-        data: {"op": "stars"},
-        url: 'Controller?command=JsonController',
-        success: function (result) {
-            result = $.parseJSON(result);
-            buildStars(result, id);
-        }
-    });
-}
-
 function getReceivedStars(id, receiver) {
     $.ajax({
         type: 'POST',
@@ -40,16 +28,64 @@ function getSenderStars(id, sender) {
     });
 }
 
-function searchStars(searchTerm, id) {
+let stars = [];
+let starSet = new Set();
+let searchTerm = "";
+
+function searchStars(id) {
     $.ajax({
         type: 'POST',
-        data: {"op": "searchStars", searchTerm: searchTerm},
+        data: {"op": "stars", searchTerm: searchTerm, start: 0, stop: 10},
         url: 'Controller?command=JsonController',
         success: function (result) {
             result = $.parseJSON(result);
+            clearStarsArray(result);
             buildStars(result, id);
         }
     });
+}
+
+
+function addToListSearch(id) {
+    $.ajax({
+        type: 'POST',
+        data: {"op": "stars", searchTerm: searchTerm, start: stars.length, stop: stars.length + 10},
+        url: 'Controller?command=JsonController',
+        success: function (result) {
+            result = $.parseJSON(result);
+            addToStars(changeStarsArray(result), id);
+        }
+    });
+}
+function clearStarsArray(sterretjes) {
+    stars = sterretjes;
+    starSet = new Set();
+    for (let i = 0; i < stars.length; i++) {
+        starSet.add(stars[i].id);
+    }
+}
+
+
+function changeStarsArray(result) {
+    let st = [];
+    for (let i = 0; i < result.length; i++) {
+        if (!starSet.has(result[i].id)) {
+            starSet.add(result[i].id);
+            st.push(result[i]);
+            stars.push(result[i]);
+        }
+    }
+    return st;
+}
+
+function addToStars(stars, id) {
+    let parent = document.getElementById(id);
+    let list = stars.map(star => {
+        return buildStar(star);
+    });
+    for (let i = 0; i < list.length; i++) {
+        parent.appendChild(list[i]);
+    }
 }
 
 function buildStars(stars, id) {
@@ -57,12 +93,7 @@ function buildStars(stars, id) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
-    let list = stars.map(star => {
-        return buildStar(star);
-    });
-    for (let i = 0; i < list.length; i++) {
-        parent.appendChild(list[i]);
-    }
+    addToStars(stars, id);
 }
 
 function buildStar(star) {

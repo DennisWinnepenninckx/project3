@@ -53,6 +53,7 @@
 </nav>
 <div id="nav-placeholder">
 </div>
+<jsp:include page="give-star.jsp"/>
 
 <script>
     window.addEventListener("load", initPage, false);
