@@ -36,8 +36,6 @@ public class GiveStar extends RequestHandler {
             if (getUserService().usersSendStarsThisMonth(user) >= 3 && !user.getSuperUser()) {
                 errors.add("no superuser and more then 3 stars send this month");
             }
-
-
             String receiver_string = request.getParameter("receiver");
             ObjectMapper receiverMapper = new ObjectMapper();
             receiverMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -69,6 +67,8 @@ public class GiveStar extends RequestHandler {
                         tags) {
                     tagStrings.add(tag.getValue());
                 }
+                if(errors.size()==0){
+
 
                 Star star = new Star(tagStrings, description, sender_email, receiver_email);
                 getUserService().createStar(star);
@@ -216,7 +216,7 @@ public class GiveStar extends RequestHandler {
                     }
                 }
 
-            } catch (Exception e) {
+            }} catch (Exception e) {
                 errors.add("no tags added");
             }
             if(errors.size()!=0){
