@@ -104,6 +104,8 @@ function buildStar(star) {
     copy.style.display = "block";
     let ppic = copy.getElementsByClassName("ppicture")[0];
     ppic.src = "Controller?command=GetImage&fileName=" + star.receiverPic;
+    let datetime = copy.getElementsByClassName("datetime")[0];
+    datetime.innerText = star.date;
     let receiver = copy.getElementsByClassName("receiver")[0];
     receiver.innerText = star.receiverUserFirstname + " " + star.receiverUserLastname;
     let sender = copy.getElementsByClassName("sender")[0];

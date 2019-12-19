@@ -15,6 +15,8 @@
         <div style="word-wrap: break-word;">
             <span class="sender">Sent by </span>
             <p class="description"></p>
+            <p class="datetime">
+            </p>
             <ul class="tag-list">
             </ul>
         </div>
