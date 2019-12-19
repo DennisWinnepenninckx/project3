@@ -6,7 +6,6 @@
 <jsp:include page="components/header.jsp"/>
 <body>
 <main>
-    <img src="Controller?command=GetImage&fileName=6304.jpg" alt="">
     <form method="post" action="Controller?command=AddUser">
         <legend>
             Create a User!

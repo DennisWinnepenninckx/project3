@@ -12,7 +12,7 @@ public class UserRepositoryDb implements UserRepository {
     public void createUser(User user) {
         try (Connection conn = ConnectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement("INSERT INTO \"user\" " +
-                     "(email, firstname, lastname, password, superuser, admin, manager) VALUES (?, ?, ?, ?,?,?,?)",
+                     "(email, firstname, lastname, password, superuser, admin, manager, profilepic) VALUES (?, ?, ?, ?,?,?,?,?)",
                      Statement.RETURN_GENERATED_KEYS))
         {
             stmtSetUser(stmt, 1, user);
