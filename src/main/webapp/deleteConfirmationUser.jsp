@@ -5,13 +5,13 @@
 <jsp:include page="components/header.jsp"/>
 <body class="noflex">
 <main>
-<p>Bent u zeker dat u <c:out value='${param.firstName}'/> <c:out value='${param.lastname}'/> wilt verwijderen?</p>
+<p>Are you sure you want to delete <c:out value='${param.firstName}'/> <c:out value='${param.lastname}'/>?</p>
 <form method="post" action="Controller?command=DeleteUser">
     <input type="hidden" id="email" name="email" value="${param.email}">
-    <button type="submit">Verwijder User</button>
+    <button type="submit">Delete User</button>
 </form>
 <form method="post" action="Controller?command=Users">
-    <button type="submit">Annuleren</button>
+    <button type="submit">Cancel</button>
 </form>
 </main>
 <jsp:include page="components/sidebar.jsp">
