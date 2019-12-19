@@ -68,6 +68,9 @@ public class DBController {
     public void deleteUser(User user) {
         userRepositoryDb.delete(user);
     }
+    public void deleteUsingEmail(String email){
+        userRepositoryDb.deleteUsingEmail(email);
+    }
 
     public List<Star> getAllStars() {
         return starDB.getAll();

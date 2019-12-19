@@ -11,7 +11,9 @@
             Create a User!
         </legend>
         <c:if test="${useralreadyexists != null}">
-            <p>${useralreadyexists}</p>
+            <div class="alert alert-danger">
+                <p>${useralreadyexists}</p>
+            </div>
         </c:if>
         <label for="firstName">First Name</label><input type="text" id="firstName" name="firstName" maxlength="20" value=""
                                                         required />
