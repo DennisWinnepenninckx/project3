@@ -12,7 +12,7 @@
             <img src="../static/imgs/profile.png">
             <span class="receiver"></span>
         </div>
-        <div>
+        <div style="word-wrap: break-word;">
             <span class="sender">Sent by </span>
             <p class="description"></p>
             <ul class="tag-list">
