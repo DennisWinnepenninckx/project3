@@ -19,6 +19,24 @@
         <button type="submit">upload</button>
     </form>
 
+    <form id="passwordReset" novalidate action="Controller?command=NewPassword" method="post">
+        <legend>
+            Change password
+        </legend>
+
+        <c:if test="${error!= null}">
+            <div class="alert alert-danger">
+                <p>${error}</p>
+            </div>
+        </c:if>
+
+        <label for="p1">password</label>
+        <input type="password" id="p1" name="p1" maxlength="55" required>
+        <label for="p2">password repeat</label>
+        <input type="password" id="p2" name="p2" maxlength="55" required>
+        <button type="submit">change</button>
+    </form>
+
     <h2>Received Stars</h2>
     <jsp:include page="components/star_overview.jsp"/>
     <ul class="content-list" id="received">

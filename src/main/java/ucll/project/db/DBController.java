@@ -53,6 +53,10 @@ public class DBController {
         userRepositoryDb.createUser(user);
     }
 
+    public void resetPassword(User user){
+        userRepositoryDb.resetPassword(user);
+    }
+
     public User getUser(String email) {
         return userRepositoryDb.get(email);
     }
@@ -103,4 +107,5 @@ public class DBController {
     public void updatePic(User user) {
         userRepositoryDb.updatePic(user);
     }
+
 }

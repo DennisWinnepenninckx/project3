@@ -25,13 +25,6 @@
                 <p>${error}</p>
             </div>
         </c:if>
-        <c:forEach var="error" items="${errors}">
-            <tr>
-                <td><c:out value='${error}'/></td>
-                <td><c:out value='${error}'/></td>
-                <td><c:out value='${error}'/></td>
-            </tr>
-        </c:forEach>
         <input type="hidden" name="command" value="GiveStar">
         <textarea class="nonresizable" name="description" placeholder="Why does he/she deserve a star?" maxlength="128"></textarea>
         <input class="names-input" name="receiver" placeholder="Send star to">

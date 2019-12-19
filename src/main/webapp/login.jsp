@@ -8,8 +8,8 @@
 <body>
 <main>
 
-    <form id="login" novalidate action="Controller?command=Login" method="post">
-        <legend>
+    <form class="login" novalidate action="Controller?command=Login" method="post">
+        <legend  class="login">
             Login!
         </legend>
 
@@ -18,12 +18,9 @@
             <p>${error}</p>
         </div>
         </c:if>
-
-        <label for="email">email</label>
-        <input type="email" id="email" name="email" value="<c:out value='${email}'/>" maxlength="55" required>
-        <label for="password">password</label>
-        <input type="password" id="password" name="password" required value="">
-        <button type="submit">Login!</button>
+        <input type="email" id="email"  name="email" placeholder="email" value="<c:out value='${email}'/>" maxlength="55">
+        <input type="password" id="password" placeholder="password" name="password" required value="">
+        <button id="loginbutton" type="submit">Login</button>
 
     </form>
 </main>
