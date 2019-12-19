@@ -56,7 +56,7 @@ public class JsonController extends RequestHandler {
                     stars = getUserService().getStarsUserReceived(getUserService().getUser(receiver));
                 }
                 else if (searchTerm!= null) {
-                    stars = getUserService().searchStars(request.getParameter("searchTerm"));
+                    stars = getUserService().searchStars(request.getParameter("searchTerm").toLowerCase());
                 }
                 else {
                     stars = getUserService().getAllStars();
