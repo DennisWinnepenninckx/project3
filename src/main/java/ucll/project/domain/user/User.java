@@ -44,6 +44,7 @@ public class User {
         setLastname(lastName);
         setNewPassword(password);;
         setSuperUser(superUser);
+        profilepic = "profile.png";
     }
 
     public String getLastname() {
