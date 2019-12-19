@@ -98,6 +98,8 @@ img {
 }
 
 main {
+
+    font-family: 'Libre Franklin', sans-serif;
     width: 70%;
     padding: 2rem;
 }

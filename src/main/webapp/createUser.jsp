@@ -21,6 +21,7 @@
         <label for="lastName">Last Name</label><input type="text" id="lastName" maxlength="20" name="lastName" value=""
                                                       required/>
         <label for="email">Email</label><input type="email" id="email" name="email" maxlength="55" value="" required/>
+        <label for="password">Password</label><input type="password" id="password" name="password" maxlength="55" value="" required/>
         <p>
             <input class="checkbox" type="checkbox" name="superuser" value="superuser" id="superuser"> <label
                 for="superuser">Superuser</label>

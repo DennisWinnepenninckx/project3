@@ -31,6 +31,7 @@ public class AddUser extends RequestHandler {
             String LastName  = request.getParameter("lastName");
             String Email  = request.getParameter("email");
 
+
             boolean isSuperuser = request.getParameter("superuser") !=null && request.getParameter("superuser").equals("superuser");
             boolean isAdmin = request.getParameter("admin") !=null &&request.getParameter("admin").equals("admin");
             boolean isManager = request.getParameter("manager") !=null && request.getParameter("manager").equals("manager");
@@ -39,6 +40,7 @@ public class AddUser extends RequestHandler {
             user.setAdmin(isAdmin);
             user.setManager(isManager);
             user.setProfilepic("profile.png");
+            user.setNewPassword(request.getParameter("password"));
 
             try{
                 getUserService().createUser(user);
