@@ -102,7 +102,7 @@ public class Star {
         return "{" +
                 "'id':" + id +
                 ", 'tags':" + tagsToString() +
-                ", 'description':'" + description + '\'' +
+                ", 'description':'" + descriptionEscape() + '\'' +
                 ", 'sender':'" + sender + '\'' +
                 ", 'receiver':'" + receiver + '\'' +
                 ", 'senderUserFirstname':'" + senderUser.getFirstName() + "'" +
@@ -113,6 +113,16 @@ public class Star {
                 ", 'date':'" + date + "'" +
                 ", 'comments':" + comments +
                 '}';
+    }
+
+    private String descriptionEscape() {
+        String b = new String(description);
+        b = b.replaceAll("&", "&amp;");
+        b = b.replaceAll("'", "&apos;");
+        b = b.replaceAll("\"", "&quot;");
+        b = b.replaceAll("<", "&lt;");
+        b = b.replaceAll(">", "&gt;");
+        return b;
     }
 
     private String tagsToString() {

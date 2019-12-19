@@ -71,8 +71,18 @@ public class Comment {
                 "'user_email':'" + user_email + '\'' +
                 ", 'user_firstname':'" + user.getFirstName() +"'"+
                 ", 'user_lastname':'" + user.getLastname() +"'"+
-                ", 'comment':'" + comment + '\'' +
+                ", 'comment':'" + commentEscape() + '\'' +
                 ", 'datetime':'" + datetime + "'" +
                 '}';
+    }
+
+    private String commentEscape() {
+        String b = new String(comment);
+        b = b.replaceAll("&", "&amp;");
+        b = b.replaceAll("'", "&apos;");
+        b = b.replaceAll("\"", "&quot;");
+        b = b.replaceAll("<", "&lt;");
+        b = b.replaceAll(">", "&gt;");
+        return b;
     }
 }

@@ -176,7 +176,7 @@ public class StarDB {
         List<Comment> comments = new ArrayList<>();
 
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM comment where star = ? order by datetime desc", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM comment where star = ? order by datetime", Statement.RETURN_GENERATED_KEYS)) {
 
             stmt2.setInt(1, starId);
             ResultSet starResult = stmt2.executeQuery();
