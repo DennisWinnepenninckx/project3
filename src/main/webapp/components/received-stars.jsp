@@ -15,7 +15,7 @@
                 <img src="../static/imgs/star.png" alt="">
                 <span><c:out value="${star.receiverUser.firstName}"/> <c:out value="${star.receiverUser.lastname}"/></span>
             </div>
-            <div>
+            <div style="word-wrap: break-word;">
                 <span class="sender">Sent by <c:out value="${star.senderUser.firstName}"/> <c:out value="${star.senderUser.lastname}"/></span>
                 <p><c:out value="${star.description}"/></p>
                 <td>
