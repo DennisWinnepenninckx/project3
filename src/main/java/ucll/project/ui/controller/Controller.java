@@ -6,6 +6,7 @@ import ucll.project.domain.user.UserService;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import java.util.Enumeration;
 import java.util.Properties;
 
 @WebServlet("/Controller")
+@MultipartConfig
 public class Controller extends HttpServlet {
     private DBController service;
     private HandlerFactory handlerFactory;
@@ -47,6 +49,7 @@ public class Controller extends HttpServlet {
             else {
                 if (request.getSession().getAttribute("user")!= null) {
                     request.setAttribute("my_email", ((User)request.getSession().getAttribute("user")).getEmail());
+                    request.setAttribute("starsGave", service.usersSendStarsThisMonth((User) request.getSession().getAttribute("user")));
                 }
                 RequestHandler handler = handlerFactory.getHandler(command, service);
                 handler.handleRequest(request, response);

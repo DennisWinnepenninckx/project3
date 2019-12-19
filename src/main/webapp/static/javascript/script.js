@@ -39,8 +39,10 @@ function searchStars(id) {
         url: 'Controller?command=JsonController',
         success: function (result) {
             result = $.parseJSON(result);
+            console.log(result);
             clearStarsArray(result);
             buildStars(result, id);
+            document.getElementById("spinner").style.display = "none";
         }
     });
 }
@@ -54,6 +56,7 @@ function addToListSearch(id) {
         success: function (result) {
             result = $.parseJSON(result);
             addToStars(changeStarsArray(result), id);
+            document.getElementById("spinner").style.display = "none";
         }
     });
 }

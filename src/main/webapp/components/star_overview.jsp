@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<li style="display: none" id="copy">
+<li style="display: none" id="copy" class="this-is-a-star">
     <div class="star-class">
         <div>
             <img src="../static/imgs/profile.png">
@@ -20,10 +20,10 @@
         </div>
     </div>
     <form class="new-comment" method="post" action="Controller">
-        <button type="submit" class="material-icons">add_circle</button>
         <input type="hidden" name="command" value="MakeComment">
         <input class="star-id" type="hidden" name="star" value="">
         <input type="text" name="comment" placeholder="Comment on this star">
+        <button type="submit" class="material-icons">add_circle</button>
     </form>
     <ul style="display: none" class="comments content-list">
     </ul>
