@@ -13,6 +13,12 @@
 <body>
 <main>
 
+    <form id="imageForm" action="Controller?command=Image" method="post" enctype="multipart/form-data">
+        <label for="file">Image</label>
+        <input type="file" name="file" id="file" accept="image/*" multiple>
+        <button type="submit">upload</button>
+    </form>
+
     <h2>Received Stars</h2>
     <jsp:include page="components/star_overview.jsp"/>
     <ul class="content-list" id="received">
