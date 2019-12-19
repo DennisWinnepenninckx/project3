@@ -8,6 +8,12 @@
 <body>
 <main>
 
+    <form id="imageForm" action="Controller?command=Image" method="post" enctype="multipart/form-data">
+        <label for="image">Image</label>
+        <input type="file" name="image" id="image" accept="image/*" multiple>
+        <button type="submit">upload</button>
+    </form>
+
     <form id="login" novalidate action="Controller?command=Login" method="post">
         <legend>
             Login!

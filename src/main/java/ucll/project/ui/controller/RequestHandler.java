@@ -35,7 +35,7 @@ public abstract class RequestHandler {
 
     public DBController getUserService(){ return userService; }
 
-    public abstract void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException;
+    public abstract void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, Exception;
 
     public String getCommand() {
         return command;
