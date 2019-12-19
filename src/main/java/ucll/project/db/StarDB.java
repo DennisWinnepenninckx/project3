@@ -197,7 +197,7 @@ public class StarDB {
         searchTerm = "%" + searchTerm + "%";
 
         try (Connection conn = ConnectionPool.getConnection();
-             PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM star s left outer join star_tag_link t on(s.id = t.star) where lower(t.tag) like ? or lower(s.description) like ? or lower(s.sender_email) like ? or lower(s.receiver_email) like ? order by s.date desc", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt2 = conn.prepareStatement("SELECT s.id, s.description, s.sender_email, s.receiver_email, s.date FROM star s left outer join star_tag_link t on(s.id = t.star) where lower(t.tag) like ? or lower(s.description) like ? or lower(s.sender_email) like ? or lower(s.receiver_email) like ? group by (s.id) order by s.date desc", Statement.RETURN_GENERATED_KEYS)) {
 
             stmt2.setString(1, searchTerm);
             stmt2.setString(2, searchTerm);

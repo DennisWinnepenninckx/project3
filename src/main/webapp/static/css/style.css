@@ -294,6 +294,7 @@ button.material-icons {
 }
 
 .star-class {
+    margin: 0;
     padding: 2rem;
     box-shadow: 0 0 5px #AAAAAA;
     display: flex;
@@ -304,6 +305,13 @@ button.material-icons {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 1.2rem;
     color: #144a91;
+}
+
+.this-is-a-star {
+    padding: 0;
+    background: #F0F0F0;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
 .star-class .description {

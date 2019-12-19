@@ -39,6 +39,7 @@ function searchStars(id) {
         url: 'Controller?command=JsonController',
         success: function (result) {
             result = $.parseJSON(result);
+            console.log(result);
             clearStarsArray(result);
             buildStars(result, id);
             document.getElementById("spinner").style.display = "none";
