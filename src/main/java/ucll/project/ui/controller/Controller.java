@@ -16,7 +16,6 @@ import java.util.Enumeration;
 import java.util.Properties;
 
 @WebServlet("/Controller")
-@MultipartConfig
 public class Controller extends HttpServlet {
     private DBController service;
     private HandlerFactory handlerFactory;

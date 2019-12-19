@@ -19,7 +19,7 @@ import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.List;
 
-@MultipartConfig
+//@MultipartConfig
 public class Image extends RequestHandler {
 
     public Image(String command, DBController userService) {
@@ -28,12 +28,23 @@ public class Image extends RequestHandler {
 
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, Exception {
-        Part filePart = request.getPart("file");
+        System.out.println("imagehandler");
+        try {
+            ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
+            List<FileItem> images = sf.parseRequest(request);
+            for (FileItem item : images) {
+                item.write(new File(item.getName()));
+            }
+        }catch (Exception e){
+            throw new IllegalArgumentException(e);
+        }
+        System.out.println("eind imagehandler");
+        /*Part filePart = request.getPart("file");
         String fileName = getSubmittedFileName(filePart);
         InputStream fileContent = filePart.getInputStream();
 
         //uploadToDatabase(fileName,fileContent);
-        request.getRequestDispatcher("index.jsp").forward(request,response);
+        request.getRequestDispatcher("index.jsp").forward(request,response);*/
     }
 
     private static String getSubmittedFileName(Part part) {
