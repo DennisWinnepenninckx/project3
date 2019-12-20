@@ -412,6 +412,9 @@ button.material-icons {
     box-sizing: border-box;
 }
 
+#loginAlert{
+    font-size: 1rem;
+}
 
 #give-star, #imageForm {
     display: block;

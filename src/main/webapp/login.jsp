@@ -14,7 +14,7 @@
         </legend>
 
         <c:if test="${error!= null}">
-        <div class="alert alert-danger">
+        <div id="loginAlert" class="alert alert-danger">
             <p>${error}</p>
         </div>
         </c:if>
